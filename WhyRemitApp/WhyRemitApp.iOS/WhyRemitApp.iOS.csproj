@@ -1042,4 +1042,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\zw.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe%403x.png" />
+  </ItemGroup>
 </Project>

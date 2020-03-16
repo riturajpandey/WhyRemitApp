@@ -19,10 +19,44 @@
             <Color x:Key="AppBlackColor">#000000</Color>
             <Color x:Key="AppWhiteColor">#FFFFFF</Color>
             <Color x:Key="AppGrayColor">#C9C3C3</Color>
-            <Color x:Key="AppDarkGrayColor">#D8D4D4</Color> 
+            <Color x:Key="AppDarkGrayColor">#D8D4D4</Color>
+            <Color x:Key="AppLightBlackColor">#808080</Color>
+            <Color x:Key="AppDarkBlueColor">#025FA5</Color>
+            <!--#endregion-->
+
+
+
+            <!--#region Controls -->
+
+            <!--#region Labels -->
+
+            <!--Primary Blue Label-->
+            <!--<Style x:Key="PrimaryGrayHeaders" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="{DynamicResource  PoppinsBold}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextGrayColor}" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>-->
 
             <!--#endregion-->
- 
+
+            <!--Round White Background Frame-->
+            <Style x:Key="PrimaryFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource AppWhiteColor}"/>
+                <Setter Property="BorderColor" Value="{StaticResource AppBlueColor}"/>
+                <Setter Property="Padding" Value="10,5,10,5" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="IsClippedToBounds" Value="True" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
+
+          
+
             <!--#region Fonts -->
             <!--<OnPlatform x:TypeArguments="x:String" x:Key="PoppinsBlack">
                 <On Platform="iOS" Value="Poppins-Black"/>
@@ -30,6 +64,9 @@
             </OnPlatform>-->
             
             <!--#endregion-->
+            
+            
+            
         </ResourceDictionary>
 
     </Application.Resources>
