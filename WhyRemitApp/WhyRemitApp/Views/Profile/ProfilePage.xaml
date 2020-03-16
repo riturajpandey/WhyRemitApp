@@ -93,7 +93,7 @@
                         <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
 
                         <!--Buttons-->
-                        <local:CustomButtonTxt Grid.Row="9" Text="Save Profile" BackgroundColor="{StaticResource AppBlueColor}" BorderColor="Gray" BorderWidth="1" Command="{Binding SaveCommand}"
+                        <local:CustomButtonTxt Grid.Row="9" Text="Save Profile" BackgroundColor="{StaticResource AppBlueColor}" BorderWidth="1" Command="{Binding SaveCommand}"
                     TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
                     </Grid>
                 </ScrollView>

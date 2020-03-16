@@ -25,5 +25,59 @@ namespace WhyRemitApp.Views.Currencies
             // iOS Platform
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
+
+        #region Event Handler
+
+        /// <summary>
+        /// TODO : To Defeine On Page Appearing Event...
+        /// </summary>
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await EditCurrencyVM.GetCurrencyInfo();
+        }
+
+        /// <summary>
+        /// TODO : To Define Event Handler For Rate Switch Toggled...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SwtchRate_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (EditCurrencyVM.IsBuyRate)
+            {
+                EditCurrencyVM.IsBuyRate = false;
+                EditCurrencyVM.IsSellRate = true;
+            }
+            else
+            {
+                EditCurrencyVM.IsBuyRate = true;
+                EditCurrencyVM.IsSellRate = false;
+            }
+        }
+
+        /// <summary>
+        /// TODO : To Define Event Handler For Expiry Tapped,
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Expiry_Tapped(object sender, EventArgs e)
+        {
+            PckExpiryTime.Focus();
+        }
+
+        /// <summary>
+        /// TODO : To Define Event Handler For Expiry Tapped...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PckExpiryTime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PckExpiryTime.SelectedIndex != -1)
+            {
+                EditCurrencyVM.ExpireTime = PckExpiryTime.SelectedItem.ToString();
+            }
+        }
+        #endregion 
     }
 }

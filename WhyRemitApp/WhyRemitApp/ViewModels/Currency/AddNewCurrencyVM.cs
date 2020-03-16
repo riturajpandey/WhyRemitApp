@@ -1,36 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
-using WhyRemitApp.Models;
 using Xamarin.Forms;
 
 namespace WhyRemitApp.ViewModels.Currency
 {
-    public class EditCurrencyVM : BaseViewModel
+    public class AddNewCurrencyVM : BaseViewModel
     {
         #region CONSTRUCTOR
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EditCurrencyVM"/> class.
+        /// Initializes a new instance of the <see cref="AddNewCurrencyVM"/> class.
         /// </summary>
         /// <param name="nav"></param>
-        public EditCurrencyVM(INavigation nav)
+        public AddNewCurrencyVM(INavigation nav)
         {
             Navigation = nav;
             BackCommand = new Command(OnBackAsync);
-            UpdateCommand = new Command(OnUpdateAsync);
+            SearchCommand = new Command(OnSearchAsync);
         }
 
         #endregion
 
         #region DELEGATECOMMAND 
         public Command BackCommand { get; set; }
-        public Command UpdateCommand { get; set; }
+        public Command SearchCommand { get; set; }
         #endregion
 
         #region PROPERTIES 
+
+        private string _HaveCurrency ;
+        public string HaveCurrency
+        {
+            get { return _HaveCurrency; }
+            set
+            {
+                if (_HaveCurrency != value)
+                {
+                    _HaveCurrency = value;
+                    OnPropertyChanged("HaveCurrency");
+                }
+            }
+        }
+        private string _NeedCurrency;
+        public string NeedCurrency
+        {
+            get { return _NeedCurrency; }
+            set
+            {
+                if (_NeedCurrency != value)
+                {
+                    _NeedCurrency = value;
+                    OnPropertyChanged("NeedCurrency");
+                }
+            }
+        }
+        public string NeedCurrencyCode;
+        public string HaveCurrencyCode;
 
         private string _CurrencyName = "GPB - NGN";
         public string CurrencyName
@@ -138,16 +165,16 @@ namespace WhyRemitApp.ViewModels.Currency
         }
 
         /// <summary>
-        /// TODO : To Call Update Currecny Api...
+        /// TODO : To Call Search Currecny Api...
         /// </summary>
         /// <param name="obj"></param>
-        private async void OnUpdateAsync(object obj)
+        private async void OnSearchAsync(object obj)
         {
             //Apply Validations..
             if (!await Validate()) return;
 
-            UserDialog.Alert("Currency updated successfully.", "Alert", "Ok");
-            await Navigation.PopModalAsync();
+            //UserDialog.Alert("Currency updated successfully.", "Alert", "Ok");
+            //await Navigation.PopModalAsync();
         }
 
         /// <summary>
@@ -164,7 +191,18 @@ namespace WhyRemitApp.ViewModels.Currency
         private async Task<bool> Validate()
         {
             UserDialog.ShowLoading();
-
+            if (string.IsNullOrEmpty(HaveCurrency))
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("Please select currency you have.", "Alert", "Ok");
+                return false;
+            }
+            if (string.IsNullOrEmpty(NeedCurrency))
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("Please select currency you need.", "Alert", "Ok");
+                return false;
+            }
             if (IsBuyRate)
             {
                 if (string.IsNullOrEmpty(BuyRate))
@@ -191,8 +229,7 @@ namespace WhyRemitApp.ViewModels.Currency
             }
             UserDialog.HideLoading();
             return true;
-        }
-
+        } 
         #endregion 
     }
 }

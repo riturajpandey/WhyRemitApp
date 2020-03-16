@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WhyRemitApp.Views.Currencies.EditCurrencyPage"
+             x:Class="WhyRemitApp.Views.Currencies.AddNewCurrencyPage"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls">
     <ContentPage.Content>
         <!--Main Grid-->
@@ -27,7 +27,7 @@
                     <Image Source="back_arrow.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                            HeightRequest="25" WidthRequest="25"/>
                 </Grid>
-                <Label Grid.Column="1" Text="Edit Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
+                <Label Grid.Column="1" Text="New Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
                        TextColor="{StaticResource AppWhiteColor}"/>
             </Grid>
 
@@ -52,25 +52,90 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions> 
-                    
-                    <!--Currency Name-->
-                    <Label Grid.Row="0" Text="{Binding CurrencyName}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="22" 
-                           TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                    <!--Currency Created On-->
-                    <Label Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="12" LineBreakMode="WordWrap">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Created on " TextColor="Gray"/>
-                                <Span Text="{Binding CreatedOn}" TextColor="Gray"/> 
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    </Grid.RowDefinitions>
+
+                    <!--Currency Details-->
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Margin="35,0,35,0" RowSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="I have" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
+                           TextColor="Gray" HorizontalTextAlignment="Center" Margin="5,0,0,0"/>
+                            <Label Grid.Column="2" Text="I need" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
+                           TextColor="Gray" HorizontalTextAlignment="Center" Margin="0,0,25,0"/>
+                        </Grid>
+                        
+                        <!--Currency Pickers-->
+                        <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,0,0,0">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="HaveCurrency_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding HaveCurrency}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="13" 
+                                       TextColor="Gray" HorizontalTextAlignment="Center"/>
+                                <Image Grid.Column="1" Source="dropdown_arrow.png" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,3"/>
+                                <local:CustomPicker x:Name="PckCurrency" SelectedIndexChanged="PckCurrency_SelectedIndexChanged" IsVisible="False">
+                                    <Picker.Items>
+                                        <x:String>GBP</x:String>
+                                        <x:String>NGN</x:String>  
+                                    </Picker.Items>
+                                </local:CustomPicker> 
+                            </Grid>
+
+                            <Image Grid.Column="1" Source="arrow.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="22"/>
+
+                            <Grid Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="NeedCurrency_Tapped"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding NeedCurrency}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="13" 
+                                       TextColor="Gray" HorizontalTextAlignment="Center" WidthRequest="60"/>
+                                <Image Grid.Column="1" Source="dropdown_arrow.png" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,3"/>
+                                <local:CustomPicker x:Name="PckCurrencyNeed" SelectedIndexChanged="PckCurrencyNeed_SelectedIndexChanged" IsVisible="False">
+                                    <Picker.Items>
+                                        <x:String>GBP</x:String>
+                                        <x:String>NGN</x:String>
+                                    </Picker.Items>
+                                </local:CustomPicker>
+                            </Grid> 
+                        </Grid> 
+
+                        <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="70"/>
+                            </Grid.ColumnDefinitions>
+                            <BoxView Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+                            <BoxView Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" WidthRequest="70"/>
+                        </Grid>
+                    </Grid>
 
                     <Label Grid.Row="3" Text="Minimum rate you are willing to accept" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
                            TextColor="Gray" HorizontalTextAlignment="Center"/>
-                   
-                    <!--Rate Settings--> 
+
+                    <!--Rate Settings-->
                     <Grid Grid.Row="5" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="25" Margin="30,0,30,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -94,7 +159,7 @@
 
                     <Label Grid.Row="9" Text="When should this search expire?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
                            TextColor="Gray" HorizontalTextAlignment="Center"/>
-                    
+
                     <!--Expire Time Picker-->
                     <Grid Grid.Row="11" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="100" Margin="100,0,100,10">
                         <Grid.GestureRecognizers>
@@ -102,7 +167,7 @@
                         </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/> 
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Label Text="{Binding ExpireTime} " HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="13" 
                            TextColor="Gray" HorizontalTextAlignment="Center"/>
@@ -132,12 +197,11 @@
                            TextColor="Gray" HorizontalTextAlignment="Center" Margin="20,0,20,0"/>
 
                     <!--Buttons-->
-                    <local:CustomButtonTxt Grid.Row="16" Text="Update" BackgroundColor="{StaticResource AppBlueColor}" BorderWidth="1" Command="{Binding UpdateCommand}"
+                    <local:CustomButtonTxt Grid.Row="16" Text="Search" BackgroundColor="{StaticResource AppBlueColor}" BorderWidth="1" Command="{Binding SearchCommand}"
                     TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
 
                 </Grid>
-            </ScrollView> 
-         </Grid>
-
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
