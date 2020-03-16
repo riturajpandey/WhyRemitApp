@@ -1042,4 +1042,40 @@
   <ItemGroup>
     <BundleResource Include="Resources\zw.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\globe%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setting1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\no%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\setting1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user1.png" />
+  </ItemGroup>
 </Project>

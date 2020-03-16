@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WhyRemitApp.Views.Currencies.CurrencyPage"
+             xmlns:controls="clr-namespace:WhyRemitApp.CustomControls"
              Title="Currency">
     <ContentPage.Content>
-       <!--Main Grid-->
+        <!--Main Grid-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -17,9 +18,75 @@
             <!--Header-->
             <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0,20,0" BackgroundColor="{StaticResource AppBlueColor}">
                 <Label Text="Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
-                       TextColor="{StaticResource AppWhiteColor}"/> 
+                       TextColor="{StaticResource AppWhiteColor}"/>
             </Grid>
+            <!--If Listview Not Contain Any Item-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False">
+                <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TranslationY="-30" Padding="10,0,10,0">
+                    <Image Source="globe.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore  et dolore manga  aliqua"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="{StaticResource AppBlackColor}" FontSize="14"/>
+                </StackLayout>
+            </Grid>
+            <!--If Listview  Contain More Than 0 Item-->
+            <ScrollView Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" IsClippedToBounds="True">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,20,10,0">
+                        <controls:RepeaterView ItemsSource="{Binding CurrencyModelList}">
+                            <controls:RepeaterView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,10,0,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <controls:CustomFrame  Style="{StaticResource PrimaryFrame}" CornerRadius="10">
+                                                    <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
 
+                                                        <Label Text="{Binding CurrencyName}"  HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{StaticResource AppDarkBlueColor}" FontSize="16" FontAttributes="Bold"/>
+
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding CurrencyExpire}" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{Binding CurrencyExpireColor}" FontSize="10"/>
+
+                                                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding BestRate}" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{StaticResource AppGrayColor}" FontSize="16" />
+                                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding BestRateValue}" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{StaticResource AppLightBlackColor}" FontSize="14"/>
+                                                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding Matches}" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{StaticResource AppGrayColor}" FontSize="14"/>
+                                                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding MatchesValue}" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                           TextColor="{StaticResource AppLightBlackColor}" FontSize="14"/>
+
+                                                    </Grid>
+                                                </controls:CustomFrame>
+                                            </Grid>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </controls:RepeaterView.ItemTemplate>
+                        </controls:RepeaterView>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+            <!--Plus Icon-->
+            <controls:CustomFrame Grid.Row="1" Padding="0" Margin="0,0,10,30" HeightRequest="60" WidthRequest="60" CornerRadius="30" HorizontalOptions="EndAndExpand" 
+                                  VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                <Image Source="plus.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            </controls:CustomFrame>
             <!--Bottom Tab-->
             <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
                 <Grid.ColumnDefinitions>

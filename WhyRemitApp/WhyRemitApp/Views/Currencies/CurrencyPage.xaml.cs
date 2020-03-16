@@ -25,5 +25,13 @@ namespace WhyRemitApp.Views.Currencies
             // iOS Platform
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
+
+        #region EVENTHANDLER
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await CurrencyVM.CallCurrenctList();
+        }
+        #endregion
     }
 }

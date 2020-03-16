@@ -45,6 +45,20 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
+
+        private ObservableCollection<CurrencyModel> _CurrencyModelList;
+        public ObservableCollection<CurrencyModel> CurrencyModelList
+        {
+            get { return _CurrencyModelList; }
+            set
+            {
+                if (_CurrencyModelList != value)
+                {
+                    _CurrencyModelList = value;
+                    OnPropertyChanged("CurrencyModelList");
+                }
+            }
+        }
         #endregion
 
         #region Methods 
@@ -72,6 +86,14 @@ namespace WhyRemitApp.ViewModels.Currency
         /// </summary>
         public async Task GetIntroductionList()
         { 
+        }
+        /// <summary>
+        /// To Get The List Of Currency
+        /// </summary>
+        /// <returns></returns>
+        public async Task CallCurrenctList()
+        {
+            CurrencyModelList = new ObservableCollection<CurrencyModel>(CurrencyModel.CurrencyList());
         }
         #endregion 
     }
