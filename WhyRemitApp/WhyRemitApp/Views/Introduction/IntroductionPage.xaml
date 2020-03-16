@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             mc:Ignorable="d"
+             xmlns:suave="clr-namespace:SuaveControls.DynamicStackLayout;assembly=SuaveControls.DynamicStackLayout"
+             x:Class="WhyRemitApp.Views.Introduction.IntroductionPage"
+             xmlns:local="clr-namespace:WhyRemitApp.CustomControls">
+    <ContentPage.Content>
+        <!--Main Grid-->
+        <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <!--Intro List-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"  Padding="50,0,50,0">
+                <controls:CarouselViewControl x:Name="MainCarouselView" BackgroundColor="Transparent" Orientation="Horizontal"
+                                              ItemsSource="{Binding IntroductionList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                              PositionSelected="Carousel_PositionSelected" ShowIndicators="False">
+                    <controls:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="15,35,15,35">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Text="{Binding Header}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
+                                               TextColor="White" FontSize="22" FontAttributes="Bold"/>
+
+                                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Margin="30" HeightRequest="150" WidthRequest="150">
+                                    <Image Source="{Binding DescriptionImage}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Aspect="AspectFit"/>
+                                </Grid>
+
+                                <Label Grid.Row="2" Text="{Binding Description}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
+                                               TextColor="White" FontSize="15"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </controls:CarouselViewControl.ItemTemplate>
+                </controls:CarouselViewControl>
+            </Grid>
+
+            <!--Indicator List-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent"  Padding="50,0,50,0">
+
+                <!--Indicator List-->
+                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <suave:DynamicStackLayout x:Name="LvIndicators" ItemsSource="{Binding IndicatorList}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
+                        <suave:DynamicStackLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="15" Margin="2,0,2,0">
+                                    <Image x:Name="Ellipse1" Source="Ellipse_white.png"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsCurrent}" HeightRequest="22" WidthRequest="22"/>
+                                    <Image x:Name="Ellipse_white" Source="Ellipse1.png"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsVisible="{Binding IsNotCurrent}" HeightRequest="22" WidthRequest="22"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </suave:DynamicStackLayout.ItemTemplate>
+                    </suave:DynamicStackLayout>
+                </ScrollView>
+            </Grid>
+
+            <!--Continue Button-->
+            <local:CustomButtonTxt Grid.Row="2" Text="Continue" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" Command="{Binding ContinueCommand}"
+                    TextColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

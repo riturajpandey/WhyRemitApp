@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.Views.Currencies.CurrencyPage"
+             Title="Currency">
+    <ContentPage.Content>
+       <!--Main Grid-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0,20,0" BackgroundColor="{StaticResource AppBlueColor}">
+                <Label Text="Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource AppWhiteColor}"/> 
+            </Grid>
+
+            <!--Bottom Tab-->
+            <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="currency.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                    <Label Grid.Row="1" Text="Currencies" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="user.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25"/>
+                    <Label Grid.Row="1" Text="Profile" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SettingCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="setting.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                    <Label Grid.Row="1" Text="Setting" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

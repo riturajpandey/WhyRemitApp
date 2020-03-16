@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.Views.Register.ConfirmNumberPage"
+             xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
+             xmlns:inputKit="clr-namespace:Plugin.InputKit.Shared;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <!--Main Grid-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,45,30,45" BackgroundColor="{StaticResource AppBlueColor}">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="15"/> 
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/> 
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="40"/> 
+                    <RowDefinition Height="40"/> 
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <!--Header-->
+                <Label Grid.Row="0" Text="Confirm Number" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
+                                               TextColor="White" FontSize="22" FontAttributes="Bold"/>
+
+                <Label Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12"
+                       HorizontalTextAlignment="Center" LineBreakMode="WordWrap">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Enter the 4 Digit code sent to your number : " TextColor="{StaticResource AppLightBlueColor}"/>
+                            <Span Text="{Binding Path=Mobileno, Mode=TwoWay}" TextColor="{StaticResource AppLightBlueColor}"/> 
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <local:CustomEntry Grid.Row="4" Text="{Binding OTP}" Placeholder="Code" TextColor="White" MaxLength="4" Keyboard="Numeric"
+                                   PlaceholderColor="{StaticResource AppGrayColor}" FontSize="15" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+                <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Opacity="0.8"/>
+
+                <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0">
+                    <Label Text="Resend Code" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                               TextColor="{StaticResource AppDarkGrayColor}" FontSize="15" />
+                </Grid>
+                <!--Continue Button-->
+                <local:CustomButtonTxt Grid.Row="8" Text="Confirm" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" Command="{Binding ConfirmCommand}"
+                    TextColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.Views.Register.RegistrationPage"
+             xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
+             xmlns:inputKit="clr-namespace:Plugin.InputKit.Shared;assembly=Plugin.InputKit">
+    <ContentPage.Content>
+        <!--Main Grid-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,45,30,45" BackgroundColor="{StaticResource AppBlueColor}">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/> 
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <!--Header-->
+                <Label Grid.Row="0" Text="Registration" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
+                                               TextColor="White" FontSize="22" FontAttributes="Bold"/>
+
+                <local:CustomEntry Grid.Row="1" Text="{Binding DisplayName}" Placeholder="DisplayName" TextColor="White"
+                                   PlaceholderColor="WhiteSmoke" FontSize="15"/>
+
+                <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
+                <Label Grid.Row="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Margin="0,10,0,0"
+                       Text="This is your display name that will be visible to other members" TextColor="{StaticResource AppLightBlueColor}"/>
+
+                <!--Country Picker-->
+                <Grid Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenCountryPickerCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding CountryFlag}" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                    <Label Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15"
+                       Text="{Binding CountryOfResidency}" TextColor="{StaticResource AppWhiteColor}"/>
+                    <Image Source="whitedownarrow.png" Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                           HeightRequest="20" WidthRequest="20" Margin="0,5,0,0"/>
+                </Grid>
+                <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
+
+                <!--Country ISD CODE and Mobile Section-->
+                <Grid Grid.Row="9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="15" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="15" RowSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15"
+                               Text="{Binding CountryISDCode}" TextColor="{StaticResource AppWhiteColor}"/>
+                        <BoxView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
+                    </Grid>
+                    <Grid Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="15" RowSpacing="0"
+                          Margin="0,-11,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <local:CustomEntry Grid.Row="0" Text="{Binding Mobileno}" Placeholder="Mobile Number" TextColor="White"
+                                   PlaceholderColor="WhiteSmoke" FontSize="15" Keyboard="Telephone"/>
+                        <BoxView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
+                    </Grid>
+                </Grid>
+
+                <Label Grid.Row="10" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Margin="0,5,0,0"
+                       Text="We will send a confirmation code to this number" TextColor="{StaticResource AppLightBlueColor}"/>
+
+                <Label Grid.Row="11" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Margin="0,5,0,0"
+                       Text="Note : Your Network SMS charges may apply" TextColor="{StaticResource AppLightBlueColor}"/>
+
+                <!--Country ISD CODE and Mobile Section-->
+                <Grid Grid.Row="13" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="5" Margin="0,8,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Switch Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                           Toggled="Switch_Toggled" ThumbColor="{StaticResource AppLightBlueColor}" OnColor="White" Scale="1.5"/>
+                    <Label Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" LineBreakMode="WordWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="I Agree to the " TextColor="{StaticResource AppGrayColor}"/>
+                                <Span Text="Terms of services " TextColor="{StaticResource AppLightBlueColor}"/>
+                                <Span Text="and " TextColor="{StaticResource AppGrayColor}"/>
+                                <Span Text="Privacy policies" TextColor="{StaticResource AppLightBlueColor}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+
+                <!--Continue Button-->
+                <local:CustomButtonTxt Grid.Row="15" Text="Continue" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" Command="{Binding ContinueCommand}"
+                    TextColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

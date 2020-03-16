@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.Views.Currencies.EditCurrencyPage">
+    <ContentPage.Content>
+        <!--Main Grid-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Image Source="back_arrow.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                           HeightRequest="25" WidthRequest="25"/>
+                </Grid>
+                <Label Grid.Column="1" Text="Edit Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource AppWhiteColor}"/>
+            </Grid>
+
+            <!--Currency Section Section-->
+            <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,25" RowSpacing="0" ColumnSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions> 
+                    
+                    <!--Currency Name-->
+                    <Label Grid.Row="0" Text="{Binding CurrencyName}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="22" 
+                           TextColor="Black" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <!--Currency Created On-->
+                    <Label Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="12" LineBreakMode="WordWrap">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Created on " TextColor="Gray"/>
+                                <Span Text="{Binding CreatedOn}" TextColor="Gray"/> 
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+
+                    <!--Notification Settings--><!--
+                    <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Notification" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15"/>
+                        <Switch Grid.Column="0" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0"
+                           Toggled="NotificationSwitch_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
+                    </Grid>-->
+  
+                    <Grid Grid.Row="9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <!-- Share-->
+                        <Frame Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
+                               HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="Share_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Column="1" Text="Tell your friends about us" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
+                            </Grid>
+                        </Frame>
+                        <!--About Us-->
+                        <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
+                               HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="view_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Column="1" Text="Privacy Policy" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
+                            </Grid>
+                        </Frame>
+                        <!--Privacy Policy-->
+                        <Frame Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
+                               HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="File_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Column="1" Text="Terms &amp; Conditions" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </Grid>
+            </ScrollView>
+
+            <!--Bottom Tab-->
+            <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CurrencyCommand}"/>
+                </Grid.GestureRecognizers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="currency.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                    <Label Grid.Row="1" Text="Currencies" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+                    </Grid.GestureRecognizers>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="user.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25"/>
+                    <Label Grid.Row="1" Text="Profile" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+                <Grid Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="setting.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                    <Label Grid.Row="1" Text="Setting" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

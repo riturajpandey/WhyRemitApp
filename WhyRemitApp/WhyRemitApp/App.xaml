@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.App">
+    <Application.Resources>
+
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+
+            <!--#region Colors -->
+
+            <!--Colors-->
+            <!--Blue Shades-->
+            <Color x:Key="AppBlueColor">#025FA5</Color>
+            <Color x:Key="AppLightBlueColor">#68ACCB</Color>
+            <Color x:Key="AppBlackColor">#000000</Color>
+            <Color x:Key="AppWhiteColor">#FFFFFF</Color>
+            <Color x:Key="AppGrayColor">#C9C3C3</Color>
+            <Color x:Key="AppDarkGrayColor">#D8D4D4</Color> 
+
+            <!--#endregion-->
+ 
+            <!--#region Fonts -->
+            <!--<OnPlatform x:TypeArguments="x:String" x:Key="PoppinsBlack">
+                <On Platform="iOS" Value="Poppins-Black"/>
+                <On Platform="Android" Value="Poppins-Black.ttf#Poppins-Black"/>
+            </OnPlatform>-->
+            
+            <!--#endregion-->
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>

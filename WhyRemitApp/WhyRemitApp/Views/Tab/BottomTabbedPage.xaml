@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WhyRemitApp.Views.Tab.BottomTabbedPage"
+             xmlns:profile="clr-namespace:WhyRemitApp.Views.Profile"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms">
+    <ContentPage.Content>
+        <tabView:SfTabView BackgroundColor="{StaticResource AppBlueColor}">
+            <tabView:SfTabItem Title="Currencies">
+                <tabView:SfTabItem.Content>
+                    <Grid x:Name="Currencies" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Profile">
+                <tabView:SfTabItem.Content>
+                    <Grid x:Name="Profile" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            <tabView:SfTabItem Title="Setting">
+                <tabView:SfTabItem.Content>
+                    <Grid x:Name="Setting" />
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+        </tabView:SfTabView>
+    </ContentPage.Content>
+</ContentPage>
