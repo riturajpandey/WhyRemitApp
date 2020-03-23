@@ -1,4 +1,6 @@
 ﻿using Acr.UserDialogs;
+using Newtonsoft.Json;
+using Plugin.Connectivity;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
@@ -18,7 +20,7 @@ namespace WhyRemitApp.ViewModels
     public class ProfilePageVM : BaseViewModel
     {
         //TODO : To Declare Local Class Level Variables..
-        private const string _Name = @"^[a-zA-Z]+$"; 
+        private const string _Name = @"^[a-zA-Z]+$";
         private const string _emailRegex = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
 
         #region CONSTRUCTOR 
@@ -35,7 +37,7 @@ namespace WhyRemitApp.ViewModels
             CameraCommand = new Command(OnCameraAsync);
             GalleryCommand = new Command(OnGalleryAsync);
             MediaCommand = new Command(OnMediaAsync);
-            MediaCommand = new Command(OnCloseMediaAsync);
+            CloseMediaCommand = new Command(OnCloseMediaAsync);
         }
 
         #endregion
@@ -51,7 +53,7 @@ namespace WhyRemitApp.ViewModels
         #endregion
 
         #region PROPERTIES 
-        private string _UserProfileBase64;
+        private string _UserProfileBase64 = string.Empty;
         public string UserProfileBase64
         {
             get { return _UserProfileBase64; }
@@ -91,7 +93,7 @@ namespace WhyRemitApp.ViewModels
                     OnPropertyChanged("IsCamera");
                 }
             }
-        } 
+        }
         private string _DisplayName;
         public string DisplayName
         {
@@ -105,7 +107,7 @@ namespace WhyRemitApp.ViewModels
                 }
             }
         }
-        private string _EmailAddress;
+        private string _EmailAddress = string.Empty;
         public string EmailAddress
         {
             get { return _EmailAddress; }
@@ -157,7 +159,72 @@ namespace WhyRemitApp.ViewModels
         /// TODO : To Get Profile Details List...
         /// </summary>
         public async Task GetProfileData()
-        { }
+        {
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralProfile))
+            {
+                var profileDetail = JsonConvert.DeserializeObject<ProfileDetailsResponseModel>(Helpers.LocalStorage.GeneralProfile);
+                DisplayName = profileDetail.displayname;
+                Mobileno = profileDetail.mobilenumber;
+                EmailAddress = profileDetail.emailaddress == null ? string.Empty : profileDetail.emailaddress;
+                UserProfileBase64 = profileDetail.profilepic;
+                MessagingCenter.Send<string>("", "LoadApiImage");
+            }
+            else
+            { 
+                try
+                {
+                    UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                    if (CrossConnectivity.Current.IsConnected)
+                    {
+                        await Task.Run(async () =>
+                        {
+                            if (_businessCode != null)
+                            {
+                                await _businessCode.ProfileGetApi(new ProfileRequestModel()
+                                {
+                                    profiletoken = Helpers.LocalStorage.GeneralProfileToken
+                                }, async (objs) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        var requestList = (objs as ProfileDetailsResponseModel);
+                                        if (requestList != null)
+                                        {
+                                            UserDialog.HideLoading();
+                                            DisplayName = requestList.displayname;
+                                            Mobileno = requestList.mobilenumber;
+                                            EmailAddress = requestList.emailaddress == null ? string.Empty : requestList.emailaddress;
+                                            UserProfileBase64 = requestList.profilepic;
+                                            MessagingCenter.Send<string>("", "LoadApiImage");
+                                        }
+                                    });
+                                }, (objj) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        var requestList = (objj as RegisterProfileResponseModel);
+                                        if (requestList != null)
+                                        {
+                                            UserDialog.HideLoading();
+                                            UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                        }
+                                    });
+                                });
+                            }
+                        }).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        UserDialogs.Instance.Loading().Hide();
+                        await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    UserDialog.HideLoading();
+                }
+            }
+        }
 
         /// <summary>
         /// TODO : To Save Profile ...
@@ -168,7 +235,59 @@ namespace WhyRemitApp.ViewModels
             //Apply Validations..
             if (!await Validate()) return;
 
-            UserDialog.Alert("Profile updated successfully.", "Alert", "Ok");
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileSaveApi(new UpdateProfileRequestModel()
+                            {
+                                profiletoken = Helpers.LocalStorage.GeneralProfileToken,
+                                displayname = DisplayName,
+                                emailaddress = EmailAddress,
+                                profilepic = UserProfileBase64
+
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as ResendTokenResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialog.Alert("Profile saved successfully.", "", "Ok");
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objj as RegisterProfileResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            }
+
         }
 
         /// <summary>
@@ -199,7 +318,7 @@ namespace WhyRemitApp.ViewModels
                         return;
                     }
                     if (Device.OS == TargetPlatform.Android)
-                        UserDialogs.Instance.ShowLoading("Loading...");
+                        UserDialogs.Instance.ShowLoading("Please Wait…");
                     var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                     {
                         Directory = "Sample",
@@ -226,7 +345,7 @@ namespace WhyRemitApp.ViewModels
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        UserDialogs.Instance.Alert("Camera permission denied. Make sure you have given us camera permission, go to settings and enable camera permission for us.", "Alert", "Ok");
+                        UserDialogs.Instance.Alert("Camera permission denied. Make sure you have given us camera permission, go to settings and enable camera permission for us.", "", "Ok");
                         UserDialogs.Instance.HideLoading();
                     });
                 }
@@ -234,7 +353,7 @@ namespace WhyRemitApp.ViewModels
                 UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
-            { UserDialogs.Instance.HideLoading(); }  
+            { UserDialogs.Instance.HideLoading(); }
         }
 
         /// <summary>
@@ -265,7 +384,7 @@ namespace WhyRemitApp.ViewModels
                     }
 
                     if (Device.RuntimePlatform.Equals("Android"))
-                        UserDialogs.Instance.ShowLoading("Loading...");
+                        UserDialogs.Instance.ShowLoading("Please Wait…");
 
                     var file = await CrossMedia.Current.PickPhotoAsync();
                     if (file == null)
@@ -289,12 +408,12 @@ namespace WhyRemitApp.ViewModels
                         MessagingCenter.Send<string>("", "LoadImage");
                     });
                 }
-                UserDialogs.Instance.HideLoading(); 
+                UserDialogs.Instance.HideLoading();
             }
             catch (Exception ex)
             {
                 UserDialogs.Instance.HideLoading();
-            } 
+            }
         }
 
         /// <summary>
@@ -303,7 +422,7 @@ namespace WhyRemitApp.ViewModels
         /// <param name="obj"></param>
         public async void OnMediaAsync()
         {
-            IsCamera = true; 
+            IsCamera = true;
         }
 
         /// <summary>
@@ -325,7 +444,7 @@ namespace WhyRemitApp.ViewModels
             if (string.IsNullOrEmpty(DisplayName))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter your display name.", "Alert", "Ok");
+                UserDialog.Alert("Please enter your display name.", "", "Ok");
                 return false;
             }
             bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
@@ -334,11 +453,23 @@ namespace WhyRemitApp.ViewModels
                 UserDialog.HideLoading();
                 UserDialog.Alert("Display name is not valid");
                 return false;
-            } 
+            }
+            if (DisplayName.Length < 3 || DisplayName.Length > 50)
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("The display name should be between 3 to 50 characters.", "", "Ok");
+                return false;
+            }
             if (string.IsNullOrEmpty(EmailAddress))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter your email Address.", "Alert", "Ok");
+                UserDialog.Alert("Please enter your email Address.", "", "Ok");
+                return false;
+            }
+            if (EmailAddress.Length < 3 || EmailAddress.Length > 100)
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("The Email address should be between 3 to 100 characters.", "", "Ok");
                 return false;
             }
             bool isValid2 = (Regex.IsMatch(EmailAddress, _emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
@@ -347,7 +478,7 @@ namespace WhyRemitApp.ViewModels
                 UserDialog.HideLoading();
                 UserDialog.Alert("Email Address is not valid");
                 return false;
-            } 
+            }
             UserDialog.HideLoading();
             return true;
         }

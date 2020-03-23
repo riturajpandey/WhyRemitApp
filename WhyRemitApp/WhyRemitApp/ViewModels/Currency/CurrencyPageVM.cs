@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using Newtonsoft.Json;
+using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -10,6 +13,8 @@ namespace WhyRemitApp.ViewModels.Currency
 {
     public class CurrencyPageVM : BaseViewModel
     {
+        public List<string> ContextMenu = new List<string>();
+
         #region CONSTRUCTOR
 
         /// <summary>
@@ -21,6 +26,11 @@ namespace WhyRemitApp.ViewModels.Currency
             Navigation = nav;
             ProfileCommand = new Command(OnProfileAsync);
             SettingCommand = new Command(OnSettingAsync);
+            ContextMenu.Add("Show");
+            ContextMenu.Add("Hide");
+            ContextMenu.Add("Closed");
+            ContextMenu.Add("Order By Currency I Have");
+            ContextMenu.Add("Order By Currency I Want");
         }
 
         #endregion
@@ -31,23 +41,9 @@ namespace WhyRemitApp.ViewModels.Currency
         #endregion
 
         #region PROPERTIES 
-         
-        private ObservableCollection<IndicatorModel> _IndicatorList;
-        public ObservableCollection<IndicatorModel> IndicatorList
-        {
-            get { return _IndicatorList; }
-            set
-            {
-                if (_IndicatorList != value)
-                {
-                    _IndicatorList = value;
-                    OnPropertyChanged("IndicatorList");
-                }
-            }
-        }
 
-        private ObservableCollection<CurrencyModel> _CurrencyModelList;
-        public ObservableCollection<CurrencyModel> CurrencyModelList
+        private ObservableCollection<SearchModel> _CurrencyModelList;
+        public ObservableCollection<SearchModel> CurrencyModelList
         {
             get { return _CurrencyModelList; }
             set
@@ -56,6 +52,20 @@ namespace WhyRemitApp.ViewModels.Currency
                 {
                     _CurrencyModelList = value;
                     OnPropertyChanged("CurrencyModelList");
+                }
+            }
+        }
+
+        private bool _IsPageEnabled = true;
+        public bool IsPageEnabled
+        {
+            get { return _IsPageEnabled; }
+            set
+            {
+                if (_IsPageEnabled != value)
+                {
+                    _IsPageEnabled = value;
+                    OnPropertyChanged("IsPageEnabled");
                 }
             }
         }
@@ -82,19 +92,121 @@ namespace WhyRemitApp.ViewModels.Currency
         }
 
         /// <summary>
-        /// TODO : To Get LoginHistory Details List...
-        /// </summary>
-        public async Task GetIntroductionList()
-        { 
-        }
-        /// <summary>
         /// To Get The List Of Currency
         /// </summary>
         /// <returns></returns>
         public async Task CallCurrenctList()
         {
-            CurrencyModelList = new ObservableCollection<CurrencyModel>(CurrencyModel.CurrencyList());
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralSearches))
+            {
+                var a = Helpers.LocalStorage.GeneralSearches;
+                var searchDetail = JsonConvert.DeserializeObject<SearchResponseModel>(a);
+                if (searchDetail.searches != null)
+                    CurrencyModelList = new ObservableCollection<SearchModel>(searchDetail.searches);
+            }
+            try
+            {
+                if (string.IsNullOrEmpty(Helpers.LocalStorage.GeneralSearches))
+                    UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.SearchesApi(new ProfileRequestModel()
+                            {
+                                profiletoken = Helpers.LocalStorage.GeneralProfileToken,
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as SearchResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        CurrencyModelList = new ObservableCollection<SearchModel>(requestList.searches);
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objj as ResendTokenResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            }
+
         }
-        #endregion 
+
+        /// <summary>
+        /// TODO : To Get Profile Details List...
+        /// </summary>
+        public async Task GetProfileData()
+        {
+            try
+            {
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileGetApi(new ProfileRequestModel()
+                            {
+                                profiletoken = Helpers.LocalStorage.GeneralProfileToken
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as ProfileDetailsResponseModel);
+                                    if (requestList != null)
+                                    { }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objj as RegisterProfileResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            }
+        }
+        #endregion
     }
 }

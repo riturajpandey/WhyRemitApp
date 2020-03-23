@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -10,8 +12,10 @@ namespace WhyRemitApp.ViewModels.Currency
 {
     public class EditCurrencyVM : BaseViewModel
     {
-        #region CONSTRUCTOR
+        //TO Define Local Variables...
+        public SearchModel Currency;
 
+        #region CONSTRUCTOR 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditCurrencyVM"/> class.
         /// </summary>
@@ -31,7 +35,32 @@ namespace WhyRemitApp.ViewModels.Currency
         #endregion
 
         #region PROPERTIES 
-
+        private string _RateImage = "bty01.png";
+        public string RateImage
+        {
+            get { return _RateImage; }
+            set
+            {
+                if (_RateImage != value)
+                {
+                    _RateImage = value;
+                    OnPropertyChanged("RateImage");
+                }
+            }
+        }
+        private string _Header = "Minimum rate you are willing to buy";
+        public string Header
+        {
+            get { return _Header; }
+            set
+            {
+                if (_Header != value)
+                {
+                    _Header = value;
+                    OnPropertyChanged("Header");
+                }
+            }
+        }
         private string _CurrencyName = "GPB - NGN";
         public string CurrencyName
         {
@@ -146,8 +175,87 @@ namespace WhyRemitApp.ViewModels.Currency
             //Apply Validations..
             if (!await Validate()) return;
 
-            UserDialog.Alert("Currency updated successfully.", "Alert", "Ok");
-            await Navigation.PopModalAsync();
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        string buyORell = string.Empty;
+                        string rate = string.Empty;
+                        if (IsBuyRate)
+                        {
+                            buyORell = "B";
+                            rate = BuyRate;
+                        }
+                        else
+                        {
+                            buyORell = "S";
+                            rate = SellRate;
+                        }
+                        if (_businessCode != null)
+                        {
+                            string time = ExpireTime;
+                            if (ExpireTime == "1 Hour")
+                                time = "1H";
+                            else if (ExpireTime == "12 Hours")
+                                time = "12H";
+                            else if (ExpireTime == "24 Hours")
+                                time = "24H";
+                            else if (ExpireTime == "3 Days")
+                                time = "3D";
+                            else if (ExpireTime == "7 Days")
+                                time = "7D";
+
+                            await _businessCode.SearchSaveApi(new SearchSaveRequestModel()
+                            {
+                                profiletoken = Helpers.LocalStorage.GeneralProfileToken,
+                                buycurrencycode = Currency.currencybuy,
+                                sellcurrencycode = Currency.currencysell,
+                                buyorsell = buyORell,
+                                duration = time,
+                                rate = rate,
+                                requestnumber = Currency.requestnumber
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as SearchSaveResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        //Navigate To Currency Page...
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "Ok");
+                                        await Navigation.PopModalAsync();
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (obj as SearchSaveResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            }
+
         }
 
         /// <summary>
@@ -155,6 +263,14 @@ namespace WhyRemitApp.ViewModels.Currency
         /// </summary>
         public async Task GetCurrencyInfo()
         {
+            CurrencyName = Currency.CurrencyName;
+            CreatedOn = Currency.datecreated; 
+            string[] rate = Currency.rate.Split('.'); 
+
+            if (IsBuyRate)
+                BuyRate = rate[0];
+            else
+                SellRate = rate[0];
         }
 
         /// <summary>
@@ -170,7 +286,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 if (string.IsNullOrEmpty(BuyRate))
                 {
                     UserDialog.HideLoading();
-                    UserDialog.Alert("Please enter buy rate.", "Alert", "Ok");
+                    UserDialog.Alert("Please enter buy rate.", "", "Ok");
                     return false;
                 }
             }
@@ -179,14 +295,14 @@ namespace WhyRemitApp.ViewModels.Currency
                 if (string.IsNullOrEmpty(SellRate))
                 {
                     UserDialog.HideLoading();
-                    UserDialog.Alert("Please enter sell rate.", "Alert", "Ok");
+                    UserDialog.Alert("Please enter sell rate.", "", "Ok");
                     return false;
                 }
             }
             if (string.IsNullOrEmpty(ExpireTime))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter expire time.", "Alert", "Ok");
+                UserDialog.Alert("Please enter expire time.", "", "Ok");
                 return false;
             }
             UserDialog.HideLoading();

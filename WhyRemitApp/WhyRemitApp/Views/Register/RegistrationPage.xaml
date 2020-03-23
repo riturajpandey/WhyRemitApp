@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             mc:Ignorable="d" IsEnabled="{Binding IsPageEnabled}"
              x:Class="WhyRemitApp.Views.Register.RegistrationPage"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
              xmlns:inputKit="clr-namespace:Plugin.InputKit.Shared;assembly=Plugin.InputKit">
     <ContentPage.Content>
         <!--Main Grid-->
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,45,30,45" BackgroundColor="{StaticResource AppBlueColor}">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,45,30,45" 
+              BackgroundColor="{StaticResource AppBlueColor}" IsEnabled="{Binding IsPageEnabled}">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
@@ -33,8 +34,8 @@
                 <Label Grid.Row="0" Text="Registration" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
                                                TextColor="White" FontSize="22" FontAttributes="Bold"/>
 
-                <local:CustomEntry Grid.Row="1" Text="{Binding DisplayName}" Placeholder="DisplayName" TextColor="White"
-                                   PlaceholderColor="WhiteSmoke" FontSize="15"/>
+                <local:CustomEntry Grid.Row="1" Text="{Binding DisplayName}" Placeholder="Display Name" TextColor="White"
+                                   PlaceholderColor="WhiteSmoke" FontSize="15" MaxLength="50"/>
 
                 <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
                 <Label Grid.Row="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" Margin="0,10,0,0"
@@ -80,7 +81,7 @@
                             <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
                         <local:CustomEntry Grid.Row="0" Text="{Binding Mobileno}" Placeholder="Mobile Number" TextColor="White"
-                                   PlaceholderColor="WhiteSmoke" FontSize="15" Keyboard="Telephone"/>
+                                   PlaceholderColor="WhiteSmoke" FontSize="15" Keyboard="Numeric"/>
                         <BoxView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"/>
                     </Grid>
                 </Grid>
@@ -104,9 +105,17 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="I Agree to the " TextColor="{StaticResource AppGrayColor}"/>
-                                <Span Text="Terms of services " TextColor="{StaticResource AppLightBlueColor}"/>
+                                <Span x:Name="spnTerms" Text="Terms of Service " TextColor="{StaticResource AppLightBlueColor}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SpnTerms_Tapped"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
                                 <Span Text="and " TextColor="{StaticResource AppGrayColor}"/>
-                                <Span Text="Privacy policies" TextColor="{StaticResource AppLightBlueColor}"/>
+                                <Span Text="Privacy Policy" TextColor="{StaticResource AppLightBlueColor}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Privacy_Tapped"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
@@ -114,7 +123,7 @@
 
                 <!--Continue Button-->
                 <local:CustomButtonTxt Grid.Row="15" Text="Continue" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" Command="{Binding ContinueCommand}"
-                    TextColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
+                    TextColor="{StaticResource AppBlackColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18" IsEnabled="{Binding IsPageEnabled}"/>
 
             </Grid>
         </Grid>

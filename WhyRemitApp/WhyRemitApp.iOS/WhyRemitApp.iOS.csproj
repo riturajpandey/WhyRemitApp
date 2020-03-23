@@ -135,6 +135,9 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.35</Version>
     </PackageReference>
+    <PackageReference Include="App.User.LocationInfo">
+      <Version>1.0.0</Version>
+    </PackageReference>
     <PackageReference Include="Autofac">
       <Version>3.5.2</Version>
     </PackageReference>
@@ -171,6 +174,9 @@
     <PackageReference Include="Syncfusion.Licensing">
       <Version>17.1.0.50</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfListView">
+      <Version>17.1.0.50</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
       <Version>17.1.0.50</Version>
     </PackageReference>
@@ -179,6 +185,9 @@
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>3.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.PopupMenu">
+      <Version>1.1.0</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
@@ -1077,5 +1086,44 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty01%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty01%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty1%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bty1%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\more.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency_active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency_active%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\currency_active%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\set%403x.png" />
   </ItemGroup>
 </Project>

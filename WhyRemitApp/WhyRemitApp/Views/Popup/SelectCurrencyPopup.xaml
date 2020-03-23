@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
+             x:Class="WhyRemitApp.Views.Popup.SelectCurrencyPopup" >
+    <Grid>
+        <StackLayout x:Name="PopUpBgLayout" />
+        <StackLayout x:Name="PopUpDialogLayout" BackgroundColor="Transparent"
+                     Margin="40,0,40,0"
+			HorizontalOptions="Center" VerticalOptions="Center"            
+			Orientation="Vertical">
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="225" 
+                   BackgroundColor="White" HasShadow="False" IsClippedToBounds="True" Padding="-10,0,-10,0" CornerRadius="12">
+                <Grid RowSpacing="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition> 
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--Header-->
+                    <Grid Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                        <Label Text="Select Country" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18" >
+                        </Label>
+                        <Image Source="cross.png" HorizontalOptions="EndAndExpand" HeightRequest="22" WidthRequest="22" VerticalOptions="CenterAndExpand" Margin="0,0,20,0" />
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ImageCross_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Grid>  
+                    <!--Country List-->
+                    <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,10">
+                            <StackLayout>
+                                <ListView CachingStrategy="RecycleElement" x:Name="CountryPickerList" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" SeparatorVisibility="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="50"/>
+                                                        <RowDefinition Height="1"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,10,0,10" RowSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50"/>
+                                                            <ColumnDefinition/> 
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5">
+                                                            <Image Source="{Binding CountryFlag}"/>
+                                                        </Grid>
+                                                        <Grid Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Padding="5">
+                                                            <Label Margin="-30,0,0,0" Text="{Binding Currency}" TextColor="Black" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontSize="14"></Label>
+                                                        </Grid> 
+                                                    </Grid>
+                                                    <BoxView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>

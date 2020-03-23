@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.ListView.XForms.iOS;
 using UIKit;
 
 namespace WhyRemitApp.iOS
@@ -26,8 +27,11 @@ namespace WhyRemitApp.iOS
             global::Xamarin.Forms.Forms.Init(); 
             Rg.Plugins.Popup.Popup.Init();  
             Plugin.InputKit.Platforms.iOS.Config.Init();
+            SfListViewRenderer.Init();
             CarouselView.FormsPlugin.iOS.CarouselViewRenderer.Init();
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            //Popup Menu
+            Xam.Plugin.iOS.PopupEffect.Init();
             #endregion
 
             #region

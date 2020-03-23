@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -45,9 +46,21 @@ namespace WhyRemitApp.Views.Settings
         private void NotificationSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             if (SettingVM.IsNotification)
+            { 
                 SettingVM.IsNotification = false;
+                SwtchSound.IsEnabled = false;
+                SwtchVibrate.IsEnabled = false;
+                SwtchSound.IsToggled = false;
+                SwtchVibrate.IsToggled = false;
+                SettingVM.IsSound = false;
+                SettingVM.IsVibrate = false;
+            }
             else
+            { 
                 SettingVM.IsNotification = true;
+                SwtchSound.IsEnabled = true;
+                SwtchVibrate.IsEnabled = true;
+            }
         }
 
         /// <summary>
@@ -75,7 +88,53 @@ namespace WhyRemitApp.Views.Settings
             else
                 SettingVM.IsVibrate = true;
         }
-        #endregion 
+
+        /// <summary>
+        /// TODO : To Open Terms and Conditions on browser...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpnTerms_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/terms"));
+        }
+
+
+        /// <summary>
+        /// TODO : To Open Privacy Policy on browser...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Privacy_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/privacy"));
+        }
+
+        /// <summary>
+        /// TODO : To Open Feedback link on browser...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Feedback_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/feedback"));
+        }
+
+
+        /// <summary>
+        /// TODO : To share...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void Share_Tapped(object sender, EventArgs e)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Title = "My App Data",
+                Text = "Simple text message to share via WhyRemit App",
+            });
+        }
+        #endregion
 
     }
 }

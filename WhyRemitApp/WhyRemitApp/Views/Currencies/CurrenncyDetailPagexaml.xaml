@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:WhyRemitApp.CustomControls"
+             x:Class="WhyRemitApp.Views.Currencies.CurrenncyDetailPagexaml"
+             xmlns:SFList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">
+    <ContentPage.Content>
+        <!--Main Grid-->
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <!--Header-->
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Image Source="back_arrow.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                           HeightRequest="25" WidthRequest="25"/>
+                    </Grid>
+                    <Label Grid.Column="1" Text="{Binding CurrencyName}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
+                       TextColor="{StaticResource AppWhiteColor}"/>
+                </Grid>
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/> 
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="1" Text="{Binding CreatedOn}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="11" 
+                       TextColor="{StaticResource AppWhiteColor}"/>
+                    <!--<Label Grid.Column="2" Text="{Binding CreatedOn}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="11" 
+                       TextColor="{StaticResource AppWhiteColor}"/>-->
+                    <Grid Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="More_Tapped"/>
+                        </Grid.GestureRecognizers>
+                        <Image Source="more.png" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" HeightRequest="22"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <!--Rates-->
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppVeryLightBlueColor}"
+                  Padding="0,5,0,10" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--Headers-->
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Best Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="12"/>
+                    <Label Grid.Column="1" Text="{Binding RateHeader}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="12"/>
+                </Grid>
+                <!--Values-->
+                <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Padding="20,0,20,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="{Binding BestRate}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="{StaticResource AppBlackColor}"/>
+                    <Label Grid.Column="1" Text="{Binding MinRate}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="{StaticResource AppBlackColor}"/>
+                </Grid>
+
+            </Grid>
+            <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+            <!--Matches-->
+            <Label Grid.Row="4" Text="{Binding MatchesCount}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" 
+                   TextColor="{StaticResource AppBlueColor}" FontSize="20" Margin="20,0,20,0"/>
+
+            <!--Matches List-->
+            <!--<ScrollView Grid.Row="5" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" IsClippedToBounds="True">-->
+            <Grid Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0,20,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <SFList:SfListView ItemsSource="{Binding CurrencyMatchesList}" AutoFitMode="DynamicHeight" HorizontalOptions="FillAndExpand" 
+                                            SelectionBackgroundColor="Transparent" VerticalOptions="FillAndExpand" AllowSwiping="True" IsScrollBarVisible="False">
+                            <SFList:SfListView.LeftSwipeTemplate>
+                                <DataTemplate x:Name="LeftSwipeTemplate">
+                                <Grid BackgroundColor="{StaticResource AppRedColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Delete_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Reject" FontAttributes="Bold"
+                                                   TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                            </SFList:SfListView.LeftSwipeTemplate>
+                        <SFList:SfListView.RightSwipeTemplate>
+                            <DataTemplate x:Name="RightSwipeTemplate">
+                                <Grid BackgroundColor="{StaticResource AppLightBlueColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Approve_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Approve" FontAttributes="Bold"
+                                                   TextColor="{StaticResource AppWhiteColor}" HorizontalTextAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </SFList:SfListView.RightSwipeTemplate>
+                        <SFList:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Margin="0,15,0,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="1"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <Grid RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="80"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="100"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <controls:CustomFrame Grid.Column="0" Padding="0" CornerRadius="10" HasShadow="False" IsClippedToBounds="True"
+                                                                           BackgroundColor="{StaticResource AppVeryLightBlueColor}" BorderColor="LightGray" HeightRequest="80">
+                                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                            <Label Text="No Image" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand"
+                                                                   VerticalTextAlignment="Center" FontSize="15" Margin="5" TextColor="LightGray"/>
+                                                        <Image Source="{Binding profilepic}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
+                                                        </Grid>
+                                                    </controls:CustomFrame>
+
+                                                    <Grid Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" Margin="5,0,0,0">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                    <Label Grid.Row="0" Text="{Binding displayname}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" FontSize="12"/>
+                                                    <Label Grid.Row="1" Text="{Binding rate}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" FontSize="18" TextColor="{StaticResource AppBlackColor}"/>
+                                                    </Grid>
+
+                                                    <!--Status-->
+                                                <Label Grid.Column="2" Text="{Binding statuscode}" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"
+                                                           HorizontalTextAlignment="End" FontSize="13" TextColor="{StaticResource AppBlueColor}"/>
+
+                                                </Grid>
+                                            </Grid>
+                                            <BoxView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" />
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </SFList:SfListView.ItemTemplate>
+                        </SFList:SfListView>
+                    </Grid>
+                </Grid>
+            <!--</ScrollView>-->
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Rg.Plugins.Popup.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.ViewModels.Currency;
+using WhyRemitApp.Views.Popup;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -15,7 +17,7 @@ namespace WhyRemitApp.Views.Currencies
     {
         //TODO : To Define class Level Variables...
         AddNewCurrencyVM AddCurrencyVM;
-
+        public SelectCurrencyPopup CountryPickerPopupVM;
         public AddNewCurrencyPage()
         {
             InitializeComponent();
@@ -41,17 +43,21 @@ namespace WhyRemitApp.Views.Currencies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SwtchRate_Toggled(object sender, ToggledEventArgs e)
+        private void SwtchRate_Toggled(object sender, EventArgs e)
         {
             if (AddCurrencyVM.IsBuyRate)
             {
                 AddCurrencyVM.IsBuyRate = false;
                 AddCurrencyVM.IsSellRate = true;
+                AddCurrencyVM.RateImage ="bty1.png";
+                AddCurrencyVM.Header = "Maximum rate you are willing to sell";
             }
             else
             {
                 AddCurrencyVM.IsBuyRate = true;
                 AddCurrencyVM.IsSellRate = false;
+                AddCurrencyVM.RateImage = "bty01.png";
+                AddCurrencyVM.Header = "Minimum rate you are willing to buy";
             }
         }
 
@@ -61,9 +67,10 @@ namespace WhyRemitApp.Views.Currencies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HaveCurrency_Tapped(object sender, EventArgs e)
+        private async void HaveCurrency_Tapped(object sender, EventArgs e)
         {
-            PckCurrency.Focus();
+            CountryPickerPopupVM = new SelectCurrencyPopup(AddCurrencyVM, "Have");
+            await Navigation.PushPopupAsync(CountryPickerPopupVM, true);
         }
 
         /// <summary>
@@ -71,9 +78,10 @@ namespace WhyRemitApp.Views.Currencies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NeedCurrency_Tapped(object sender, EventArgs e)
+        private async void NeedCurrency_Tapped(object sender, EventArgs e)
         {
-            PckCurrencyNeed.Focus();
+            CountryPickerPopupVM = new SelectCurrencyPopup(AddCurrencyVM, "Need");
+            await Navigation.PushPopupAsync(CountryPickerPopupVM, true);
         }
 
         /// <summary>
@@ -93,7 +101,7 @@ namespace WhyRemitApp.Views.Currencies
                         AddCurrencyVM.UserDialog.Alert("Currency can not be same.", "Alert", "Ok");
                         return;
                     }
-                }
+                } 
                 AddCurrencyVM.HaveCurrency = PckCurrency.SelectedItem.ToString();
             }
         }

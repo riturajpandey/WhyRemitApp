@@ -69,7 +69,7 @@
                         <Grid Grid.Row="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,10,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="35"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="user_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
                             <local:CustomEntry Grid.Column="1" Text="{Binding DisplayName}" Placeholder="DisplayName" TextColor="Black" 
@@ -82,7 +82,7 @@
                         <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,10,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="35"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="Email_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
                             <local:CustomEntry Grid.Column="1" Text="{Binding EmailAddress}" Placeholder="Email" TextColor="Black"
@@ -93,14 +93,15 @@
                         <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
 
                         <!--Buttons-->
-                        <local:CustomButtonTxt Grid.Row="9" Text="Save Profile" BackgroundColor="{StaticResource AppBlueColor}" BorderWidth="1" Command="{Binding SaveCommand}"
+                        <local:CustomButtonTxt Grid.Row="9" Text="Save Profile" BackgroundColor="{StaticResource AppLightBlueColor}" BorderWidth="1" Command="{Binding SaveCommand}"
                     TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
                     </Grid>
                 </ScrollView>
 
                 <!--Bottom Tab-->
-                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
-                    <Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppWhiteColor}" Margin="0,1,0,0">
+                         <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -110,34 +111,35 @@
                             <TapGestureRecognizer Command="{Binding CurrencyCommand}"/>
                         </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="currency.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
-                        <Label Grid.Row="1" Text="Currencies" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            <Image Grid.Row="0" Source="currency.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                        <Label Grid.Row="1" Text="Exchange" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="Gray" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
                     <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="user.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25"/>
+                            <Image Grid.Row="0" Source="user_blue.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
                         <Label Grid.Row="1" Text="Profile" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                           TextColor="{StaticResource AppBlueColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
                     <Grid Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SettingCommand}"/>
                         </Grid.GestureRecognizers>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Image Grid.Row="0" Source="setting.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
-                        <Label Grid.Row="1" Text="Setting" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
-                           TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                        <Label Grid.Row="1" Text="Settings" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                           TextColor="Gray" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
+                </Grid>
                 </Grid>
             </Grid>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5" IsVisible="{Binding IsCamera}"> 

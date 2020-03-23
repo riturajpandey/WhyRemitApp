@@ -7,6 +7,8 @@ namespace WhyRemitApp.Services
     public class WebServiceDetails
     {
         //Base Url for Database Server
-        //public static string BasUri = "http://18.184.55.175:5010/api"; //dev
+        public static string BasUri = "http://whyremit.phasestream.com"; //dev
+
+        public static string AppKey = "[7gQrw~u~D8,(*c;ReXVT_}M@7";
     }
 }

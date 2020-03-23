@@ -22,6 +22,8 @@
             <Color x:Key="AppDarkGrayColor">#D8D4D4</Color>
             <Color x:Key="AppLightBlackColor">#808080</Color>
             <Color x:Key="AppDarkBlueColor">#025FA5</Color>
+            <Color x:Key="AppVeryLightBlueColor">#F8F8F8</Color>
+            <Color x:Key="AppRedColor">#DC143C</Color>
             <!--#endregion-->
 
 

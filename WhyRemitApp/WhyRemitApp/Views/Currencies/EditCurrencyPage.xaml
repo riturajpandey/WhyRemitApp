@@ -27,7 +27,7 @@
                     <Image Source="back_arrow.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                            HeightRequest="25" WidthRequest="25"/>
                 </Grid>
-                <Label Grid.Column="1" Text="Edit Currency" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
+                <Label Grid.Column="1" Text="Edit Exchange" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
                        TextColor="{StaticResource AppWhiteColor}"/>
             </Grid>
 
@@ -41,7 +41,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="10"/>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="Auto"/>
@@ -67,29 +67,33 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <Label Grid.Row="3" Text="Minimum rate you are willing to accept" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
+                    <Label Grid.Row="3" Text="{Binding Header}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
                            TextColor="Gray" HorizontalTextAlignment="Center"/>
                    
-                    <!--Rate Settings--> 
-                    <Grid Grid.Row="5" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="25" Margin="30,0,30,0">
+                    <!--Rate Settings-->
+                    <!--Rate Settings-->
+                    <Grid Grid.Row="5" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="10">
+
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Buy Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>
+                        <Image Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="{Binding RateImage}" HeightRequest="40">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SwtchRate_Toggled"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="25" Padding="7,0,7,0">
+                            <local:CustomEntry HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsSellRate}" StyleId="CenterAllign"
+                                           Text="{Binding SellRate}" FontSize="14" Placeholder="Enter maximum sell rate" PlaceholderColor="Gray" HorizontalTextAlignment="Center" MaxLength="20"/>
+                            <local:CustomEntry HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsBuyRate}" StyleId="CenterAllign"
+                                           Text="{Binding BuyRate}" FontSize="14" Placeholder="Enter minimum buy rate" PlaceholderColor="Gray"  HorizontalTextAlignment="Center" MaxLength="20"/>
+                        </Grid>
+                        <!--<Label Grid.Column="0" Text="Buy Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>
                         <Switch Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  
                            Toggled="SwtchRate_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
-                        <Label Grid.Column="2" Text="Sell Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>
+                        <Label Grid.Column="2" Text="Sell Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>-->
                     </Grid>
-                    <!--Enter Rate-->
-                    <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="25" Margin="30,0,30,0" Padding="7,0,7,0">
-                        <local:CustomEntry HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsSellRate}"
-                                           Text="{Binding BuyRate}" FontSize="14" Placeholder="Enter Sell Rate" PlaceholderColor="Gray"/>
-                        <local:CustomEntry HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsBuyRate}"
-                                           Text="{Binding BuyRate}" FontSize="14" Placeholder="Enter Buy Rate" PlaceholderColor="Gray"/>
-                    </Grid>
-
                     <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="30,0,30,0"/>
 
                     <Label Grid.Row="9" Text="When should this search expire?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
@@ -109,18 +113,11 @@
                         <Image Source="dropdown_arrow.png" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,3"/>
                         <local:CustomPicker x:Name="PckExpiryTime" SelectedIndexChanged="PckExpiryTime_SelectedIndexChanged" IsVisible="False">
                             <Picker.Items>
-                                <x:String>1 hr</x:String>
-                                <x:String>2 hrs</x:String>
-                                <x:String>3 hrs</x:String>
-                                <x:String>4 hrs</x:String>
-                                <x:String>5 hrs</x:String>
-                                <x:String>6 hrs</x:String>
-                                <x:String>7 hrs</x:String>
-                                <x:String>8 hrs</x:String>
-                                <x:String>9 hrs</x:String>
-                                <x:String>10 hrs</x:String>
-                                <x:String>11 hrs</x:String>
-                                <x:String>12 hrs</x:String>
+                                <x:String>1 Hour</x:String>
+                                <x:String>12 Hours</x:String>
+                                <x:String>24 Hours</x:String>
+                                <x:String>3 Days</x:String>
+                                <x:String>7 Days</x:String>
                             </Picker.Items>
                         </local:CustomPicker>
 
@@ -132,7 +129,7 @@
                            TextColor="Gray" HorizontalTextAlignment="Center" Margin="20,0,20,0"/>
 
                     <!--Buttons-->
-                    <local:CustomButtonTxt Grid.Row="16" Text="Update" BackgroundColor="{StaticResource AppBlueColor}" BorderWidth="1" Command="{Binding UpdateCommand}"
+                    <local:CustomButtonTxt Grid.Row="16" Text="Update" BackgroundColor="{StaticResource AppLightBlueColor}" BorderWidth="1" Command="{Binding UpdateCommand}"
                     TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
 
                 </Grid>

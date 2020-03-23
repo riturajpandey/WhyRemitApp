@@ -7,7 +7,8 @@
              mc:Ignorable="d"
              xmlns:suave="clr-namespace:SuaveControls.DynamicStackLayout;assembly=SuaveControls.DynamicStackLayout"
              x:Class="WhyRemitApp.Views.Introduction.IntroductionPage"
-             xmlns:local="clr-namespace:WhyRemitApp.CustomControls">
+             xmlns:local="clr-namespace:WhyRemitApp.CustomControls" 
+             IsEnabled="{Binding IsPageEnabled}">
     <ContentPage.Content>
         <!--Main Grid-->
         <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}" Padding="20">
@@ -38,7 +39,7 @@
                                 </Grid>
 
                                 <Label Grid.Row="2" Text="{Binding Description}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand"
-                                               TextColor="White" FontSize="15"/>
+                                               TextColor="White" FontSize="14" LineBreakMode="WordWrap"/>
 
                             </Grid>
                         </DataTemplate>
@@ -48,8 +49,7 @@
 
             <!--Indicator List-->
             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" BackgroundColor="Transparent"  Padding="50,0,50,0">
-
-                <!--Indicator List-->
+                 <!--Indicator List-->
                 <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                     <suave:DynamicStackLayout x:Name="LvIndicators" ItemsSource="{Binding IndicatorList}" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="15">
                         <suave:DynamicStackLayout.ItemTemplate>

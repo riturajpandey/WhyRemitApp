@@ -17,7 +17,10 @@ namespace WhyRemitApp
             AppSetup appSetup = new AppSetup();
             _container = appSetup.CreateContainer();
 
-            MainPage = new Views.Currencies.AddNewCurrencyPage();
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralProfileToken))
+                MainPage = new Views.Currencies.CurrencyPage();
+            else
+                MainPage = new Views.Introduction.IntroductionPage();
 
             #region
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("OTMyNDlAMzEzNzJlMzEyZTMwWVAxejJTOFhSaUswQm1MUGJoWC93K3pyRWpkdkNVM0oyemhkK1ZzY0pNbz0=");

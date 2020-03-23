@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.User.LocationInfo.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,13 @@ namespace WhyRemitApp.Views.Register
         {
             base.OnAppearing();
             await RegistrationVM.GetCountriesList();
+            var basic_userlocationInfo = await TrackingService.GetBasicLocatioInfoAsync();
+            var countrydetails = RegistrationVM.TempCountryPickerListItem.Where(a => a.CountryISDCode == basic_userlocationInfo.CountryCallingCode).FirstOrDefault();
+            RegistrationVM.CountryFlag = countrydetails.CountryFlag;
+            RegistrationVM.CountryISDCode = countrydetails.CountryISDCode;
+            RegistrationVM.CountryId = countrydetails.Id;
+            RegistrationVM.CountryOfResidency = countrydetails.CountryName;
+            RegistrationVM.CountryIS03Code = countrydetails.CountryIS03Code;
         }
 
         /// <summary>
@@ -43,10 +51,31 @@ namespace WhyRemitApp.Views.Register
         /// <param name="e"></param>
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
-            if (RegistrationVM.IsAgreedToTC) 
-                RegistrationVM.IsAgreedToTC = false; 
+            if (RegistrationVM.IsAgreedToTC)
+                RegistrationVM.IsAgreedToTC = false;
             else
                 RegistrationVM.IsAgreedToTC = true;
+        }
+
+        /// <summary>
+        /// TODO : To Open Terms and Conditions on browser...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpnTerms_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/terms"));
+        }
+
+
+        /// <summary>
+        /// TODO : To Open Privacy Policy on browser...
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Privacy_Tapped(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/privacy"));
         }
         #endregion 
     }

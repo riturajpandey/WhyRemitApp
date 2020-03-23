@@ -23,5 +23,22 @@ namespace WhyRemitApp.Models
             new CurrencyModel{CurrencyName="GBN - YEN",CurrencyExpire="CLOSED",BestRate="Best Rate",BestRateValue="1.25",Matches="Matches",MatchesValue="5",CurrencyExpireColor="#E57B7C"},
         };
         }
+    } 
+    public class CurrencyMatchesModel
+    {
+        public string Name { get; set; }
+        public string Status { get; set; }
+        public string MatchImage { get; set; } 
+        public string Amount { get; set; } 
+        public static List<CurrencyMatchesModel> GetCurrencyMatchesList()
+        {
+            return new List<CurrencyMatchesModel>
+        {
+            new CurrencyMatchesModel{Name="Joe Blogges", Amount ="500,000",Status="Approved" },
+            new CurrencyMatchesModel{Name="Bolo Blogges", Amount ="400,000",Status="New" },
+            new CurrencyMatchesModel{Name="Free Blogges", Amount ="480,000",Status="Awaiting Approval" }, 
+            new CurrencyMatchesModel{Name="Trevor Blogges", Amount ="450,000",Status="Awaiting Approval" }, 
+         };
+        }
     }
 }

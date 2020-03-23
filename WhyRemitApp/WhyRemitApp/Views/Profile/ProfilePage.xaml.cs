@@ -42,9 +42,36 @@ namespace WhyRemitApp.Views.Profile
                     catch (Exception)
                     { }
                 });
-            }); 
+            });
+
+            //To Show Profile Pic
+            MessagingCenter.Subscribe<string>("", "LoadApiImage", (sender) =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(ProfileVM.UserProfileBase64))
+                        {
+                            imgUserProfile.Aspect = Aspect.AspectFill;
+                            imgUserProfile.Source = Utilities.Utility.GetImageFromBase64(ProfileVM.UserProfileBase64);
+                        }
+                    }
+                    catch (Exception)
+                    { }
+                });
+            });
         }
         #region Event Handlers 
+
+        /// <summary>
+        /// TODO : To Define On Page Appearing Event...
+        /// </summary>
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await ProfileVM.GetProfileData();
+        }
 
         /// <summary>
         /// TODO : To Define Event Handler For Media Picker Tapped...

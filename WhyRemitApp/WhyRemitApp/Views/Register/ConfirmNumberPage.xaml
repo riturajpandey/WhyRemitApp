@@ -30,20 +30,27 @@
                        HorizontalTextAlignment="Center" LineBreakMode="WordWrap">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Enter the 4 Digit code sent to your number : " TextColor="{StaticResource AppLightBlueColor}"/>
+                            <Span Text="Enter the 6 Digit code sent to your number : " TextColor="{StaticResource AppLightBlueColor}"/>
                             <Span Text="{Binding Path=Mobileno, Mode=TwoWay}" TextColor="{StaticResource AppLightBlueColor}"/> 
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
 
-                <local:CustomEntry Grid.Row="4" Text="{Binding OTP}" Placeholder="Code" TextColor="White" MaxLength="4" Keyboard="Numeric"
-                                   PlaceholderColor="{StaticResource AppGrayColor}" FontSize="15" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                <local:CustomEntry Grid.Row="4" Text="{Binding OTP}" Placeholder="  Code " TextColor="White" MaxLength="6" Keyboard="Numeric" WidthRequest="70"
+                                   PlaceholderColor="{StaticResource AppGrayColor}" FontSize="15" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
 
                 <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Opacity="0.8"/>
 
-                <Grid Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0">
+                <Grid x:Name="GrdResendLink" Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0" IsVisible="False">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ResendCodeCommand}"/>
+                    </Grid.GestureRecognizers>
                     <Label Text="Resend Code" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                                TextColor="{StaticResource AppDarkGrayColor}" FontSize="15" />
+                </Grid>
+                <Grid x:Name="GrdCountDown" Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0">
+                    <Label x:Name="LblCountDown" Text="60" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                               TextColor="{StaticResource AppDarkGrayColor}" FontSize="13" />
                 </Grid>
                 <!--Continue Button-->
                 <local:CustomButtonTxt Grid.Row="8" Text="Confirm" BackgroundColor="White" BorderColor="Gray" BorderWidth="1" Command="{Binding ConfirmCommand}"

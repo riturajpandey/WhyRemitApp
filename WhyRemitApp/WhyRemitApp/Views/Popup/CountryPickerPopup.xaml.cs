@@ -41,7 +41,7 @@ namespace WhyRemitApp.Views
             {
                 if (item.CountryName != null)
                 {
-                    registerVM.CallSubmitMethodForCollaborate(item.CountryFlag, item.CountryISDCode, item.Id, item.CountryName);
+                    registerVM.CallSubmitMethodForCollaborate(item.CountryFlag, item.CountryISDCode, item.Id, item.CountryName,item.CountryIS03Code);
                     HideDialog();
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WhyRemitApp.Interfaces;
 using WhyRemitApp.Model;
+using WhyRemitApp.Models;
 using WhyRemitApp.Views;
 using Xamarin.Forms;
+using App.User.LocationInfo.Services;
 
 namespace WhyRemitApp.ViewModels.Registration
-{ 
+{
     public class RegistrationPageVM : BaseViewModel
     {
         //TODO : To Declare Local Class Level Variables..
@@ -29,7 +32,7 @@ namespace WhyRemitApp.ViewModels.Registration
         public RegistrationPageVM(INavigation nav)
         {
             Navigation = nav;
-            ContinueCommand = new Command(SignUpAsync); 
+            ContinueCommand = new Command(SignUpAsync);
             OpenCountryPickerCommand = new Command(CountryPickerAsync); 
         }
 
@@ -50,7 +53,20 @@ namespace WhyRemitApp.ViewModels.Registration
                 _CountryPickerListItem = value;
                 OnPropertyChanged("TempCountryPickerListItem");
             }
-        } 
+        }
+        private bool _IsPageEnabled = true;
+        public bool IsPageEnabled
+        {
+            get { return _IsPageEnabled; }
+            set
+            {
+                if (_IsPageEnabled != value)
+                {
+                    _IsPageEnabled = value;
+                    OnPropertyChanged("IsPageEnabled");
+                }
+            }
+        }
         private string _DisplayName;
         public string DisplayName
         {
@@ -143,6 +159,7 @@ namespace WhyRemitApp.ViewModels.Registration
                 }
             }
         }
+        public string CountryIS03Code = "GBR";
         #endregion
 
         #region Methods
@@ -158,13 +175,70 @@ namespace WhyRemitApp.ViewModels.Registration
         /// <param name="obj"></param>
         private async void SignUpAsync(object obj)
         {
+            IsPageEnabled = false;
             //Apply Validations..
-            if (!await Validate()) return;
+            if (!await Validate())
+            {
+                IsPageEnabled = true;
+                return;
+            } 
+            Helpers.Constants.MobileNumber = CountryISDCode + Mobileno; 
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileRegisterApi(new RegisterProfileRequestModel()
+                            {
+                                countrycode = CountryIS03Code,
+                                displayname = DisplayName,
+                                mobilenumber = Mobileno
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as RegisterProfileResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        Helpers.Constants.Token = requestList.profiletoken;
 
-            Helpers.Constants.MobileNumber = CountryISDCode + Mobileno;
-
-            //Navigate To Confirm Phone Number Page...
-            await Navigation.PushModalAsync(new Views.Register.ConfirmNumberPage());
+                                        //Navigate To Confirm Phone Number Page...
+                                        await Navigation.PushModalAsync(new Views.Register.ConfirmNumberPage());
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (obj as RegisterProfileResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        IsPageEnabled = true;
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    IsPageEnabled = true;
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                IsPageEnabled = true;
+                UserDialog.HideLoading();
+            }
         }
 
         /// <summary>
@@ -187,26 +261,38 @@ namespace WhyRemitApp.ViewModels.Registration
             if (string.IsNullOrEmpty(DisplayName))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter your display name.", "Alert", "Ok");
+                UserDialog.Alert("Please enter your display name.", "", "Ok");
                 return false;
             }
-            bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            if (!isValid1)
+            //bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+            //if (!isValid1)
+            //{
+            //    UserDialog.HideLoading();
+            //    UserDialog.Alert("Display name is not valid");
+            //    return false;
+            //}
+            if (DisplayName.Length < 3 || DisplayName.Length > 50)
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Display name is not valid");
+                UserDialog.Alert("The display name should be between 3 to 50 characters.", "", "Ok");
                 return false;
             }
             if (string.IsNullOrEmpty(CountryOfResidency))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please select your country of resident.", "Alert", "Ok");
+                UserDialog.Alert("Please select your country of resident.", "", "Ok");
                 return false;
             }
             if (string.IsNullOrEmpty(Mobileno))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter your mobile number.", "Alert", "Ok");
+                UserDialog.Alert("Please enter your mobile number.", "", "Ok");
+                return false;
+            }
+            if (Mobileno.Length < 8 || Mobileno.Length > 15)
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("The Mobile number should be between 8 to 15 digits.", "", "Ok");
                 return false;
             }
             bool isValid2 = (Regex.IsMatch(Mobileno, _Phone, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
@@ -223,10 +309,10 @@ namespace WhyRemitApp.ViewModels.Registration
                 UserDialog.Alert("Invalid Phone Number.");
                 return false;
             }
-            if (IsAgreedToTC==false)
+            if (IsAgreedToTC == false)
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please agree to our Terms ande Conditions and Privacy Policy.", "Alert", "Ok");
+                UserDialog.Alert("Please agree to our Terms and Conditions and Privacy Policy.", "", "Ok");
                 return false;
             }
             UserDialog.HideLoading();
@@ -257,12 +343,13 @@ namespace WhyRemitApp.ViewModels.Registration
         /// <param name="isdcode"></param>
         /// <param name="countryId"></param>
         /// /// <param name="countryname"></param>
-        public void CallSubmitMethodForCollaborate(string imgSource, string isdcode, int countryId, string countryname)
+        public void CallSubmitMethodForCollaborate(string imgSource, string isdcode, int countryId, string countryname, string is03)
         {
             CountryFlag = imgSource;
             CountryISDCode = isdcode;
             CountryId = countryId;
             CountryOfResidency = countryname;
+            CountryIS03Code = is03;
         }
         #endregion 
     }

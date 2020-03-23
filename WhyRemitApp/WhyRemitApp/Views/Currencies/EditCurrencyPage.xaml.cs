@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WhyRemitApp.Models;
 using WhyRemitApp.ViewModels.Currency;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -15,15 +16,27 @@ namespace WhyRemitApp.Views.Currencies
     {
         //TODO : To Define class Level Variables...
         EditCurrencyVM EditCurrencyVM;
+        SearchModel Currency;
 
-        public EditCurrencyPage()
+        public EditCurrencyPage(SearchModel currency)
         {
             InitializeComponent();
             EditCurrencyVM = new EditCurrencyVM(this.Navigation);
             this.BindingContext = EditCurrencyVM;
+            Currency = currency;
+            EditCurrencyVM.Currency = currency;
+
+            if (currency.buyorsell == "S")
+            {
+                EditCurrencyVM.IsSellRate = true;
+                EditCurrencyVM.IsBuyRate = false;
+                EditCurrencyVM.RateImage = "bty1.png";
+                EditCurrencyVM.Header = "Maximum rate you are willing to sell";
+            }
 
             // iOS Platform
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
         }
 
         #region Event Handler
@@ -42,17 +55,21 @@ namespace WhyRemitApp.Views.Currencies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SwtchRate_Toggled(object sender, ToggledEventArgs e)
+        private void SwtchRate_Toggled(object sender, EventArgs e)
         {
             if (EditCurrencyVM.IsBuyRate)
             {
                 EditCurrencyVM.IsBuyRate = false;
                 EditCurrencyVM.IsSellRate = true;
+                EditCurrencyVM.RateImage = "bty1.png";
+                EditCurrencyVM.Header = "Maximum rate you are willing to sell";
             }
             else
             {
                 EditCurrencyVM.IsBuyRate = true;
                 EditCurrencyVM.IsSellRate = false;
+                EditCurrencyVM.RateImage = "bty01.png";
+                EditCurrencyVM.Header = "Minimum rate you are willing to buy";
             }
         }
 

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using WhyRemitApp.Models;
 using Xamarin.Forms;
 
 namespace WhyRemitApp.ViewModels.Registration
@@ -72,6 +75,58 @@ namespace WhyRemitApp.ViewModels.Registration
         {
             //Apply Validations..
             if (!await Validate()) return;
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileVerifyApi(new ProfileVerifyRequestModel()
+                            {
+                                profiletoken = Helpers.Constants.Token,
+                                validatetoken = OTP,
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as ProfileVerifyResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        Helpers.LocalStorage.GeneralSecretkey = requestList.secretkey;
+                                        Helpers.LocalStorage.GeneralProfileToken = Helpers.Constants.Token;
+                                        //Navigate To Currency Page...
+                                        App.Current.MainPage = new Views.Currencies.CurrencyPage(); 
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objj as ProfileVerifyResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            } 
         }
 
         /// <summary>
@@ -79,7 +134,58 @@ namespace WhyRemitApp.ViewModels.Registration
         /// </summary>
         /// <param name="obj"></param>
         private async void ResendCodeAsync(object obj)
-        { }
+        {
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileResendCodeApi(new ProfileRequestModel()
+                            {
+                                profiletoken = Helpers.Constants.Token
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as ResendTokenResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                        Xamarin.Forms.MessagingCenter.Send<string>("", "StartCountDown");
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (obj as ResendTokenResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    UserDialogs.Instance.Loading().Hide();
+                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            }
+
+        }
 
         /// <summary>
         /// To Validate all User Input Fields...
@@ -90,9 +196,15 @@ namespace WhyRemitApp.ViewModels.Registration
             if (string.IsNullOrEmpty(OTP))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter the 4 digit code sent to your number.", "Alert", "Ok");
+                UserDialog.Alert("Please enter the 6 digit code sent to your number.", "", "Ok");
                 return false;
-            } 
+            }
+            if (OTP.Length < 6)
+            {
+                UserDialog.HideLoading();
+                UserDialog.Alert("Invalid 6 digit code.", "", "Ok");
+                return false;
+            }
             return true;
         }
         #endregion

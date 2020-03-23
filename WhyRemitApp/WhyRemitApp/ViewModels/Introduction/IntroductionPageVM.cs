@@ -56,16 +56,30 @@ namespace WhyRemitApp.ViewModels.Introduction
                 }
             }
         }
+        private bool _IsPageEnabled = true;
+        public bool IsPageEnabled
+        {
+            get { return _IsPageEnabled; }
+            set
+            {
+                if (_IsPageEnabled != value)
+                {
+                    _IsPageEnabled = value;
+                    OnPropertyChanged("IsPageEnabled");
+                }
+            }
+        }
         #endregion
 
         #region Methods 
-      
+
         /// <summary>
         /// TODO : To navigate To Login Page...
         /// </summary>
         /// <param name="obj"></param>
         private async void OnContinueAsync(object obj)
         {
+            IsPageEnabled = false;
             App.Current.MainPage = new Views.Register.RegistrationPage();
         } 
 
