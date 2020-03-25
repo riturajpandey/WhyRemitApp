@@ -64,6 +64,49 @@ namespace WhyRemitApp.ViewModels
                 }
             }
         }
+
+        private bool _IsNotificationOn = true;
+        public bool IsNotificationOn
+        {
+            get { return _IsNotificationOn; }
+            set
+            {
+                if (_IsNotificationOn != value)
+                {
+                    _IsNotificationOn = value;
+                    OnPropertyChanged("IsNotificationOn");
+                }
+            }
+        }
+
+        private bool _IsSoundOn = true;
+        public bool IsSoundOn
+        {
+            get { return _IsSoundOn; }
+            set
+            {
+                if (_IsSoundOn != value)
+                {
+                    _IsSoundOn = value;
+                    OnPropertyChanged("IsSoundOn");
+                }
+            }
+        }
+
+        private bool _IsVibrateOn = true;
+        public bool IsVibrateOn
+        {
+            get { return _IsVibrateOn; }
+            set
+            {
+                if (_IsVibrateOn != value)
+                {
+                    _IsVibrateOn = value;
+                    OnPropertyChanged("IsVibrateOn");
+                }
+            }
+        }
+
         public bool IsNotification = false;
         public bool IsSound = false;
         public bool IsVibrate = false;

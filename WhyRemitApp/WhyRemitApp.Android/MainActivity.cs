@@ -12,7 +12,8 @@ using CarouselView.FormsPlugin.Android;
 
 namespace WhyRemitApp.Droid
 {
-    [Activity(Label = "WhyRemitApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+
+    [Activity(Label = "WhyRemitApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -46,7 +47,7 @@ namespace WhyRemitApp.Droid
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("OTMyNDlAMzEzNzJlMzEyZTMwWVAxejJTOFhSaUswQm1MUGJoWC93K3pyRWpkdkNVM0oyemhkK1ZzY0pNbz0=");
             #endregion
 
-            LoadApplication(new App());
+            LoadApplication(new App());   
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

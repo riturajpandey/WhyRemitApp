@@ -22,7 +22,7 @@
 
             <!--Settings Section-->
             <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,28" RowSpacing="0" ColumnSpacing="0">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="30,20" RowSpacing="0" ColumnSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="1"/>
@@ -52,7 +52,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Notification" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15"/>
                         <Switch Grid.Column="0" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0"
-                           Toggled="NotificationSwitch_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
+                           Toggled="NotificationSwitch_Toggled" IsToggled="{Binding IsNotificationOn}" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
                     </Grid>
                     <!--Seperator-->
                     <BoxView Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
@@ -65,7 +65,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Sound" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
                         <Switch x:Name="SwtchSound" Grid.Column="0" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0" IsEnabled="False"
-                           Toggled="SoundSwitch_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
+                           Toggled="SoundSwitch_Toggled" IsToggled="{Binding IsSoundOn}" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
                     </Grid>
                     <!--Seperator-->
                     <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
@@ -78,7 +78,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Vibrate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
                         <Switch x:Name="SwtchVibrate" Grid.Column="0" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0" IsEnabled="False"
-                           Toggled="VibrateSwitch_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
+                           Toggled="VibrateSwitch_Toggled" IsToggled="{Binding IsVibrateOn}" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
                     </Grid>
                     <!--Seperator-->
                     <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
@@ -107,21 +107,23 @@
                                 <Label Grid.Column="1" Text="Tell your friends about us" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
                             </Grid>
                         </Frame>
-                        <!--About Us-->
+
+                        <!--FeedBack-->
                         <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Privacy_Tapped"/>
+                                    <TapGestureRecognizer Tapped="Feedback_Tapped"/>
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="view_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
-                                <Label Grid.Column="1" Text="Privacy Policy" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
+                                <Image Grid.Column="0" Source="File_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Column="1" Text="Feedback" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
                             </Grid>
                         </Frame>
+
                         <!--Privacy Policy-->
                         <Frame Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
@@ -138,21 +140,24 @@
                             </Grid>
                         </Frame>
 
-                        <!--FeedBack-->
+                        <!--About Us-->
                         <Frame Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="Feedback_Tapped"/>
+                                    <TapGestureRecognizer Tapped="Privacy_Tapped"/>
                                 </Grid.GestureRecognizers>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/> 
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="File_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
-                                <Label Grid.Column="1" Text="Feedback" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
+                                <Image Grid.Column="0" Source="view_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
+                                <Label Grid.Column="1" Text="Privacy Policy" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" />
                             </Grid>
                         </Frame>
+                        
+
+                      
                     </Grid>
                 </Grid>
             </ScrollView>

@@ -46,7 +46,7 @@ namespace WhyRemitApp.Views.Settings
         private void NotificationSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             if (SettingVM.IsNotification)
-            { 
+            {
                 SettingVM.IsNotification = false;
                 SwtchSound.IsEnabled = false;
                 SwtchVibrate.IsEnabled = false;
@@ -56,7 +56,7 @@ namespace WhyRemitApp.Views.Settings
                 SettingVM.IsVibrate = false;
             }
             else
-            { 
+            {
                 SettingVM.IsNotification = true;
                 SwtchSound.IsEnabled = true;
                 SwtchVibrate.IsEnabled = true;

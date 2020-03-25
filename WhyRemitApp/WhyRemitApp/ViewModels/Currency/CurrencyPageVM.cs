@@ -27,11 +27,11 @@ namespace WhyRemitApp.ViewModels.Currency
             Navigation = nav;
             ProfileCommand = new Command(OnProfileAsync);
             SettingCommand = new Command(OnSettingAsync);
-            ContextMenu.Add("Show");
-            ContextMenu.Add("Hide");
-            ContextMenu.Add("Closed");
+            ContextMenu.Add("Show Closed"); 
+            //ContextMenu.Add("Hide Closed"); 
+            ContextMenu.Add("Order By Most Recent");
             ContextMenu.Add("Order By Currency I Have");
-            ContextMenu.Add("Order By Currency I Want");
+            ContextMenu.Add("Order By Currency I Need");
         }
 
         #endregion
@@ -143,7 +143,7 @@ namespace WhyRemitApp.ViewModels.Currency
                                     if (requestList != null)
                                     {
                                         UserDialog.HideLoading();
-                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok"); 
                                     }
                                 });
                             });

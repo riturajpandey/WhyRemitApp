@@ -34,4 +34,9 @@
   </style>
   <color name="ListViewSelected">#00025FA5</color>
   <color name="ListViewHighlighted">#00025FA5</color>
+
+  <style name="MainTheme.Splash" parent ="Theme.AppCompat.Light">
+    <item name="android:windowBackground">@drawable/splash</item> 
+    <item name="android:windowNoTitle">true</item>
+  </style>
 </resources>
