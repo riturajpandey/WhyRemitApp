@@ -215,7 +215,7 @@ namespace WhyRemitApp.ViewModels.Registration
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    var requestList = (obj as RegisterProfileResponseModel);
+                                    var requestList = (objj as RegisterProfileResponseModel);
                                     if (requestList != null)
                                     {
                                         IsPageEnabled = true;
