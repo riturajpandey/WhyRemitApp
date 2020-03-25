@@ -4,6 +4,7 @@ using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.Models;
@@ -102,7 +103,10 @@ namespace WhyRemitApp.ViewModels.Currency
                 var a = Helpers.LocalStorage.GeneralSearches;
                 var searchDetail = JsonConvert.DeserializeObject<SearchResponseModel>(a);
                 if (searchDetail.searches != null)
-                    CurrencyModelList = new ObservableCollection<SearchModel>(searchDetail.searches);
+                {
+                    var searches = searchDetail.searches.OrderByDescending(b => b.datecreated).ToList();
+                    CurrencyModelList = new ObservableCollection<SearchModel>(searches);  
+                }
             }
             try
             {
@@ -126,6 +130,8 @@ namespace WhyRemitApp.ViewModels.Currency
                                     if (requestList != null)
                                     {
                                         UserDialog.HideLoading();
+                                        var searches = requestList.searches.OrderByDescending(b => b.datecreated).ToList();
+                                        var closedSearches = searches.Where(c => c.statuscode != "CLOSED").ToList();
                                         CurrencyModelList = new ObservableCollection<SearchModel>(requestList.searches);
                                     }
                                 });
@@ -154,7 +160,6 @@ namespace WhyRemitApp.ViewModels.Currency
             {
                 UserDialog.HideLoading();
             }
-
         }
 
         /// <summary>
