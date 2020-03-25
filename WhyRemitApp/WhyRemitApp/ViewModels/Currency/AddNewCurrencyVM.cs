@@ -24,7 +24,7 @@ namespace WhyRemitApp.ViewModels.Currency
             Navigation = nav;
             BackCommand = new Command(OnBackAsync);
             SearchCommand = new Command(OnSearchAsync);
-            CurrencyList = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CurrencyPickerData());
+            CurrencyList = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CountryPickerData());
         }
 
         #endregion

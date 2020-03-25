@@ -27,7 +27,8 @@ namespace WhyRemitApp.Model
             CountryName = "Afghanistan",
             CountryISDCode = "+93",
             CountryCode = "AF",
-            CountryIS03Code = "AFG"
+            CountryIS03Code = "AFG",
+            Currency = "AFN" 
           },
          new CountryPickerModel ()
           {
@@ -36,7 +37,8 @@ namespace WhyRemitApp.Model
             CountryName = "Albania",
             CountryISDCode = "+355",
             CountryCode = "AL",
-            CountryIS03Code = "ALB"
+            CountryIS03Code = "ALB",
+            Currency = "ALL"
           },
          new CountryPickerModel ()
           {
@@ -45,7 +47,8 @@ namespace WhyRemitApp.Model
             CountryName = "Algeria",
             CountryISDCode = "+213",
             CountryCode = "DZ",
-            CountryIS03Code = "DZA"
+            CountryIS03Code = "DZA",
+            Currency = "DZD"
           },
          new CountryPickerModel ()
           {
@@ -54,7 +57,8 @@ namespace WhyRemitApp.Model
             CountryName = "Andorra",
             CountryISDCode = "+376",
             CountryCode = "AD",
-            CountryIS03Code = "AND"
+            CountryIS03Code = "AND",
+            Currency = "EUR"
           },
          new CountryPickerModel ()
           {
@@ -63,7 +67,8 @@ namespace WhyRemitApp.Model
             CountryName = "Angola",
             CountryISDCode = "+244",
             CountryCode = "AO",
-            CountryIS03Code = "AGO"
+            CountryIS03Code = "AGO",
+             Currency = "AOA"
           },
          new CountryPickerModel ()
           {
@@ -72,7 +77,8 @@ namespace WhyRemitApp.Model
             CountryName = "Antigua and Barbuda",
             CountryISDCode = "+1-268",
             CountryCode = "AG",
-            CountryIS03Code = "ATG"
+            CountryIS03Code = "ATG",
+            Currency = "XCD"
           },
          new CountryPickerModel ()
           {
@@ -81,7 +87,8 @@ namespace WhyRemitApp.Model
             CountryName = "Argentina",
             CountryISDCode = "+54",
             CountryCode = "AR",
-            CountryIS03Code = "ARG"
+            CountryIS03Code = "ARG",
+            Currency = "ARS"
           },
          new CountryPickerModel ()
           {
@@ -90,7 +97,8 @@ namespace WhyRemitApp.Model
             CountryName = "Armenia",
             CountryISDCode = "+374",
             CountryCode = "AM",
-            CountryIS03Code = "ARM"
+            CountryIS03Code = "ARM",
+            Currency = "AMD"
           },
          new CountryPickerModel ()
           {
@@ -99,7 +107,8 @@ namespace WhyRemitApp.Model
             CountryName = "Australia",
             CountryISDCode = "+61",
             CountryCode = "AU",
-            CountryIS03Code = "AUS"
+            CountryIS03Code = "AUS",
+            Currency = "AUD"
           },
          new CountryPickerModel ()
           {
@@ -108,7 +117,8 @@ namespace WhyRemitApp.Model
             CountryName = "Austria",
             CountryISDCode = "+43",
             CountryCode = "AT",
-            CountryIS03Code = "AUT"
+            CountryIS03Code = "AUT",
+            Currency = "EUR"
           },
          new CountryPickerModel ()
           {
@@ -117,7 +127,8 @@ namespace WhyRemitApp.Model
             CountryName = "Azerbaijan",
             CountryISDCode = "+994",
             CountryCode = "AZ",
-            CountryIS03Code = "AZE"
+            CountryIS03Code = "AZE",
+            Currency = "AZN"
           },
          new CountryPickerModel ()
           {
@@ -126,7 +137,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bahamas",
             CountryISDCode = "+1-242",
             CountryCode = "BS",
-            CountryIS03Code = "BHS"
+            CountryIS03Code = "BSD",
+            Currency = "BSD"
           },
          new CountryPickerModel ()
           {
@@ -135,7 +147,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bahrain",
             CountryISDCode = "+973",
             CountryCode = "BH",
-            CountryIS03Code = "BHR"
+            CountryIS03Code = "BHR",
+             Currency = "BHD"
           },
          new CountryPickerModel ()
           {
@@ -143,7 +156,8 @@ namespace WhyRemitApp.Model
             CountryFlag="bd.png",
             CountryName = "Bangladesh",
             CountryISDCode = "+880",
-            CountryIS03Code = "BGD"
+            CountryIS03Code = "BGD",
+             Currency = "BDT"
           },
          new CountryPickerModel ()
           {
@@ -152,7 +166,8 @@ namespace WhyRemitApp.Model
             CountryName = "Barbados",
             CountryISDCode = "+1-246",
             CountryCode = "BB",
-            CountryIS03Code = "BRB"
+            CountryIS03Code = "BRB",
+            Currency = "BBD"
           },
          new CountryPickerModel ()
           {
@@ -161,7 +176,8 @@ namespace WhyRemitApp.Model
             CountryName = "Belarus",
             CountryISDCode = "+375",
             CountryCode = "BY",
-            CountryIS03Code = "BLR"
+            CountryIS03Code = "BLR",
+            Currency = "BYN"
           },
          new CountryPickerModel ()
           {
@@ -170,7 +186,8 @@ namespace WhyRemitApp.Model
             CountryName = "Belgium",
             CountryISDCode = "+32",
             CountryCode = "BE",
-            CountryIS03Code = "BEL"
+            CountryIS03Code = "BEL",
+            Currency = "EUR"
           },
          new CountryPickerModel ()
           {
@@ -179,7 +196,8 @@ namespace WhyRemitApp.Model
             CountryName = "Belize",
             CountryISDCode = "+501",
             CountryCode = "BZ",
-            CountryIS03Code = "BLZ"
+            CountryIS03Code = "BLZ",
+             Currency = "BZD"
           },
          new CountryPickerModel ()
           {
@@ -188,7 +206,8 @@ namespace WhyRemitApp.Model
             CountryName = "Benin",
             CountryISDCode = "+229",
             CountryCode = "BJ",
-            CountryIS03Code = "BEN"
+            CountryIS03Code = "BEN",
+            Currency = "XOF"
           },
          new CountryPickerModel ()
           {
@@ -197,7 +216,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bhutan",
             CountryISDCode = "+975",
             CountryCode = "BT",
-            CountryIS03Code = "BTN"
+            CountryIS03Code = "BTN",
+            Currency = "BTN"
           },
          new CountryPickerModel ()
           {
@@ -206,7 +226,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bolivia",
             CountryISDCode = "+591",
             CountryCode = "BO",
-            CountryIS03Code = "BOL"
+            CountryIS03Code = "BOL",
+            Currency = "BOB"
           },
          new CountryPickerModel ()
           {
@@ -215,7 +236,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bosnia and Herz.",
             CountryISDCode = "+387",
             CountryCode = "BA",
-            CountryIS03Code = "BIH"
+            CountryIS03Code = "BIH",
+            Currency = "BAM"
           },
          new CountryPickerModel ()
           {
@@ -224,7 +246,8 @@ namespace WhyRemitApp.Model
             CountryName = "Botswana",
             CountryISDCode = "+267",
             CountryCode = "BW",
-            CountryIS03Code = "BWA"
+            CountryIS03Code = "BWA",
+            Currency = "BWP"
          },
             new CountryPickerModel ()
           {
@@ -233,7 +256,8 @@ namespace WhyRemitApp.Model
             CountryName = "Brazil",
             CountryISDCode = "+55",
             CountryCode = "BR",
-            CountryIS03Code = "BRA"
+            CountryIS03Code = "BRA",
+            Currency = "BRL"
           },
             new CountryPickerModel ()
           {
@@ -242,7 +266,8 @@ namespace WhyRemitApp.Model
             CountryName = "Brunei",
             CountryISDCode = "+673",
             CountryCode = "BN",
-            CountryIS03Code = "BRN"
+            CountryIS03Code = "BRN",
+             Currency = "BND"
           },
             new CountryPickerModel ()
           {
@@ -251,7 +276,8 @@ namespace WhyRemitApp.Model
             CountryName = "Bulgaria",
             CountryISDCode = "+359",
             CountryCode = "BG",
-            CountryIS03Code = "BGR"
+            CountryIS03Code = "BGR",
+            Currency = "BGN"
           },
             new CountryPickerModel ()
           {
@@ -260,7 +286,8 @@ namespace WhyRemitApp.Model
             CountryName = "Burkina Faso",
             CountryISDCode = "+226",
             CountryCode = "BF",
-            CountryIS03Code = "BFA"
+            CountryIS03Code = "BFA",
+            Currency = "XOF"
           },
             new CountryPickerModel ()
           {
@@ -269,7 +296,8 @@ namespace WhyRemitApp.Model
             CountryName = "Burundi",
             CountryISDCode = "+257",
             CountryCode = "BI",
-            CountryIS03Code = "BDI"
+            CountryIS03Code = "BDI",
+            Currency = "BIF"
           },
             new CountryPickerModel ()
           {
@@ -278,7 +306,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cambodia",
             CountryISDCode = "+855",
             CountryCode = "KH",
-            CountryIS03Code = "KHM"
+            CountryIS03Code = "KHM",
+            Currency = "KHR"
           },
             new CountryPickerModel ()
           {
@@ -287,7 +316,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cameroon",
             CountryISDCode = "+237",
             CountryCode = "CM",
-            CountryIS03Code = "CMR"
+            CountryIS03Code = "CMR",
+            Currency = "XAF"
           },
             new CountryPickerModel ()
           {
@@ -296,7 +326,8 @@ namespace WhyRemitApp.Model
             CountryName = "Canada",
             CountryISDCode = "+1",
             CountryCode = "CA",
-            CountryIS03Code = "CAN"
+            CountryIS03Code = "CAN",
+            Currency = "CAD"
           },
             new CountryPickerModel ()
           {
@@ -305,7 +336,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cape Verde",
             CountryISDCode = "+238",
             CountryCode = "CV",
-            CountryIS03Code = "CPV"
+            CountryIS03Code = "CPV",
+             Currency = "CVE"
           },
             new CountryPickerModel ()
           {
@@ -314,7 +346,8 @@ namespace WhyRemitApp.Model
             CountryName = "Central African Rep.",
             CountryISDCode = "+236",
             CountryCode = "CF",
-            CountryIS03Code = "CAF"
+            CountryIS03Code = "CAF",
+            Currency = "XAF"
           },
             new CountryPickerModel ()
           {
@@ -323,7 +356,8 @@ namespace WhyRemitApp.Model
             CountryName = "Chad",
             CountryISDCode = "+235",
             CountryCode = "TD",
-            CountryIS03Code = "TCD"
+            CountryIS03Code = "TCD",
+            Currency = "XAF"
           },
             new CountryPickerModel ()
           {
@@ -332,7 +366,8 @@ namespace WhyRemitApp.Model
             CountryName = "Chile",
             CountryISDCode = "+56",
             CountryCode = "CL",
-            CountryIS03Code = "CHL"
+            CountryIS03Code = "CHL",
+            Currency = "CLP"
           },
             new CountryPickerModel ()
           {
@@ -341,7 +376,8 @@ namespace WhyRemitApp.Model
             CountryName = "China",
             CountryISDCode = "+86",
             CountryCode = "CN",
-            CountryIS03Code = "CHN"
+            CountryIS03Code = "CHN",
+            Currency = "CNY"
           },
             new CountryPickerModel ()
           {
@@ -350,7 +386,8 @@ namespace WhyRemitApp.Model
             CountryName = " Colombia",
             CountryISDCode = "+57",
             CountryCode = "CO",
-            CountryIS03Code = "COL"
+            CountryIS03Code = "COL",
+            Currency = "COP"
           },
         new CountryPickerModel ()
           {
@@ -359,7 +396,8 @@ namespace WhyRemitApp.Model
             CountryName = "Comoros",
             CountryISDCode = "+269",
             CountryCode = "KM",
-            CountryIS03Code = "COM"
+            CountryIS03Code = "COM",
+            Currency = "KMF"
           },
          new CountryPickerModel ()
         {
@@ -368,7 +406,8 @@ namespace WhyRemitApp.Model
             CountryName = "Congo",
             CountryISDCode = "+242",
             CountryCode = "CD",
-            CountryIS03Code = "COG"
+            CountryIS03Code = "COG",
+            Currency = "CDF"
           },
         new CountryPickerModel ()
         {
@@ -377,7 +416,8 @@ namespace WhyRemitApp.Model
             CountryName = "Costa Rica",
             CountryISDCode = "+506",
             CountryCode = "CR",
-            CountryIS03Code = "CRI"
+            CountryIS03Code = "CRI",
+            Currency = "CRC"
           },
         new CountryPickerModel ()
         {
@@ -386,7 +426,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cote d Ivoire",
             CountryISDCode = "+225",
             CountryCode = "CI",
-            CountryIS03Code = "CIV"
+            CountryIS03Code = "CIV",
+            Currency = "XOF"
           },
 
         new CountryPickerModel ()
@@ -396,7 +437,8 @@ namespace WhyRemitApp.Model
             CountryName = "Croatia",
             CountryISDCode = "+385",
             CountryCode = "HR",
-            CountryIS03Code = "HRV"
+            CountryIS03Code = "HRV",
+            Currency = "HRK"
           },
         new CountryPickerModel ()
         {
@@ -405,7 +447,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cuba",
             CountryISDCode = "+53",
             CountryCode = "CU",
-            CountryIS03Code = "CUB"
+            CountryIS03Code = "CUB",
+            Currency = "CUP"
           },
         new CountryPickerModel ()
         {
@@ -414,7 +457,8 @@ namespace WhyRemitApp.Model
             CountryName = "Cyprus",
             CountryISDCode = "+357",
             CountryCode = "CY",
-            CountryIS03Code = "CYP"
+            CountryIS03Code = "CYP",
+            Currency = "EUR"
           },
         new CountryPickerModel ()
         {
@@ -423,7 +467,8 @@ namespace WhyRemitApp.Model
             CountryName = "Czech Republic",
             CountryISDCode = "+420",
             CountryCode = "CZ",
-            CountryIS03Code = "CZE"
+            CountryIS03Code = "CZE",
+            Currency = "CZK"
           },
         new CountryPickerModel ()
         {
@@ -432,7 +477,8 @@ namespace WhyRemitApp.Model
             CountryName = "Denmark",
             CountryISDCode = "+45",
             CountryCode = "DK",
-            CountryIS03Code = "DNK"
+            CountryIS03Code = "DNK",
+            Currency = "DKK"
           },
         new CountryPickerModel ()
         {
@@ -441,7 +487,8 @@ namespace WhyRemitApp.Model
             CountryName = "Djibouti",
             CountryISDCode = "+253",
             CountryCode = "DJ",
-            CountryIS03Code = "DJI"
+            CountryIS03Code = "DJI",
+            Currency = "DJF"
           },
         new CountryPickerModel ()
         {
@@ -450,7 +497,8 @@ namespace WhyRemitApp.Model
             CountryName = "Dominica",
             CountryISDCode = "+1-767",
             CountryCode = "DM",
-            CountryIS03Code = "DMA"
+            CountryIS03Code = "DMA",
+            Currency = "XCD"
           },
         new CountryPickerModel ()
          {
@@ -459,7 +507,8 @@ namespace WhyRemitApp.Model
             CountryName = "Dominican Republic",
             CountryISDCode = "+1-809",
             CountryCode = "DO",
-            CountryIS03Code = "DOM"
+            CountryIS03Code = "DOM",
+            Currency = "DOP"
           },
         new CountryPickerModel ()
          {
@@ -468,7 +517,8 @@ namespace WhyRemitApp.Model
             CountryName = "East Timor",
             CountryISDCode = "+670",
             CountryCode = "TP",
-            CountryIS03Code = "TLS"
+            CountryIS03Code = "TLS",
+            Currency = "USD"
           },
         new CountryPickerModel ()
           {
@@ -477,7 +527,8 @@ namespace WhyRemitApp.Model
             CountryName = "Ecuador",
             CountryISDCode = "+593",
             CountryCode = "EC",
-            CountryIS03Code = "ECU"
+            CountryIS03Code = "ECU",
+            Currency = "USD"
           },
         new CountryPickerModel ()
           {
@@ -486,7 +537,8 @@ namespace WhyRemitApp.Model
             CountryName = "Egypt",
             CountryISDCode = "+20",
             CountryCode = "EG",
-            CountryIS03Code = "EGY"
+            CountryIS03Code = "EGY",
+            Currency = "EGP"
           },
         new CountryPickerModel ()
           {
@@ -495,7 +547,8 @@ namespace WhyRemitApp.Model
             CountryName = "El Salvador",
             CountryISDCode = "+503",
             CountryCode = "SV",
-            CountryIS03Code = "SLV"
+            CountryIS03Code = "SLV",
+            Currency = "USD"
           },
         new CountryPickerModel ()
           {
@@ -504,7 +557,8 @@ namespace WhyRemitApp.Model
             CountryName = "Equatorial Guinea",
             CountryISDCode = "+240",
             CountryCode = "GQ",
-            CountryIS03Code = "GNQ"
+            CountryIS03Code = "GNQ",
+            Currency = "XAF"
           },
         new CountryPickerModel ()
           {
@@ -513,7 +567,8 @@ namespace WhyRemitApp.Model
             CountryName = "Eritrea",
             CountryISDCode = "+291",
             CountryCode = "ER",
-            CountryIS03Code = "ERI"
+            CountryIS03Code = "ERI",
+            Currency = "ERN"
           },
         new CountryPickerModel ()
           {
@@ -522,7 +577,8 @@ namespace WhyRemitApp.Model
             CountryName = "Estonia",
             CountryISDCode = "+372",
             CountryCode = "EE",
-            CountryIS03Code = "EST"
+            CountryIS03Code = "EST",
+            Currency = "EUR"
           },
         new CountryPickerModel ()
           {
@@ -531,7 +587,8 @@ namespace WhyRemitApp.Model
             CountryName = "Ethiopia",
             CountryISDCode = "+251",
             CountryCode = "ET",
-            CountryIS03Code = "ETH"
+            CountryIS03Code = "ETH",
+            Currency = "ETB"
           },
         new CountryPickerModel ()
           {
@@ -540,7 +597,8 @@ namespace WhyRemitApp.Model
             CountryName = "Fiji",
             CountryISDCode = "+679",
             CountryCode = "FJ",
-            CountryIS03Code = "ETH"
+            CountryIS03Code = "ETH",
+            Currency = "FJD"
           },
             new CountryPickerModel ()
           {
@@ -549,7 +607,8 @@ namespace WhyRemitApp.Model
             CountryName = "Finland",
             CountryISDCode = "+358",
             CountryCode = "FI",
-            CountryIS03Code = "FIN"
+            CountryIS03Code = "FIN",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -558,7 +617,8 @@ namespace WhyRemitApp.Model
             CountryName = "France",
             CountryISDCode = "+33",
             CountryCode = "FR",
-            CountryIS03Code = "FRA"
+            CountryIS03Code = "FRA",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -567,7 +627,8 @@ namespace WhyRemitApp.Model
             CountryName = "French Polynesia",
             CountryISDCode = "+689",
             CountryCode = "PF",
-            CountryIS03Code = "PYF"
+            CountryIS03Code = "PYF",
+            Currency = "XPF"
           },
             new CountryPickerModel ()
           {
@@ -576,7 +637,8 @@ namespace WhyRemitApp.Model
             CountryName = " Gabon",
             CountryISDCode = "+241",
             CountryCode = "GA",
-            CountryIS03Code = "GAB"
+            CountryIS03Code = "GAB",
+            Currency = "XAF"
           },
            new CountryPickerModel ()
           {
@@ -585,7 +647,8 @@ namespace WhyRemitApp.Model
             CountryName = "Gambia",
             CountryISDCode = "+220",
             CountryCode = "GM",
-            CountryIS03Code = "GMB"
+            CountryIS03Code = "GMB",
+            Currency = "GMD"
           },
          new CountryPickerModel ()
           {
@@ -594,7 +657,8 @@ namespace WhyRemitApp.Model
             CountryName = "Georgia",
             CountryISDCode = "+995",
             CountryCode = "GE",
-            CountryIS03Code = "SGS"
+            CountryIS03Code = "SGS",
+            Currency = "GEL"
           },
          new CountryPickerModel ()
           {
@@ -603,7 +667,8 @@ namespace WhyRemitApp.Model
             CountryName = "Germany",
             CountryISDCode = "+49",
             CountryCode = "DE",
-            CountryIS03Code = "DEU"
+            CountryIS03Code = "DEU",
+            Currency = "EUR"
           },
          new CountryPickerModel ()
           {
@@ -612,7 +677,8 @@ namespace WhyRemitApp.Model
             CountryName = "Ghana",
             CountryISDCode = "+233",
             CountryCode = "GH",
-            CountryIS03Code = "GHA"
+            CountryIS03Code = "GHA",
+            Currency = "GHS"
           },
             new CountryPickerModel ()
           {
@@ -621,7 +687,8 @@ namespace WhyRemitApp.Model
             CountryName = "Gibraltar",
             CountryISDCode = "+350",
             CountryCode = "GI",
-            CountryIS03Code = "GIB"
+            CountryIS03Code = "GIB",
+            Currency = "GIP"
           },
             new CountryPickerModel ()
           {
@@ -630,7 +697,8 @@ namespace WhyRemitApp.Model
             CountryName = "Greece",
             CountryISDCode = "+30",
             CountryCode = "GR",
-            CountryIS03Code = "GRC"
+            CountryIS03Code = "GRC",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -639,7 +707,8 @@ namespace WhyRemitApp.Model
             CountryName = "Greenland",
             CountryISDCode = "+299",
             CountryCode = "GL",
-            CountryIS03Code = "GRL"
+            CountryIS03Code = "GRL",
+            Currency = "DKK"
           },
             new CountryPickerModel ()
           {
@@ -648,7 +717,8 @@ namespace WhyRemitApp.Model
             CountryName = "Grenada",
             CountryISDCode = "+1-473",
             CountryCode = "GD",
-            CountryIS03Code = "GRD"
+            CountryIS03Code = "GRD",
+            Currency = "XCD"
           },
             new CountryPickerModel ()
           {
@@ -657,7 +727,8 @@ namespace WhyRemitApp.Model
             CountryName = "Guadeloupe",
             CountryISDCode = "+355",
             CountryCode = "GP",
-            CountryIS03Code = "GLP"
+            CountryIS03Code = "GLP",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -666,7 +737,8 @@ namespace WhyRemitApp.Model
             CountryName = "Guatemala",
             CountryISDCode = "+502",
             CountryCode = "GT",
-            CountryIS03Code = "GTM"
+            CountryIS03Code = "GTM",
+            Currency = "GTQ"
           },
             new CountryPickerModel ()
           {
@@ -675,7 +747,8 @@ namespace WhyRemitApp.Model
             CountryName = "Guinea",
             CountryISDCode = "+224",
             CountryCode = "GN",
-            CountryIS03Code = "GTM"
+            CountryIS03Code = "GTM",
+            Currency = "GNF"
           },
             new CountryPickerModel ()
           {
@@ -684,7 +757,8 @@ namespace WhyRemitApp.Model
             CountryName = "Guinea-Bissau",
             CountryISDCode = "+245",
             CountryCode = "GW",
-            CountryIS03Code = "PNG"
+            CountryIS03Code = "PNG",
+            Currency = "XOF"
           },
             new CountryPickerModel ()
           {
@@ -693,7 +767,8 @@ namespace WhyRemitApp.Model
             CountryName = "Guyana",
             CountryISDCode = "+592",
             CountryCode = "GY",
-            CountryIS03Code = "GUY"
+            CountryIS03Code = "GUY",
+            Currency = "GYD"
           },
             new CountryPickerModel ()
           {
@@ -702,7 +777,8 @@ namespace WhyRemitApp.Model
             CountryName = "Haiti",
             CountryISDCode = "+509",
             CountryCode = "HT",
-            CountryIS03Code = "HTI"
+            CountryIS03Code = "HTI",
+            Currency = "HTG" 
           },
             new CountryPickerModel ()
           {
@@ -711,7 +787,8 @@ namespace WhyRemitApp.Model
             CountryName = "Honduras",
             CountryISDCode = "+504",
             CountryCode = "HN",
-            CountryIS03Code = "HND"
+            CountryIS03Code = "HND",
+            Currency = "HNL"
           },
             new CountryPickerModel ()
           {
@@ -720,7 +797,8 @@ namespace WhyRemitApp.Model
             CountryName = "Hong Kong",
             CountryISDCode = "+852",
             CountryCode = "HK",
-            CountryIS03Code = "HKG"
+            CountryIS03Code = "HKG",
+            Currency = "HKD"
           },
             new CountryPickerModel ()
           {
@@ -729,7 +807,8 @@ namespace WhyRemitApp.Model
             CountryName = "Hungary",
             CountryISDCode = "+36",
             CountryCode = "HU",
-            CountryIS03Code = "HUN"
+            CountryIS03Code = "HUN",
+            Currency = "HUF"
           },
             new CountryPickerModel ()
           {
@@ -738,7 +817,8 @@ namespace WhyRemitApp.Model
             CountryName = "Iceland",
             CountryISDCode = "+354",
             CountryCode = "IS",
-            CountryIS03Code = "ISL"
+            CountryIS03Code = "ISL",
+            Currency = "ISK"
           },
             new CountryPickerModel ()
           {
@@ -747,7 +827,8 @@ namespace WhyRemitApp.Model
             CountryName = "India",
             CountryISDCode = "+91",
             CountryCode = "IN",
-            CountryIS03Code = "IND"
+            CountryIS03Code = "IND",
+            Currency = "INR"
           },
             new CountryPickerModel ()
           {
@@ -756,7 +837,8 @@ namespace WhyRemitApp.Model
             CountryName = "Indonesia",
             CountryISDCode = "+62",
             CountryCode = "ID",
-            CountryIS03Code = "IDN"
+            CountryIS03Code = "IDN",
+            Currency = "IDR"
           },
             new CountryPickerModel ()
           {
@@ -765,7 +847,8 @@ namespace WhyRemitApp.Model
             CountryName = "Iran",
             CountryISDCode = "+98",
             CountryCode = "IR",
-            CountryIS03Code = "IRN"
+            CountryIS03Code = "IRN",
+            Currency = "IRR"
           },
             new CountryPickerModel ()
           {
@@ -774,7 +857,8 @@ namespace WhyRemitApp.Model
             CountryName = "Iraq",
             CountryISDCode = "+964",
             CountryCode = "IQ",
-            CountryIS03Code = "IRQ"
+            CountryIS03Code = "IRQ",
+            Currency = "IQD"
           },
             new CountryPickerModel ()
           {
@@ -783,7 +867,8 @@ namespace WhyRemitApp.Model
             CountryName = "Ireland",
             CountryISDCode = "+353",
             CountryCode = "IE",
-            CountryIS03Code = "IRL"
+            CountryIS03Code = "IRL",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -792,7 +877,8 @@ namespace WhyRemitApp.Model
             CountryName = "Israel",
             CountryISDCode = "+972",
             CountryCode = "IL",
-            CountryIS03Code = "ISR"
+            CountryIS03Code = "ISR",
+            Currency = "ILS"
           },
             new CountryPickerModel ()
           {
@@ -801,7 +887,8 @@ namespace WhyRemitApp.Model
             CountryName = "Italy",
             CountryISDCode = "+39",
             CountryCode = "IT",
-            CountryIS03Code = "ITA"
+            CountryIS03Code = "ITA",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -810,7 +897,8 @@ namespace WhyRemitApp.Model
             CountryName = "Jamaica",
             CountryISDCode = "+1-876",
             CountryCode = "JM",
-            CountryIS03Code = "JAM"
+            CountryIS03Code = "JAM",
+            Currency = "JMD"
           },
             new CountryPickerModel ()
           {
@@ -819,7 +907,8 @@ namespace WhyRemitApp.Model
             CountryName = "Japan",
             CountryISDCode = "+81",
             CountryCode = "JP",
-            CountryIS03Code = "JPN"
+            CountryIS03Code = "JPN",
+            Currency = "JPY"
           },
             new CountryPickerModel ()
           {
@@ -828,7 +917,8 @@ namespace WhyRemitApp.Model
             CountryName = "Jordan",
             CountryISDCode = "+962",
             CountryCode = "JO",
-            CountryIS03Code = "JOR"
+            CountryIS03Code = "JOR",
+            Currency = "JOD"
           },
             new CountryPickerModel ()
           {
@@ -837,7 +927,8 @@ namespace WhyRemitApp.Model
             CountryName = "Kazakhstan",
             CountryISDCode = "+7",
             CountryCode = "KZ",
-            CountryIS03Code = "KAZ"
+            CountryIS03Code = "KAZ",
+            Currency = "KZT"
           },
             new CountryPickerModel ()
           {
@@ -846,7 +937,8 @@ namespace WhyRemitApp.Model
             CountryName = "Kenya",
             CountryISDCode = "+254",
             CountryCode = "KE",
-            CountryIS03Code = "KEN"
+            CountryIS03Code = "KEN",
+            Currency = "KES"
           },
             new CountryPickerModel ()
           {
@@ -855,7 +947,8 @@ namespace WhyRemitApp.Model
             CountryName = "Kiribati",
             CountryISDCode = "+686",
             CountryCode = "KI",
-            CountryIS03Code = "KIR"
+            CountryIS03Code = "KIR",
+            Currency = "AUD"
           },
             new CountryPickerModel ()
           {
@@ -864,7 +957,8 @@ namespace WhyRemitApp.Model
             CountryName = "Korea, North",
             CountryISDCode = "+850",
             CountryCode = "KP",
-            CountryIS03Code = "PRK"
+            CountryIS03Code = "PRK",
+            Currency = "KPW"
           },
              new CountryPickerModel ()
           {
@@ -873,7 +967,8 @@ namespace WhyRemitApp.Model
             CountryName = "Korea, South",
             CountryISDCode = "+82",
             CountryCode = "KR",
-            CountryIS03Code = "PRK"
+            CountryIS03Code = "PRK",
+            Currency = "KRW"
           },
               new CountryPickerModel ()
           {
@@ -882,7 +977,8 @@ namespace WhyRemitApp.Model
             CountryName = "Kuwait",
             CountryISDCode = "+965",
             CountryCode = "KW",
-            CountryIS03Code = "KWT"
+            CountryIS03Code = "KWT",
+            Currency = "KRW"
           },
               new CountryPickerModel ()
           {
@@ -891,7 +987,8 @@ namespace WhyRemitApp.Model
             CountryName = "Kyrgyzstan",
             CountryISDCode = "+996",
             CountryCode = "KG",
-            CountryIS03Code = "KGZ"
+            CountryIS03Code = "KGZ",
+            Currency = "KGS"
           },
               new CountryPickerModel ()
           {
@@ -900,7 +997,8 @@ namespace WhyRemitApp.Model
             CountryName = "Laos",
             CountryISDCode = "+856",
             CountryCode = "LA",
-            CountryIS03Code = "LAO"
+            CountryIS03Code = "LAO",
+            Currency = "LAK"
           },
             new CountryPickerModel ()
           {
@@ -909,7 +1007,8 @@ namespace WhyRemitApp.Model
             CountryName = "Latvia",
             CountryISDCode = "+371",
             CountryCode = "LV",
-            CountryIS03Code = "LVA"
+            CountryIS03Code = "LVA",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -918,7 +1017,8 @@ namespace WhyRemitApp.Model
             CountryName = "Lebanon",
             CountryISDCode = "+961",
             CountryCode = "LB",
-            CountryIS03Code = "LBN"
+            CountryIS03Code = "LBN",
+            Currency = "LBP"
           },
            new CountryPickerModel ()
           {
@@ -927,7 +1027,8 @@ namespace WhyRemitApp.Model
             CountryName = "Liberia",
             CountryISDCode = "+231",
             CountryCode = "LR",
-            CountryIS03Code = "LBR"
+            CountryIS03Code = "LBR",
+            Currency = "LRD"
           },
            new CountryPickerModel ()
           {
@@ -936,7 +1037,8 @@ namespace WhyRemitApp.Model
             CountryName = "Libya",
             CountryISDCode = "+218",
             CountryCode = "LY",
-            CountryIS03Code = "LBY"
+            CountryIS03Code = "LBY",
+            Currency = "LYD"
           },
            new CountryPickerModel ()
           {
@@ -945,7 +1047,8 @@ namespace WhyRemitApp.Model
             CountryName = "Liechtenstein",
             CountryISDCode = "+423",
             CountryCode = "LI",
-            CountryIS03Code = "LIE"
+            CountryIS03Code = "LIE",
+            Currency = "CHF"
           },
            new CountryPickerModel ()
           {
@@ -954,7 +1057,8 @@ namespace WhyRemitApp.Model
             CountryName = "Lithuania",
             CountryISDCode = "+370",
             CountryCode = "LT",
-            CountryIS03Code = "LTU"
+            CountryIS03Code = "LTU",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -963,7 +1067,8 @@ namespace WhyRemitApp.Model
             CountryName = "Luxembourg",
             CountryISDCode = "+352",
             CountryCode = "LU",
-            CountryIS03Code = "LUX"
+            CountryIS03Code = "LUX",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -972,7 +1077,8 @@ namespace WhyRemitApp.Model
             CountryName = "Macau SAR",
             CountryISDCode = "+853",
             CountryCode = "MO",
-            CountryIS03Code = "MAC"
+            CountryIS03Code = "MAC",
+            Currency = "MOP"
           },
            new CountryPickerModel ()
           {
@@ -981,7 +1087,8 @@ namespace WhyRemitApp.Model
             CountryName = "Macedonia",
             CountryISDCode = "+389",
             CountryCode = "MK",
-            CountryIS03Code = "MKD"
+            CountryIS03Code = "MKD",
+            Currency = "MKD"
           },
            new CountryPickerModel ()
           {
@@ -990,7 +1097,8 @@ namespace WhyRemitApp.Model
             CountryName = "Madagascar",
             CountryISDCode = "+261",
             CountryCode = "MG",
-            CountryIS03Code = "MDG"
+            CountryIS03Code = "MDG",
+            Currency = "MGA"
           },
            new CountryPickerModel ()
           {
@@ -999,7 +1107,8 @@ namespace WhyRemitApp.Model
             CountryName = "Malawi",
             CountryISDCode = "+265",
             CountryCode = "MW",
-            CountryIS03Code = "MWI"
+            CountryIS03Code = "MWI",
+            Currency = "MWK"
           },
            new CountryPickerModel ()
           {
@@ -1007,7 +1116,8 @@ namespace WhyRemitApp.Model
             CountryFlag="my.png",
             CountryName = "Malaysia",
             CountryISDCode = "+60",
-            CountryIS03Code = "MYS"
+            CountryIS03Code = "MYS",
+            Currency = "MYR"
           },
            new CountryPickerModel ()
           {
@@ -1016,7 +1126,8 @@ namespace WhyRemitApp.Model
             CountryName = "Maldives",
             CountryISDCode = "+960",
             CountryCode = "MV",
-            CountryIS03Code = "MDV"
+            CountryIS03Code = "MDV",
+            Currency = "MVR"
           },
            new CountryPickerModel ()
           {
@@ -1025,7 +1136,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mali",
             CountryISDCode = "+223",
             CountryCode = "ML",
-            CountryIS03Code = "MLI"
+            CountryIS03Code = "MLI",
+            Currency = "XOF"
           },
            new CountryPickerModel ()
           {
@@ -1034,7 +1146,8 @@ namespace WhyRemitApp.Model
             CountryName = "Malta",
             CountryISDCode = "+356",
             CountryCode = "MT",
-            CountryIS03Code = "MLT"
+            CountryIS03Code = "MLT",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -1043,7 +1156,8 @@ namespace WhyRemitApp.Model
             CountryName = "Marshall Islands",
             CountryISDCode = "+692",
             CountryCode = "MH",
-            CountryIS03Code = "MHL"
+            CountryIS03Code = "MHL",
+            Currency = "USD"
           },
            new CountryPickerModel ()
           {
@@ -1052,7 +1166,8 @@ namespace WhyRemitApp.Model
             CountryName = "Martinique",
             CountryISDCode = "+596",
             CountryCode = "MQ",
-            CountryIS03Code = "MTQ"
+            CountryIS03Code = "MTQ",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -1061,7 +1176,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mauritania",
             CountryISDCode = "+222",
             CountryCode = "MR",
-            CountryIS03Code = "MRT"
+            CountryIS03Code = "MRT",
+            Currency = "MRU"
           },
            new CountryPickerModel ()
           {
@@ -1070,7 +1186,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mauritius",
             CountryISDCode = "+230",
             CountryCode = "MU",
-            CountryIS03Code = "MUS"
+            CountryIS03Code = "MUS",
+            Currency = "MUR"
           },
            new CountryPickerModel ()
           {
@@ -1079,7 +1196,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mexico",
             CountryISDCode = "+52",
             CountryCode = "MX",
-            CountryIS03Code = "MEX"
+            CountryIS03Code = "MEX",
+            Currency = "MXN"
           },
            new CountryPickerModel ()
           {
@@ -1088,7 +1206,8 @@ namespace WhyRemitApp.Model
             CountryName = "Micronesia",
             CountryISDCode = "+691",
             CountryCode = "FM",
-            CountryIS03Code = "FSM"
+            CountryIS03Code = "FSM",
+            Currency = "USD"
           },
            new CountryPickerModel ()
           {
@@ -1097,7 +1216,8 @@ namespace WhyRemitApp.Model
             CountryName = "Moldova",
             CountryISDCode = "+373",
             CountryCode = "MD",
-            CountryIS03Code = "MDA"
+            CountryIS03Code = "MDA",
+            Currency = "MDL"
           },
            new CountryPickerModel ()
           {
@@ -1106,7 +1226,8 @@ namespace WhyRemitApp.Model
             CountryName = "Monaco",
             CountryISDCode = "+377",
             CountryCode = "MC",
-            CountryIS03Code = "MCO"
+            CountryIS03Code = "MCO",
+            Currency = "EUR"
            },
             new CountryPickerModel ()
           {
@@ -1115,7 +1236,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mongolia",
             CountryISDCode = "+976",
             CountryCode = "MN",
-            CountryIS03Code = "MNG"
+            CountryIS03Code = "MNG",
+            Currency = "MNT"
             },
             new CountryPickerModel ()
           {
@@ -1124,7 +1246,8 @@ namespace WhyRemitApp.Model
             CountryName = "Montenegro",
             CountryISDCode = "+382",
             CountryCode = "ME",
-            CountryIS03Code = "MNE"
+            CountryIS03Code = "MNE",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1133,7 +1256,8 @@ namespace WhyRemitApp.Model
             CountryName = "Morocco",
             CountryISDCode = "+212",
             CountryCode = "MA",
-            CountryIS03Code = "MAR"
+            CountryIS03Code = "MAR",
+            Currency = "MAD"
           },
             new CountryPickerModel ()
           {
@@ -1142,7 +1266,8 @@ namespace WhyRemitApp.Model
             CountryName = "Mozambique",
             CountryISDCode = "+258",
             CountryCode = "MZ",
-            CountryIS03Code = "MOZ"
+            CountryIS03Code = "MOZ",
+            Currency = "MZN"
           },
             new CountryPickerModel ()
           {
@@ -1151,7 +1276,8 @@ namespace WhyRemitApp.Model
             CountryName = "Myanmar",
             CountryISDCode = "+95",
             CountryCode = "MM",
-            CountryIS03Code = "MMR"
+            CountryIS03Code = "MMR",
+            Currency = "MMK"
           },
             new CountryPickerModel ()
           {
@@ -1160,7 +1286,8 @@ namespace WhyRemitApp.Model
             CountryName = "Namibia",
             CountryISDCode = "+264",
             CountryCode = "NA",
-            CountryIS03Code = "NAM"
+            CountryIS03Code = "NAM",
+            Currency = "NAD"
           },
             new CountryPickerModel ()
           {
@@ -1169,7 +1296,8 @@ namespace WhyRemitApp.Model
             CountryName = "Nauru",
             CountryISDCode = "+674",
             CountryCode = "NR",
-            CountryIS03Code = "NRU"
+            CountryIS03Code = "NRU",
+            Currency = "AUD"
           },
             new CountryPickerModel ()
           {
@@ -1178,7 +1306,8 @@ namespace WhyRemitApp.Model
             CountryName = "Nepal",
             CountryISDCode = "+977",
             CountryCode = "NP",
-            CountryIS03Code = "NPL"
+            CountryIS03Code = "NPL",
+            Currency = "NPR"
           },
             new CountryPickerModel ()
           {
@@ -1187,7 +1316,8 @@ namespace WhyRemitApp.Model
             CountryName = "Netherlands",
             CountryISDCode = "+31",
             CountryCode = "NL",
-            CountryIS03Code = "NLD"
+            CountryIS03Code = "NLD",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1196,7 +1326,8 @@ namespace WhyRemitApp.Model
             CountryName = "New Caledonia",
             CountryISDCode = "+687",
             CountryCode = "NC",
-            CountryIS03Code = "NCL"
+            CountryIS03Code = "NCL",
+            Currency = "XPF"
           },
             new CountryPickerModel ()
           {
@@ -1205,7 +1336,8 @@ namespace WhyRemitApp.Model
             CountryName = "New Zealand",
             CountryISDCode = "+64",
             CountryCode = "NZ",
-            CountryIS03Code = "NCL"
+            CountryIS03Code = "NCL",
+            Currency = "NZD"
           },
             new CountryPickerModel ()
           {
@@ -1214,7 +1346,8 @@ namespace WhyRemitApp.Model
             CountryName = "Nicaragua",
             CountryISDCode = "+505",
             CountryCode = "NZ",
-            CountryIS03Code = "NIC"
+            CountryIS03Code = "NIC",
+            Currency = "NIO"
           },
             new CountryPickerModel ()
           {
@@ -1223,7 +1356,8 @@ namespace WhyRemitApp.Model
             CountryName = "Niger",
             CountryISDCode = "+227",
             CountryCode = "NE",
-            CountryIS03Code = "NER"
+            CountryIS03Code = "NER",
+            Currency = "XOF"
           },
             new CountryPickerModel ()
           {
@@ -1232,7 +1366,8 @@ namespace WhyRemitApp.Model
             CountryName = "Nigeria",
             CountryISDCode = "+234",
             CountryCode = "NG",
-            CountryIS03Code = "NGA"
+            CountryIS03Code = "NGA",
+            Currency = "NGN"
           },
             new CountryPickerModel ()
           {
@@ -1241,7 +1376,8 @@ namespace WhyRemitApp.Model
             CountryName = "Northern Mariana Islands",
             CountryISDCode = "+1-670",
             CountryCode = "MP",
-            CountryIS03Code = "MNP"
+            CountryIS03Code = "MNP",
+            Currency = "USD"
           },
             new CountryPickerModel ()
           {
@@ -1250,7 +1386,8 @@ namespace WhyRemitApp.Model
             CountryName = "Norway",
             CountryISDCode = "+47",
             CountryCode = "NO",
-            CountryIS03Code = "NOR"
+            CountryIS03Code = "NOR",
+            Currency = "NOK"
           },
             new CountryPickerModel ()
           {
@@ -1259,7 +1396,8 @@ namespace WhyRemitApp.Model
             CountryName = "Oman",
             CountryISDCode = "+968",
             CountryCode = "OM",
-            CountryIS03Code = "OMN"
+            CountryIS03Code = "OMN",
+            Currency = "OMR"
           },
             new CountryPickerModel ()
           {
@@ -1268,7 +1406,8 @@ namespace WhyRemitApp.Model
             CountryName = "Pakistan",
             CountryISDCode = "+92",
             CountryCode = "PK",
-            CountryIS03Code = "PAK"
+            CountryIS03Code = "PAK",
+            Currency = "PKR"
           },
             new CountryPickerModel ()
           {
@@ -1277,7 +1416,8 @@ namespace WhyRemitApp.Model
             CountryName = "Palau",
             CountryISDCode = "+680",
             CountryCode = "PW",
-            CountryIS03Code = "PLW"
+            CountryIS03Code = "PLW",
+            Currency = "USD"
           },
             new CountryPickerModel ()
           {
@@ -1286,7 +1426,8 @@ namespace WhyRemitApp.Model
             CountryName = "Palestinian",
             CountryISDCode = "+970",
             CountryCode = "PS",
-            CountryIS03Code = "PSE"
+            CountryIS03Code = "PSE",
+            Currency = "ILS"
           },
             new CountryPickerModel ()
           {
@@ -1295,7 +1436,8 @@ namespace WhyRemitApp.Model
             CountryName = "Panama",
             CountryISDCode = "+507",
             CountryCode = "PA",
-            CountryIS03Code = "PAN"
+            CountryIS03Code = "PAN",
+            Currency = "USD"
           },
             new CountryPickerModel ()
           {
@@ -1304,7 +1446,8 @@ namespace WhyRemitApp.Model
             CountryName = "Papua New Guinea",
             CountryISDCode = "+675",
             CountryCode = "PG",
-            CountryIS03Code = "PNG"
+            CountryIS03Code = "PNG",
+            Currency = "PGK"
           },
             new CountryPickerModel ()
           {
@@ -1313,7 +1456,8 @@ namespace WhyRemitApp.Model
             CountryName = "Paraguay",
             CountryISDCode = "+595",
             CountryCode = "PY",
-            CountryIS03Code = "PRY"
+            CountryIS03Code = "PRY",
+            Currency = "PYG"
           },
             new CountryPickerModel ()
           {
@@ -1322,7 +1466,8 @@ namespace WhyRemitApp.Model
             CountryName = "Peru",
             CountryISDCode = "+51",
             CountryCode = "PE",
-            CountryIS03Code = "PER"
+            CountryIS03Code = "PER",
+            Currency = "PEN"
           },
             new CountryPickerModel ()
           {
@@ -1331,7 +1476,8 @@ namespace WhyRemitApp.Model
             CountryName = "Philippines",
             CountryISDCode = "+63",
             CountryCode = "PH",
-            CountryIS03Code = "PHL"
+            CountryIS03Code = "PHL",
+            Currency = "PHP"
           },
             new CountryPickerModel ()
           {
@@ -1340,7 +1486,8 @@ namespace WhyRemitApp.Model
             CountryName = "Poland",
             CountryISDCode = "+48",
             CountryCode = "PL",
-            CountryIS03Code = "POL"
+            CountryIS03Code = "POL",
+            Currency = "PLN"
           },
             new CountryPickerModel ()
           {
@@ -1349,7 +1496,8 @@ namespace WhyRemitApp.Model
             CountryName = "Portugal",
             CountryISDCode = "+351",
             CountryCode = "PT",
-             CountryIS03Code = "PRT"
+             CountryIS03Code = "PRT",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1358,7 +1506,8 @@ namespace WhyRemitApp.Model
             CountryName = "Puerto Rico",
             CountryISDCode = "+1-787",
             CountryCode = "PR",
-            CountryIS03Code = "PRI"
+            CountryIS03Code = "PRI",
+            Currency = "USD"
           },
             new CountryPickerModel ()
           {
@@ -1367,7 +1516,8 @@ namespace WhyRemitApp.Model
             CountryName = "Qatar",
             CountryISDCode = "+974",
             CountryCode = "QA",
-            CountryIS03Code = "QAT"
+            CountryIS03Code = "QAT",
+            Currency = "QAR"
           },
             new CountryPickerModel ()
           {
@@ -1376,7 +1526,8 @@ namespace WhyRemitApp.Model
             CountryName = "Réunion",
             CountryISDCode = "+262",
             CountryCode = "RE",
-            CountryIS03Code = "REU"
+            CountryIS03Code = "REU",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1385,7 +1536,8 @@ namespace WhyRemitApp.Model
             CountryName = "Romania",
             CountryISDCode = "+40",
             CountryCode = "RO",
-            CountryIS03Code = "ROU"
+            CountryIS03Code = "ROU",
+            Currency = "RON"
           },
             new CountryPickerModel ()
           {
@@ -1394,7 +1546,8 @@ namespace WhyRemitApp.Model
             CountryName = "Russian Federation",
             CountryISDCode = "+7-73",
             CountryCode = "RU",
-            CountryIS03Code = "RUS"
+            CountryIS03Code = "RUS",
+            Currency = "RUB"
           },
             new CountryPickerModel ()
           {
@@ -1403,7 +1556,8 @@ namespace WhyRemitApp.Model
             CountryName = "Rwanda",
             CountryISDCode = "+250",
             CountryCode = "RW",
-            CountryIS03Code = "RWA"
+            CountryIS03Code = "RWA",
+            Currency = "RWF"
           },
             new CountryPickerModel ()
           {
@@ -1412,7 +1566,8 @@ namespace WhyRemitApp.Model
             CountryName = "Saint Kitts and Nevis",
             CountryISDCode = "+1-869",
             CountryCode = "KN",
-            CountryIS03Code = "KNA"
+            CountryIS03Code = "KNA",
+            Currency = "XCD"
           },
             new CountryPickerModel ()
           {
@@ -1421,7 +1576,8 @@ namespace WhyRemitApp.Model
             CountryName = "Saint Lucia",
             CountryISDCode = "+1-758",
             CountryCode = "LC",
-            CountryIS03Code = "LCA"
+            CountryIS03Code = "LCA",
+            Currency = "XCD"
           },
             new CountryPickerModel ()
           {
@@ -1430,7 +1586,8 @@ namespace WhyRemitApp.Model
             CountryName = "Samoa",
             CountryISDCode = "+685",
             CountryCode = "WS",
-            CountryIS03Code = "WSM"
+            CountryIS03Code = "WSM",
+            Currency = "WST"
           },
             new CountryPickerModel ()
           {
@@ -1439,7 +1596,8 @@ namespace WhyRemitApp.Model
             CountryName = "San Marino",
             CountryISDCode = "+378",
             CountryCode = "SM",
-            CountryIS03Code = "SMR"
+            CountryIS03Code = "SMR",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1448,7 +1606,8 @@ namespace WhyRemitApp.Model
             CountryName = "Sao Tome and Princ",
             CountryISDCode = "+239",
             CountryCode = "ST",
-            CountryIS03Code = "STP"
+            CountryIS03Code = "STP",
+            Currency = "STN"
           },
             new CountryPickerModel ()
           {
@@ -1457,7 +1616,8 @@ namespace WhyRemitApp.Model
             CountryName = "Saudi Arabia",
             CountryISDCode = "+966",
             CountryCode = "SA",
-            CountryIS03Code = "SAU"
+            CountryIS03Code = "SAU",
+            Currency = "SAR"
           },
             new CountryPickerModel ()
           {
@@ -1466,7 +1626,8 @@ namespace WhyRemitApp.Model
             CountryName = "Senegal",
             CountryISDCode = "+221",
             CountryCode = "SN",
-            CountryIS03Code = "SEN"
+            CountryIS03Code = "SEN",
+            Currency = "XOF"
           },
             new CountryPickerModel ()
           {
@@ -1475,7 +1636,8 @@ namespace WhyRemitApp.Model
             CountryName = "Serbia",
             CountryISDCode = "+381",
             CountryCode = "RS",
-            CountryIS03Code = "SRB"
+            CountryIS03Code = "SRB",
+            Currency = "RSD"
           },
             new CountryPickerModel ()
           {
@@ -1484,7 +1646,8 @@ namespace WhyRemitApp.Model
             CountryName = "Seychelles",
             CountryISDCode = "+248",
             CountryCode = "SC",
-            CountryIS03Code = "SYC"
+            CountryIS03Code = "SYC",
+            Currency = "SCR"
           },
             new CountryPickerModel ()
           {
@@ -1493,7 +1656,8 @@ namespace WhyRemitApp.Model
             CountryName = "Sierra Leone",
             CountryISDCode = "+232",
             CountryCode = "SL",
-            CountryIS03Code = "SLE"
+            CountryIS03Code = "SLE",
+            Currency = "SLL"
           },
             new CountryPickerModel ()
           {
@@ -1502,7 +1666,8 @@ namespace WhyRemitApp.Model
             CountryName = "Singapore",
             CountryISDCode = "+65",
             CountryCode = "SG",
-            CountryIS03Code = "SGP"
+            CountryIS03Code = "SGP",
+            Currency = "SGD"
           },
             new CountryPickerModel ()
           {
@@ -1511,7 +1676,8 @@ namespace WhyRemitApp.Model
             CountryName = "Slovakia",
             CountryISDCode = "+421",
             CountryCode = "SK",
-            CountryIS03Code = "SVK"
+            CountryIS03Code = "SVK",
+            Currency = "EUR"
           },
             new CountryPickerModel ()
           {
@@ -1520,7 +1686,8 @@ namespace WhyRemitApp.Model
             CountryName = "Solomon Islands",
             CountryISDCode = "+677",
             CountryCode = "SB",
-            CountryIS03Code = "SLB"
+            CountryIS03Code = "SLB",
+            Currency = "SBD"
           },
              new CountryPickerModel ()
           {
@@ -1529,7 +1696,8 @@ namespace WhyRemitApp.Model
             CountryName = "Somalia",
             CountryISDCode = "+252",
             CountryCode = "SO",
-            CountryIS03Code = "SOM"
+            CountryIS03Code = "SOM",
+            Currency = "SOS"
           },
               new CountryPickerModel ()
           {
@@ -1538,7 +1706,8 @@ namespace WhyRemitApp.Model
             CountryName = "South Africa",
             CountryISDCode = "+27",
             CountryCode = "ZA",
-            CountryIS03Code = "ZAF"
+            CountryIS03Code = "ZAF",
+            Currency = "ZAR"
           },
                new CountryPickerModel ()
           {
@@ -1547,7 +1716,8 @@ namespace WhyRemitApp.Model
             CountryName = "Spain",
             CountryISDCode = "+34",
             CountryCode = "ES",
-            CountryIS03Code = "ESP"
+            CountryIS03Code = "ESP",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -1556,7 +1726,8 @@ namespace WhyRemitApp.Model
             CountryName = "Sri Lanka",
             CountryISDCode = "+94",
             CountryCode = "LK",
-            CountryIS03Code = "LKA"
+            CountryIS03Code = "LKA",
+            Currency = "LKR"
           },
            new CountryPickerModel ()
           {
@@ -1565,7 +1736,8 @@ namespace WhyRemitApp.Model
             CountryName = "St Vincent and Gren",
             CountryISDCode = "+1-784",
             CountryCode = "VC",
-            CountryIS03Code = "VCT"
+            CountryIS03Code = "VCT",
+            Currency = "XCD"
           },
            new CountryPickerModel ()
           {
@@ -1574,7 +1746,8 @@ namespace WhyRemitApp.Model
             CountryName = "Sudan",
             CountryISDCode = "+249",
             CountryCode = "SD",
-            CountryIS03Code = "SDN"
+            CountryIS03Code = "SDN",
+            Currency = "SDG"
           },
            new CountryPickerModel ()
           {
@@ -1583,7 +1756,8 @@ namespace WhyRemitApp.Model
             CountryName = "Suriname",
             CountryISDCode = "+597",
             CountryCode = "SR",
-            CountryIS03Code = "SUR"
+            CountryIS03Code = "SUR",
+            Currency = "SRD"
           },
            new CountryPickerModel ()
           {
@@ -1592,7 +1766,8 @@ namespace WhyRemitApp.Model
             CountryName = "Swaziland",
             CountryISDCode = "+268",
             CountryCode = "SZ",
-            CountryIS03Code = "SWZ"
+            CountryIS03Code = "SWZ",
+            Currency = "SZL"
           },
            new CountryPickerModel ()
           {
@@ -1601,7 +1776,8 @@ namespace WhyRemitApp.Model
             CountryName = "Sweden",
             CountryISDCode = "+46",
             CountryCode = "SE",
-            CountryIS03Code = "SWE"
+            CountryIS03Code = "SWE",
+            Currency = "SEK"
           },
            new CountryPickerModel ()
           {
@@ -1610,7 +1786,8 @@ namespace WhyRemitApp.Model
             CountryName = "Switzerland",
             CountryISDCode = "+41",
             CountryCode = "CH",
-            CountryIS03Code = "CHE"
+            CountryIS03Code = "CHE",
+            Currency = "CHF"
           },
            new CountryPickerModel ()
           {
@@ -1619,7 +1796,8 @@ namespace WhyRemitApp.Model
             CountryName = "Syria",
             CountryISDCode = "+963",
             CountryCode = "SY",
-            CountryIS03Code = "SYR"
+            CountryIS03Code = "SYR",
+            Currency = "SYP"
           },
            new CountryPickerModel ()
           {
@@ -1628,7 +1806,8 @@ namespace WhyRemitApp.Model
             CountryName = "Taiwan",
             CountryISDCode = "+886",
             CountryCode = "TW",
-            CountryIS03Code = "TWN"
+            CountryIS03Code = "TWN",
+            Currency = "TWD"
           },
            new CountryPickerModel ()
           {
@@ -1637,7 +1816,8 @@ namespace WhyRemitApp.Model
             CountryName = "Tajikistan",
             CountryISDCode = "+992",
             CountryCode = "TJ",
-            CountryIS03Code = "TJK"
+            CountryIS03Code = "TJK",
+            Currency = "TJS"
           },
            new CountryPickerModel ()
           {
@@ -1646,7 +1826,8 @@ namespace WhyRemitApp.Model
             CountryName = "Tanzania",
             CountryISDCode = "+255",
             CountryCode = "TZ",
-            CountryIS03Code = "TZA"
+            CountryIS03Code = "TZA",
+            Currency = "TZS"
           },
            new CountryPickerModel ()
           {
@@ -1655,7 +1836,8 @@ namespace WhyRemitApp.Model
             CountryName = "Thailand",
             CountryISDCode = "+66",
             CountryCode = "TH",
-            CountryIS03Code = "THA"
+            CountryIS03Code = "THA",
+            Currency = "THB"
           },
            new CountryPickerModel ()
           {
@@ -1664,7 +1846,8 @@ namespace WhyRemitApp.Model
             CountryName = "Togo",
             CountryISDCode = "+228",
             CountryCode = "TG",
-            CountryIS03Code = "TGO"
+            CountryIS03Code = "TGO",
+            Currency = "XOF"
           },
            new CountryPickerModel ()
           {
@@ -1673,7 +1856,8 @@ namespace WhyRemitApp.Model
             CountryName = "Tonga",
             CountryISDCode = "+676",
             CountryCode = "TO",
-            CountryIS03Code = "TON"
+            CountryIS03Code = "TON",
+            Currency = "TOP"
           },
            new CountryPickerModel ()
           {
@@ -1682,7 +1866,8 @@ namespace WhyRemitApp.Model
             CountryName = "Trinidad and Tobago",
             CountryISDCode = "+1-868",
             CountryCode = "TT",
-            CountryIS03Code = "TTO"
+            CountryIS03Code = "TTO",
+            Currency = "TTD"
           },
            new CountryPickerModel ()
           {
@@ -1691,7 +1876,8 @@ namespace WhyRemitApp.Model
             CountryName = "Tunisia",
             CountryISDCode = "+216",
             CountryCode = "TN",
-            CountryIS03Code = "TUN"
+            CountryIS03Code = "TUN",
+            Currency = "TND"
           },
            new CountryPickerModel ()
           {
@@ -1700,7 +1886,8 @@ namespace WhyRemitApp.Model
             CountryName = "Turkey",
             CountryISDCode = "+90",
             CountryCode = "TR",
-            CountryIS03Code = "TUR"
+            CountryIS03Code = "TUR",
+            Currency = "TRY"
           },
            new CountryPickerModel ()
           {
@@ -1709,7 +1896,8 @@ namespace WhyRemitApp.Model
             CountryName = "Turkmenistan",
             CountryISDCode = "+993",
             CountryCode = "TM",
-            CountryIS03Code = "TKM"
+            CountryIS03Code = "TKM",
+            Currency = "TMT"
           },
            new CountryPickerModel ()
           {
@@ -1718,7 +1906,8 @@ namespace WhyRemitApp.Model
             CountryName = "Tuvalu",
             CountryISDCode = "+688",
             CountryCode = "TV",
-            CountryIS03Code = "TUV"
+            CountryIS03Code = "TUV",
+            Currency = "AUD"
           },
            new CountryPickerModel ()
           {
@@ -1727,7 +1916,8 @@ namespace WhyRemitApp.Model
             CountryName = "Uganda",
             CountryISDCode = "+256",
             CountryCode = "UG",
-            CountryIS03Code = "UGA"
+            CountryIS03Code = "UGA",
+            Currency = "UGX"
           },
            new CountryPickerModel ()
           {
@@ -1736,7 +1926,8 @@ namespace WhyRemitApp.Model
             CountryName = "Ukraine",
             CountryISDCode = "+380",
             CountryCode = "UA",
-            CountryIS03Code = "UKR"
+            CountryIS03Code = "UKR",
+            Currency = "UAH"
           },
            new CountryPickerModel ()
           {
@@ -1745,7 +1936,8 @@ namespace WhyRemitApp.Model
             CountryName = "United Arab Emirates",
             CountryISDCode = "+971",
             CountryCode = "AE",
-            CountryIS03Code = "ARE"
+            CountryIS03Code = "ARE",
+            Currency = "AED"
           },
            new CountryPickerModel ()
           {
@@ -1754,7 +1946,8 @@ namespace WhyRemitApp.Model
             CountryName = "United Kingdom",
             CountryISDCode = "+44",
             CountryCode = "GB",
-            CountryIS03Code = "GBR"
+            CountryIS03Code = "GBR",
+            Currency = "GBP"
           },
            new CountryPickerModel ()
           {
@@ -1763,7 +1956,8 @@ namespace WhyRemitApp.Model
             CountryName = "United States",
             CountryISDCode = "+1",
             CountryCode = "US",
-            CountryIS03Code = "UMI"
+            CountryIS03Code = "UMI",
+            Currency = "USD"
           },
            new CountryPickerModel ()
           {
@@ -1772,7 +1966,8 @@ namespace WhyRemitApp.Model
             CountryName = "Uruguay",
             CountryISDCode = "+598",
             CountryCode = "UY",
-            CountryIS03Code = "URY"
+            CountryIS03Code = "URY",
+            Currency = "UYU"
           },
            new CountryPickerModel ()
           {
@@ -1781,7 +1976,8 @@ namespace WhyRemitApp.Model
             CountryName = "Uzbekistan",
             CountryISDCode = "+998",
             CountryCode = "UZ",
-            CountryIS03Code = "UZB"
+            CountryIS03Code = "UZB",
+            Currency = "UZS"
           },
            new CountryPickerModel ()
           {
@@ -1790,7 +1986,8 @@ namespace WhyRemitApp.Model
             CountryName = "Vanuatu",
             CountryISDCode = "+678",
             CountryCode = "VU",
-            CountryIS03Code = "VUT"
+            CountryIS03Code = "VUT",
+            Currency = "VUV"
           },
            new CountryPickerModel ()
           {
@@ -1799,7 +1996,8 @@ namespace WhyRemitApp.Model
             CountryName = "Vatican City",
             CountryISDCode = "+379",
             CountryCode = "VA",
-            CountryIS03Code = "VAT"
+            CountryIS03Code = "VAT",
+            Currency = "EUR"
           },
            new CountryPickerModel ()
           {
@@ -1808,7 +2006,8 @@ namespace WhyRemitApp.Model
             CountryName = "Venezuela",
             CountryISDCode = "+58",
             CountryCode = "VE",
-            CountryIS03Code = "VEN"
+            CountryIS03Code = "VEN",
+            Currency = "VES"
           },
            new CountryPickerModel ()
           {
@@ -1817,7 +2016,8 @@ namespace WhyRemitApp.Model
             CountryName = "Vietnam",
             CountryISDCode = "+84",
             CountryCode = "VN",
-            CountryIS03Code = "VNM"
+            CountryIS03Code = "VNM",
+            Currency = "VND"
           },
            new CountryPickerModel ()
           {
@@ -1826,7 +2026,8 @@ namespace WhyRemitApp.Model
             CountryName = "Virgin Islands, British",
             CountryISDCode = "+1-284",
             CountryCode = "VG",
-            CountryIS03Code = "VGB"
+            CountryIS03Code = "VGB",
+            Currency = "USD"
           },
            new CountryPickerModel ()
           {
@@ -1835,7 +2036,8 @@ namespace WhyRemitApp.Model
             CountryName = "Virgin Islands, U.S.",
             CountryISDCode = "+1-340",
             CountryCode = "VI",
-            CountryIS03Code = "VIR"
+            CountryIS03Code = "VIR",
+            Currency = "USD"
           },
            new CountryPickerModel ()
           {
@@ -1844,7 +2046,8 @@ namespace WhyRemitApp.Model
             CountryName = "Western Sahara",
             CountryISDCode = "+212",
             CountryCode = "EH",
-            CountryIS03Code = "ESH"
+            CountryIS03Code = "ESH",
+            Currency = "MAD"
           },
            new CountryPickerModel ()
           {
@@ -1853,7 +2056,8 @@ namespace WhyRemitApp.Model
             CountryName = "Yemen",
             CountryISDCode = "+967",
             CountryCode = "YE",
-            CountryIS03Code = "YEM"
+            CountryIS03Code = "YEM",
+            Currency = "YER"
           },
            new CountryPickerModel ()
           {
@@ -1862,7 +2066,8 @@ namespace WhyRemitApp.Model
             CountryName = "Zambia",
             CountryISDCode = "+260",
             CountryCode = "ZM",
-            CountryIS03Code = "ZMB"
+            CountryIS03Code = "ZMB",
+            Currency = "ZMW"
           },
            new CountryPickerModel ()
           {
@@ -1871,7 +2076,8 @@ namespace WhyRemitApp.Model
             CountryName = "Zimbabwe",
             CountryISDCode = "+263",
             CountryCode = "ZW",
-            CountryIS03Code = "ZWE"
+            CountryIS03Code = "ZWE",
+            Currency = "USD"
           },
        };
         }
