@@ -82,14 +82,16 @@ namespace WhyRemitApp.Views.Currencies
         {
             if (item == "Show Closed")
             {
-                CurrencyVM.ContextMenu[CurrencyVM.ContextMenu.FindIndex(ind => ind.Equals("Show Closed"))] = "Hide Closed"; 
+                CurrencyVM.ContextMenu[CurrencyVM.ContextMenu.FindIndex(ind => ind.Equals("Show Closed"))] = "Hide Closed";
+                CurrencyVM.CurrencyModelList = null;
+                CurrencyVM.CurrencyModelList = new ObservableCollection<SearchModel>(CurrencyVM.AllCurrencyList); 
             }
             if (item == "Hide Closed")
             {
                 CurrencyVM.ContextMenu[CurrencyVM.ContextMenu.FindIndex(ind => ind.Equals("Hide Closed"))] = "Show Closed";
-                var closedSearches = CurrencyVM.CurrencyModelList.Where(c => c.statuscode != "CLOSED").ToList();
+                var activeSearches = CurrencyVM.CurrencyModelList.Where(c => c.statuscode != "CLOSED").ToList();
                 CurrencyVM.CurrencyModelList = null;
-                CurrencyVM.CurrencyModelList = new ObservableCollection<SearchModel>(closedSearches);
+                CurrencyVM.CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches); 
             }
             if (item == "Order By Most Recent")
             {

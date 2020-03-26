@@ -139,7 +139,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        private string _ExpireTime;
+        private string _ExpireTime = "24H";
         public string ExpireTime
         {
             get { return _ExpireTime; }
@@ -196,17 +196,17 @@ namespace WhyRemitApp.ViewModels.Currency
                         }
                         if (_businessCode != null)
                         {
-                            string time = ExpireTime;
-                            if (ExpireTime == "1 Hour")
-                                time = "1H";
-                            else if (ExpireTime == "12 Hours")
-                                time = "12H";
-                            else if (ExpireTime == "24 Hours")
-                                time = "24H";
-                            else if (ExpireTime == "3 Days")
-                                time = "3D";
-                            else if (ExpireTime == "7 Days")
-                                time = "7D";
+                            //string time = ExpireTime;
+                            //if (ExpireTime == "1 Hour")
+                            //    time = "1H";
+                            //else if (ExpireTime == "12 Hours")
+                            //    time = "12H";
+                            //else if (ExpireTime == "24 Hours")
+                            //    time = "24H";
+                            //else if (ExpireTime == "3 Days")
+                            //    time = "3D";
+                            //else if (ExpireTime == "7 Days")
+                            //    time = "7D";
 
                             await _businessCode.SearchSaveApi(new SearchSaveRequestModel()
                             {
@@ -214,7 +214,7 @@ namespace WhyRemitApp.ViewModels.Currency
                                 buycurrencycode = Currency.currencybuy,
                                 sellcurrencycode = Currency.currencysell,
                                 buyorsell = buyORell,
-                                duration = time,
+                                duration = ExpireTime,
                                 rate = rate,
                                 requestnumber = Currency.requestnumber
                             }, async (objs) =>
@@ -226,8 +226,20 @@ namespace WhyRemitApp.ViewModels.Currency
                                     {
                                         UserDialog.HideLoading();
                                         //Navigate To Currency Page...
-                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "Ok");
-                                        await Navigation.PopModalAsync();
+                                        var alertConfig = new AlertConfig
+                                        {
+                                            Title = "Alert",
+                                            Message = "The search has updated. We will continue to update you of matches before the expiry time.",
+                                            OkText = "OK",
+                                            OnAction = async () =>
+                                            {
+                                                await Navigation.PopModalAsync();
+                                            }
+                                        };
+                                        UserDialogs.Instance.Alert(alertConfig);
+
+                                        //UserDialogs.Instance.Alert(requestList.responsemessage, "", "Ok");
+                                        //await Navigation.PopModalAsync();
                                     }
                                 });
                             }, (objj) =>

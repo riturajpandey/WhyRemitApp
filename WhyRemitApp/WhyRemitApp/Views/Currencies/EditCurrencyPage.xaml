@@ -41,14 +41,15 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="10"/>
-                        <RowDefinition Height="1"/>
-                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="20"/>
+                        <!--<RowDefinition Height="1"/>-->
+                        
+                        <!--<RowDefinition Height="25"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1"/>
-                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>-->
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="50"/>
@@ -74,7 +75,25 @@
                     <!--Rate Settings-->
                     <Grid Grid.Row="5" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="10">
 
-                        <Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.Row="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="{Binding RateImage}" HeightRequest="40">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="SwtchRate_Toggled"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Grid Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="25" Padding="7,0,7,0">
+                            <local:CustomEntry HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsSellRate}" StyleId="CenterAllign"
+                                           Text="{Binding SellRate}" FontSize="14" Placeholder="Enter maximum sell rate" PlaceholderColor="Gray" HorizontalTextAlignment="Center" MaxLength="20"/>
+                            <local:CustomEntry HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsBuyRate}" StyleId="CenterAllign"
+                                           Text="{Binding BuyRate}" FontSize="14" Placeholder="Enter minimum buy rate" PlaceholderColor="Gray"  HorizontalTextAlignment="Center" MaxLength="20"/>
+                        </Grid>
+                        <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray"/>
+
+                        <!--<Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
@@ -88,18 +107,19 @@
                                            Text="{Binding SellRate}" FontSize="14" Placeholder="Enter maximum sell rate" PlaceholderColor="Gray" HorizontalTextAlignment="Center" MaxLength="20"/>
                             <local:CustomEntry HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Keyboard="Numeric" IsVisible="{Binding IsBuyRate}" StyleId="CenterAllign"
                                            Text="{Binding BuyRate}" FontSize="14" Placeholder="Enter minimum buy rate" PlaceholderColor="Gray"  HorizontalTextAlignment="Center" MaxLength="20"/>
-                        </Grid>
+                        </Grid>-->
+                        
                         <!--<Label Grid.Column="0" Text="Buy Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>
                         <Switch Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  
                            Toggled="SwtchRate_Toggled" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
                         <Label Grid.Column="2" Text="Sell Rate" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Gray"/>-->
                     </Grid>
-                    <BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="30,0,30,0"/>
+                    <!--<BoxView Grid.Row="7" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="30,0,30,0"/>-->
 
-                    <Label Grid.Row="9" Text="When should this search expire?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
-                           TextColor="Gray" HorizontalTextAlignment="Center"/>
+                    <!--<Label Grid.Row="9" Text="When should this search expire?" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
+                           TextColor="Gray" HorizontalTextAlignment="Center"/>-->
                     
-                    <!--Expire Time Picker-->
+                    <!--Expire Time Picker--><!--
                     <Grid Grid.Row="11" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="100" Margin="100,0,100,10">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Expiry_Tapped"/>
@@ -122,14 +142,29 @@
                         </local:CustomPicker>
 
                     </Grid>
-                    <BoxView Grid.Row="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="100,0,100,0"/>
+                    <BoxView Grid.Row="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="LightGray" Margin="100,0,100,0"/>-->
 
-                    <Label Grid.Row="14" Text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the" 
-                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" 
-                           TextColor="Gray" HorizontalTextAlignment="Center" Margin="20,0,20,0"/>
+                    <Label Grid.Row="7" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="12" TextColor="Gray" HorizontalTextAlignment="Center" Margin="20,0,20,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="By clicking search, you agree to our " TextColor="Gray"/>
+                                <Span x:Name="spnTerms" Text="Terms of Service " TextColor="{StaticResource AppLightBlueColor}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="SpnTerms_Tapped"/>
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text="and " TextColor="{StaticResource AppGrayColor}"/>
+                                <Span Text="Privacy Policy" TextColor="{StaticResource AppLightBlueColor}">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Privacy_Tapped"/> 
+                                    </Span.GestureRecognizers>
+                                </Span>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
                     <!--Buttons-->
-                    <local:CustomButtonTxt Grid.Row="16" Text="Update" BackgroundColor="{StaticResource AppLightBlueColor}" BorderWidth="1" Command="{Binding UpdateCommand}"
+                    <local:CustomButtonTxt Grid.Row="9" Text="Update" BackgroundColor="{StaticResource AppLightBlueColor}" BorderWidth="1" Command="{Binding UpdateCommand}"
                     TextColor="{StaticResource AppWhiteColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" FontSize="18"/>
 
                 </Grid>

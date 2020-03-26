@@ -27,7 +27,7 @@
                 </Grid>
             </Grid>
             <!--If Listview Not Contain Any Item-->
-            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False">
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsCurrencyNotAvailable}">
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TranslationY="-30" Padding="10,0,10,0">
                     <Image Source="globe.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                     <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore  et dolore manga  aliqua"
@@ -35,7 +35,7 @@
                 </StackLayout>
             </Grid>
             <!--If Listview  Contain More Than 0 Item-->
-            <Grid Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True">
+            <Grid Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True" IsVisible="{Binding IsCurrencyAvailable}">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>

@@ -30,6 +30,12 @@ namespace WhyRemitApp.Views.Popup
             CurrType = _CurrType;
             CountryPickerList.SetBinding(ListView.ItemsSourceProperty, "CurrencyList");
             CountryPickerList.ItemSelected += CountryPickerList_ItemSelected;
+
+            if (_CurrType == "Have")
+                lblSelectCurrency.Text = "I Have";
+            else
+                lblSelectCurrency.Text = "I Need";
+
             PopUpBgLayout.GestureRecognizers.Add(new TapGestureRecognizer
             {
                 Command = new Command(HideDialog)
@@ -42,16 +48,32 @@ namespace WhyRemitApp.Views.Popup
             {
                 if (CurrType == "Have")
                 {
-                    NewCurrencyVM.HaveCurrencySelected(item.Currency); 
+                    NewCurrencyVM.HaveCurrencySelected(item.Currency);
                 }
                 else
                 {
                     NewCurrencyVM.NeedCurrencySelected(item.Currency);
                 }
-                HideDialog(); 
+                HideDialog();
             }
         }
-         
+
+        void OnSearchBarTextChanged(object sender, TextChangedEventArgs args)
+        {
+            FilterNames();
+        }
+        void OnSearchBarButtonPressed(object sender, EventArgs args)
+        {
+            FilterNames();
+        }
+
+        private void FilterNames()
+        {
+            string filter = EntrySearch.Text;
+            CountryPickerList.ItemsSource = NewCurrencyVM.CurrencyList.Where(x => x.Currency.ToLower().Contains(filter.ToLower()));
+            CountryPickerList.EndRefresh();
+        }
+
         public void ShowDialog()
         {
             ShowDialogAnimation(PopUpDialogLayout, PopUpBgLayout);

@@ -17,21 +17,29 @@
                    BackgroundColor="White" HasShadow="False" IsClippedToBounds="True" Padding="-10,0,-10,0" CornerRadius="12">
                 <Grid RowSpacing="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"></RowDefinition> 
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="1"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
                     </Grid.RowDefinitions>
                     <!--Header-->
                     <Grid Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource AppBlueColor}">
-                        <Label Text="Select Country" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"
+                        <Label x:Name="lblSelectCurrency" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"
                                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="18" >
                         </Label>
                         <Image Source="cross.png" HorizontalOptions="EndAndExpand" HeightRequest="22" WidthRequest="22" VerticalOptions="CenterAndExpand" Margin="0,0,20,0" />
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ImageCross_Tapped" />
                         </Image.GestureRecognizers>
-                    </Grid>  
+                    </Grid>
+
+                    <Grid Grid.Row="1" BackgroundColor="#ffffff" Margin="10,0,10,0">
+                        <local:CustomEntry x:Name="EntrySearch" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="16" Placeholder="Search..." PlaceholderColor="#CCCCCC"
+                              TextColor="#000000" TextChanged="OnSearchBarTextChanged" Completed="OnSearchBarButtonPressed" Margin="10,0,10,0"></local:CustomEntry>
+                    </Grid>
+                    <Grid Grid.Row="2" BackgroundColor="{StaticResource AppBlueColor}"/>
                     <!--Country List-->
-                    <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid Grid.Row="3" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,10">
                             <StackLayout>
                                 <ListView CachingStrategy="RecycleElement" x:Name="CountryPickerList" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" SeparatorVisibility="None">

@@ -74,27 +74,48 @@ namespace WhyRemitApp.Views.Currencies
         }
 
         /// <summary>
-        /// TODO : To Define Event Handler For Expiry Tapped,
+        /// TODO : To Open Terms and Conditions on browser...
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Expiry_Tapped(object sender, EventArgs e)
+        private void SpnTerms_Tapped(object sender, EventArgs e)
         {
-            PckExpiryTime.Focus();
+            Device.OpenUri(new Uri("https://whyremit.com/terms"));
         }
 
+
         /// <summary>
-        /// TODO : To Define Event Handler For Expiry Tapped...
+        /// TODO : To Open Privacy Policy on browser...
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PckExpiryTime_SelectedIndexChanged(object sender, EventArgs e)
+        private void Privacy_Tapped(object sender, EventArgs e)
         {
-            if (PckExpiryTime.SelectedIndex != -1)
-            {
-                EditCurrencyVM.ExpireTime = PckExpiryTime.SelectedItem.ToString();
-            }
+            Device.OpenUri(new Uri("https://whyremit.com/privacy"));
         }
+
+        ///// <summary>
+        ///// TODO : To Define Event Handler For Expiry Tapped,
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Expiry_Tapped(object sender, EventArgs e)
+        //{
+        //    PckExpiryTime.Focus();
+        //}
+
+        ///// <summary>
+        ///// TODO : To Define Event Handler For Expiry Tapped...
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void PckExpiryTime_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (PckExpiryTime.SelectedIndex != -1)
+        //    {
+        //        EditCurrencyVM.ExpireTime = PckExpiryTime.SelectedItem.ToString();
+        //    }
+        //}
         #endregion 
     }
 }

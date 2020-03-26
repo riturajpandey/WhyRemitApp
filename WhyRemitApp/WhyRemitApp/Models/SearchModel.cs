@@ -34,9 +34,51 @@ namespace WhyRemitApp.Models
             {
                 string name = string.Empty;
                 if (statuscode != "ACTIVE")
-                { name = "Closed"; }
+                { 
+                    name = "Closed"; 
+                }
                 else
-                { name = "Expires in " + duration; }
+                {
+                    //name = "Expires in " + duration;
+                    int minutes = Convert.ToInt32(expiryminutes);
+                    if(minutes == 0)
+                    {
+                        name = "Expired";
+                    }
+                    else if(minutes == 60)
+                    {
+                        name = "Expires in " + "1 hour";
+                    }
+                    else if(minutes < 60)
+                    {
+                        name = "Expires in " + minutes.ToString() + " mins";
+                    }
+                    else if(minutes > 60)
+                    {
+                        var time = TimeSpan.FromMinutes(minutes);
+                        string hour = string.Format("{0:00}", (int)time.TotalHours); 
+                        string min = string.Format("{0:00}", (int)time.Minutes);
+
+                        int totalHours = Convert.ToInt32(hour);
+                        int totalMinutes = Convert.ToInt32(min);
+
+                        double days = minutes / 60 / 24;
+                        double hours = (minutes - days * 24 * 60) / 60; 
+
+                        if (totalHours > 23) // 1500
+                        {
+                            name = "Expires in " + days.ToString() + " day(s)";  
+                        }
+                        else if(totalHours <= 24 && totalMinutes < 60) // 790
+                        {
+                            name = "Expires in " + hour + " hour(s) " + min + " minute(s)"; 
+                        }
+                        else if(totalHours <= 24 && totalMinutes > 60)
+                        {
+                            name = "Expires in " + hour + " hour(s)";
+                        }
+                    }
+                }
                 return name;
             }
         }

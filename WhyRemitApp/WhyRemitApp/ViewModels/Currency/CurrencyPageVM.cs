@@ -15,6 +15,7 @@ namespace WhyRemitApp.ViewModels.Currency
     public class CurrencyPageVM : BaseViewModel
     {
         public List<string> ContextMenu = new List<string>();
+        public ObservableCollection<SearchModel> AllCurrencyList = new ObservableCollection<SearchModel>();
 
         #region CONSTRUCTOR
 
@@ -27,12 +28,23 @@ namespace WhyRemitApp.ViewModels.Currency
             Navigation = nav;
             ProfileCommand = new Command(OnProfileAsync);
             SettingCommand = new Command(OnSettingAsync);
-            ContextMenu.Add("Show Closed"); 
-            //ContextMenu.Add("Hide Closed"); 
-            ContextMenu.Add("Order By Most Recent");
-            ContextMenu.Add("Order By Currency I Have");
-            ContextMenu.Add("Order By Currency I Need");
-        }
+
+            //ContextMenu.Add("Show Closed"); 
+            //ContextMenu.Add("Order By Most Recent");
+            //ContextMenu.Add("Order By Currency I Have");
+            //ContextMenu.Add("Order By Currency I Need");
+
+            int minutes = 1438;
+            var time = TimeSpan.FromMinutes(minutes);
+            string hour = string.Format("{0:00}", (int)time.TotalHours);
+            string min = string.Format("{0:00}", (int)time.Minutes);
+
+            int totalHours = Convert.ToInt32(hour);
+            int totalMinutes = Convert.ToInt32(min);
+
+            double days = minutes / 60 / 24;
+            double hours = (minutes - days * 24 * 60) / 60;
+        } 
 
         #endregion
 
@@ -70,6 +82,34 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
+
+        private bool _IsCurrencyAvailable ;
+        public bool IsCurrencyAvailable
+        {
+            get { return _IsCurrencyAvailable; }
+            set
+            {
+                if (_IsCurrencyAvailable != value)
+                {
+                    _IsCurrencyAvailable = value;
+                    OnPropertyChanged("IsCurrencyAvailable");
+                }
+            }
+        }
+
+        private bool _IsCurrencyNotAvailable ;
+        public bool IsCurrencyNotAvailable
+        {
+            get { return _IsCurrencyNotAvailable; }
+            set
+            {
+                if (_IsCurrencyNotAvailable != value)
+                {
+                    _IsCurrencyNotAvailable = value;
+                    OnPropertyChanged("IsCurrencyNotAvailable");
+                }
+            }
+        }
         #endregion
 
         #region Methods 
@@ -98,14 +138,20 @@ namespace WhyRemitApp.ViewModels.Currency
         /// <returns></returns>
         public async Task CallCurrenctList()
         {
+            ContextMenu = new List<string>();
+            ContextMenu.Add("Show Closed");
+            ContextMenu.Add("Order By Most Recent");
+            ContextMenu.Add("Order By Currency I Have");
+            ContextMenu.Add("Order By Currency I Need");
+
             if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralSearches))
             {
                 var a = Helpers.LocalStorage.GeneralSearches;
                 var searchDetail = JsonConvert.DeserializeObject<SearchResponseModel>(a);
                 if (searchDetail.searches != null)
                 {
-                    var searches = searchDetail.searches.OrderByDescending(b => b.datecreated).ToList();
-                    CurrencyModelList = new ObservableCollection<SearchModel>(searches);  
+                    var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList();
+                    CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches); 
                 }
             }
             try
@@ -127,12 +173,21 @@ namespace WhyRemitApp.ViewModels.Currency
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     var requestList = (objs as SearchResponseModel);
-                                    if (requestList != null)
+                                    if (requestList.searches.Count != 0)
                                     {
                                         UserDialog.HideLoading();
-                                        var searches = requestList.searches.OrderByDescending(b => b.datecreated).ToList();
-                                        var closedSearches = searches.Where(c => c.statuscode != "CLOSED").ToList();
-                                        CurrencyModelList = new ObservableCollection<SearchModel>(requestList.searches);
+                                        AllCurrencyList = new ObservableCollection<SearchModel>(requestList.searches); 
+                                        var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList(); 
+                                        CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches);   
+
+                                        IsCurrencyAvailable = true;
+                                        IsCurrencyNotAvailable = false;
+                                    }
+                                    else
+                                    {
+                                        UserDialog.HideLoading();
+                                        IsCurrencyAvailable = false;
+                                        IsCurrencyNotAvailable = true;
                                     }
                                 });
                             }, (objj) =>
