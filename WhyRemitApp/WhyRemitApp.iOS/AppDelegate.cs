@@ -32,6 +32,7 @@ namespace WhyRemitApp.iOS
             Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
             //Popup Menu
             Xam.Plugin.iOS.PopupEffect.Init();
+            XamEffects.iOS.Effects.Init();
             #endregion
 
             #region

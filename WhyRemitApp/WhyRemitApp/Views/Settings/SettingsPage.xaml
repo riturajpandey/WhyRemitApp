@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              x:Class="WhyRemitApp.Views.Settings.SettingsPage"
              Title="Setting">
     <ContentPage.Content>
@@ -95,10 +96,11 @@
                         <!-- Share-->
                         <Frame Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                                <Grid.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0"
+                                 xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding AboutUsCommand}">
+                                <!--<Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Share_Tapped"/>
-                                </Grid.GestureRecognizers>
+                                </Grid.GestureRecognizers>-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
                                     <ColumnDefinition Width="*"/>
@@ -111,10 +113,11 @@
                         <!--FeedBack-->
                         <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                                <Grid.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0"
+                                  xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding ShareCommand}">
+                                <!--<Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Feedback_Tapped"/>
-                                </Grid.GestureRecognizers>
+                                </Grid.GestureRecognizers>-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
                                     <ColumnDefinition Width="*"/>
@@ -127,10 +130,11 @@
                         <!--Privacy Policy-->
                         <Frame Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                                <Grid.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0"
+                                  xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding TermConditionCommand}">
+                                <!--<Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="SpnTerms_Tapped"/>
-                                </Grid.GestureRecognizers>
+                                </Grid.GestureRecognizers>-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
                                     <ColumnDefinition Width="*"/>
@@ -143,10 +147,11 @@
                         <!--About Us-->
                         <Frame Grid.Row="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True"
                                HasShadow="False" Padding="15,0,15,0" CornerRadius="25" BorderColor="{StaticResource AppBlueColor}">
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                                <Grid.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0"
+                                  xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding PrivacyPolicyCommand}">
+                                <!--<Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Privacy_Tapped"/>
-                                </Grid.GestureRecognizers>
+                                </Grid.GestureRecognizers>-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="32"/>
                                     <ColumnDefinition Width="*"/> 
@@ -199,7 +204,7 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="set.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                        <Image Grid.Row="0" Source="set.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30"/>
                         <Label Grid.Row="1" Text="Settings" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            TextColor="{StaticResource AppBlueColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>

@@ -135,7 +135,7 @@
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="setting.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
+                            <Image Grid.Row="0" Source="settinggray.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="28" WidthRequest="28"/>
                         <Label Grid.Row="1" Text="Settings" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            TextColor="Gray" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>

@@ -353,7 +353,7 @@ namespace WhyRemitApp.ViewModels.Currency
         /// <returns></returns>
         private async Task<bool> Validate()
         {
-            UserDialog.ShowLoading();
+            UserDialog.ShowLoading("Please Wait…", MaskType.Clear);
             if (string.IsNullOrEmpty(HaveCurrency))
             {
                 UserDialog.HideLoading();

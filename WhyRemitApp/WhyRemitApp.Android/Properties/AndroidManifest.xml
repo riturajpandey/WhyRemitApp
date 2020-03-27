@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.whyremitapp">
-  <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="28" />
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
   <application android:label="WhyRemit"  android:usesCleartextTraffic="true" android:allowBackup="false" android:fullBackupOnly="false" android:largeHeap="true" android:hardwareAccelerated="true">
     <provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.whyremitapp.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@drawable/file_paths"></meta-data>

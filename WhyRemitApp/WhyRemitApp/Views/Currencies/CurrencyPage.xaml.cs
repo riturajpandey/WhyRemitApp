@@ -19,6 +19,7 @@ namespace WhyRemitApp.Views.Currencies
         //TODO : To Define class Level Variables...
         CurrencyPageVM CurrencyVM;
         PopupMenu Popup;
+        int click = 0;
 
         public CurrencyPage()
         {
@@ -34,6 +35,7 @@ namespace WhyRemitApp.Views.Currencies
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            click = 0;
             BtnNewCurrency.IsEnabled = true;
             CurrencyVM.IsPageEnabled = true;
             await CurrencyVM.CallCurrenctList(); 
@@ -114,13 +116,18 @@ namespace WhyRemitApp.Views.Currencies
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e.SelectedItem == null) return;
-            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
-            BtnNewCurrency.IsEnabled = false;
-            CurrencyVM.IsPageEnabled = false;
-            var item = e.SelectedItem as SearchModel;
-            if (item != null)
-                this.Navigation.PushModalAsync(new Views.Currencies.CurrenncyDetailPagexaml(item));
+            if(click == 0)
+            {
+                click++;
+                if (e.SelectedItem == null) return;
+                ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                BtnNewCurrency.IsEnabled = false;
+                CurrencyVM.IsPageEnabled = false;
+                var item = e.SelectedItem as SearchModel;
+                if (item != null)
+                    this.Navigation.PushModalAsync(new Views.Currencies.CurrenncyDetailPagexaml(item));
+            }
+           
         }
     }
 }

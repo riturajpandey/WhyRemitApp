@@ -33,6 +33,7 @@ namespace WhyRemitApp.Droid
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Plugin.InputKit.Platforms.Droid.Config.Init(this, savedInstanceState);
             CarouselViewRenderer.Init();
+            XamEffects.Droid.Effects.Init(); 
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Activity = this;
             #endregion
 

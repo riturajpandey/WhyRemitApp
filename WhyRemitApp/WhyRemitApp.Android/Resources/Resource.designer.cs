@@ -14815,179 +14815,182 @@ namespace WhyRemitApp.Droid
 			// aapt resource value: 0x7F070144
 			public const int setting1 = 2131165508;
 			
+			// aapt resource value: 0x7F070147
+			public const int settinggray = 2131165511;
+			
 			// aapt resource value: 0x7F070145
 			public const int Setting_blue = 2131165509;
 			
 			// aapt resource value: 0x7F070146
 			public const int Setting_bottom_line = 2131165510;
 			
-			// aapt resource value: 0x7F070147
-			public const int sg = 2131165511;
-			
 			// aapt resource value: 0x7F070148
-			public const int Share_blue = 2131165512;
+			public const int sg = 2131165512;
 			
 			// aapt resource value: 0x7F070149
-			public const int si = 2131165513;
+			public const int Share_blue = 2131165513;
 			
 			// aapt resource value: 0x7F07014A
-			public const int sk = 2131165514;
+			public const int si = 2131165514;
 			
 			// aapt resource value: 0x7F07014B
-			public const int sl = 2131165515;
+			public const int sk = 2131165515;
 			
 			// aapt resource value: 0x7F07014C
-			public const int sm = 2131165516;
+			public const int sl = 2131165516;
 			
 			// aapt resource value: 0x7F07014D
-			public const int sn = 2131165517;
+			public const int sm = 2131165517;
 			
 			// aapt resource value: 0x7F07014E
-			public const int so = 2131165518;
+			public const int sn = 2131165518;
 			
 			// aapt resource value: 0x7F07014F
-			public const int splash = 2131165519;
+			public const int so = 2131165519;
 			
 			// aapt resource value: 0x7F070150
-			public const int sr = 2131165520;
+			public const int splash = 2131165520;
 			
 			// aapt resource value: 0x7F070151
-			public const int st = 2131165521;
+			public const int sr = 2131165521;
 			
 			// aapt resource value: 0x7F070152
-			public const int sv = 2131165522;
+			public const int st = 2131165522;
 			
 			// aapt resource value: 0x7F070153
-			public const int sy = 2131165523;
+			public const int sv = 2131165523;
 			
 			// aapt resource value: 0x7F070154
-			public const int sz = 2131165524;
+			public const int sy = 2131165524;
 			
 			// aapt resource value: 0x7F070155
-			public const int td = 2131165525;
+			public const int sz = 2131165525;
 			
 			// aapt resource value: 0x7F070156
-			public const int tg = 2131165526;
+			public const int td = 2131165526;
 			
 			// aapt resource value: 0x7F070157
-			public const int th = 2131165527;
+			public const int tg = 2131165527;
 			
 			// aapt resource value: 0x7F070158
-			public const int Time_bottom_line = 2131165528;
+			public const int th = 2131165528;
 			
 			// aapt resource value: 0x7F070159
-			public const int tj = 2131165529;
+			public const int Time_bottom_line = 2131165529;
 			
 			// aapt resource value: 0x7F07015A
-			public const int tl = 2131165530;
+			public const int tj = 2131165530;
 			
 			// aapt resource value: 0x7F07015B
-			public const int tm = 2131165531;
+			public const int tl = 2131165531;
 			
 			// aapt resource value: 0x7F07015C
-			public const int tn = 2131165532;
+			public const int tm = 2131165532;
 			
 			// aapt resource value: 0x7F07015D
-			public const int to = 2131165533;
+			public const int tn = 2131165533;
 			
 			// aapt resource value: 0x7F07015E
-			public const int tooltip_frame_dark = 2131165534;
+			public const int to = 2131165534;
 			
 			// aapt resource value: 0x7F07015F
-			public const int tooltip_frame_light = 2131165535;
+			public const int tooltip_frame_dark = 2131165535;
 			
 			// aapt resource value: 0x7F070160
-			public const int tp = 2131165536;
+			public const int tooltip_frame_light = 2131165536;
 			
 			// aapt resource value: 0x7F070161
-			public const int tr = 2131165537;
+			public const int tp = 2131165537;
 			
 			// aapt resource value: 0x7F070162
-			public const int tt = 2131165538;
+			public const int tr = 2131165538;
 			
 			// aapt resource value: 0x7F070163
-			public const int tv = 2131165539;
+			public const int tt = 2131165539;
 			
 			// aapt resource value: 0x7F070164
-			public const int tw = 2131165540;
+			public const int tv = 2131165540;
 			
 			// aapt resource value: 0x7F070165
-			public const int tz = 2131165541;
+			public const int tw = 2131165541;
 			
 			// aapt resource value: 0x7F070166
-			public const int ua = 2131165542;
+			public const int tz = 2131165542;
 			
 			// aapt resource value: 0x7F070167
-			public const int ug = 2131165543;
+			public const int ua = 2131165543;
 			
 			// aapt resource value: 0x7F070168
-			public const int uk = 2131165544;
+			public const int ug = 2131165544;
 			
 			// aapt resource value: 0x7F070169
-			public const int Up = 2131165545;
+			public const int uk = 2131165545;
 			
 			// aapt resource value: 0x7F07016A
-			public const int us = 2131165546;
+			public const int Up = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int user = 2131165547;
+			public const int us = 2131165547;
 			
 			// aapt resource value: 0x7F07016C
-			public const int user1 = 2131165548;
+			public const int user = 2131165548;
 			
 			// aapt resource value: 0x7F07016D
-			public const int user_blue = 2131165549;
+			public const int user1 = 2131165549;
 			
 			// aapt resource value: 0x7F07016E
-			public const int uy = 2131165550;
+			public const int user_blue = 2131165550;
 			
 			// aapt resource value: 0x7F07016F
-			public const int uz = 2131165551;
+			public const int uy = 2131165551;
 			
 			// aapt resource value: 0x7F070170
-			public const int va = 2131165552;
+			public const int uz = 2131165552;
 			
 			// aapt resource value: 0x7F070171
-			public const int vc = 2131165553;
+			public const int va = 2131165553;
 			
 			// aapt resource value: 0x7F070172
-			public const int ve = 2131165554;
+			public const int vc = 2131165554;
 			
 			// aapt resource value: 0x7F070173
-			public const int vg = 2131165555;
+			public const int ve = 2131165555;
 			
 			// aapt resource value: 0x7F070174
-			public const int vi = 2131165556;
+			public const int vg = 2131165556;
 			
 			// aapt resource value: 0x7F070175
-			public const int view_blue = 2131165557;
+			public const int vi = 2131165557;
 			
 			// aapt resource value: 0x7F070176
-			public const int vn = 2131165558;
+			public const int view_blue = 2131165558;
 			
 			// aapt resource value: 0x7F070177
-			public const int vu = 2131165559;
+			public const int vn = 2131165559;
 			
 			// aapt resource value: 0x7F070178
-			public const int whitedownarrow = 2131165560;
+			public const int vu = 2131165560;
 			
 			// aapt resource value: 0x7F070179
-			public const int whitedownarrowpng = 2131165561;
+			public const int whitedownarrow = 2131165561;
 			
 			// aapt resource value: 0x7F07017A
-			public const int ws = 2131165562;
+			public const int whitedownarrowpng = 2131165562;
 			
 			// aapt resource value: 0x7F07017B
-			public const int ye = 2131165563;
+			public const int ws = 2131165563;
 			
 			// aapt resource value: 0x7F07017C
-			public const int za = 2131165564;
+			public const int ye = 2131165564;
 			
 			// aapt resource value: 0x7F07017D
-			public const int zm = 2131165565;
+			public const int za = 2131165565;
 			
 			// aapt resource value: 0x7F07017E
-			public const int zw = 2131165566;
+			public const int zm = 2131165566;
+			
+			// aapt resource value: 0x7F07017F
+			public const int zw = 2131165567;
 			
 			static Drawable()
 			{

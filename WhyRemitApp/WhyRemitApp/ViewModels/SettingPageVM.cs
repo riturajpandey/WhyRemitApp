@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.Models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace WhyRemitApp.ViewModels
@@ -24,6 +25,7 @@ namespace WhyRemitApp.ViewModels
             ShareCommand= new Command(OnShareAsync);
             AboutUsCommand= new Command(OnAboutUsAsync);
             PrivacyPolicyCommand= new Command(OnPrivacyAsync);
+            TermConditionCommand = new Command(OnTermConditionCommandAsync);
         }
 
         #endregion
@@ -34,6 +36,7 @@ namespace WhyRemitApp.ViewModels
         public Command ShareCommand { get; set; }
         public Command AboutUsCommand { get; set; }
         public Command PrivacyPolicyCommand { get; set; }
+        public Command TermConditionCommand { get; set; }
         #endregion
 
         #region PROPERTIES 
@@ -145,7 +148,7 @@ namespace WhyRemitApp.ViewModels
         /// <param name="obj"></param>
         private async void OnShareAsync(object obj)
         {
-            
+            Device.OpenUri(new Uri("https://whyremit.com/feedback"));
         }
 
         /// <summary>
@@ -154,7 +157,11 @@ namespace WhyRemitApp.ViewModels
         /// <param name="obj"></param>
         private async void OnAboutUsAsync(object obj)
         {
-
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Title = "My App Data",
+                Text = "WhyRemit is the exchange rates app: https://whyremit.com",
+            });
         }
 
         /// <summary>
@@ -163,7 +170,16 @@ namespace WhyRemitApp.ViewModels
         /// <param name="obj"></param>
         private async void OnPrivacyAsync(object obj)
         {
+            Device.OpenUri(new Uri("https://whyremit.com/privacy"));
+        }
 
+        /// <summary>
+        /// TODO : To Show About Us...
+        /// </summary>
+        /// <param name="obj"></param>
+        private async void OnTermConditionCommandAsync(object obj)
+        {
+            Device.OpenUri(new Uri("https://whyremit.com/terms"));
         }
         #endregion 
     }
