@@ -170,7 +170,7 @@ namespace WhyRemitApp.ViewModels
                 MessagingCenter.Send<string>("", "LoadApiImage");
             }
             else
-            { 
+            {
                 try
                 {
                     UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
@@ -383,8 +383,8 @@ namespace WhyRemitApp.ViewModels
                         return;
                     }
 
-                    if (Device.RuntimePlatform.Equals("Android"))
-                        UserDialogs.Instance.ShowLoading("Please Wait…");
+                    //if (Device.RuntimePlatform.Equals("Android"))
+                    //    UserDialogs.Instance.ShowLoading("Please Wait…");
 
                     var file = await CrossMedia.Current.PickPhotoAsync();
                     if (file == null)
@@ -451,7 +451,7 @@ namespace WhyRemitApp.ViewModels
             if (!isValid1)
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Display name is not valid");
+                UserDialog.Alert("Display name must have characters only.");
                 return false;
             }
             if (DisplayName.Length < 3 || DisplayName.Length > 50)
@@ -460,25 +460,32 @@ namespace WhyRemitApp.ViewModels
                 UserDialog.Alert("The display name should be between 3 to 50 characters.", "", "Ok");
                 return false;
             }
-            if (string.IsNullOrEmpty(EmailAddress))
+            //if (string.IsNullOrEmpty(EmailAddress))
+            //{
+            //    UserDialog.HideLoading();
+            //    UserDialog.Alert("Please enter your email Address.", "", "Ok");
+            //    return false;
+            //}
+            if (!string.IsNullOrEmpty(EmailAddress))
             {
-                UserDialog.HideLoading();
-                UserDialog.Alert("Please enter your email Address.", "", "Ok");
-                return false;
+                if (EmailAddress.Length < 6 || EmailAddress.Length > 100)
+                {
+                    UserDialog.HideLoading();
+                    UserDialog.Alert("The Email address should be between 6 to 100 characters.", "", "Ok");
+                    return false;
+                }
             }
-            if (EmailAddress.Length < 3 || EmailAddress.Length > 100)
+            if (!string.IsNullOrEmpty(EmailAddress))
             {
-                UserDialog.HideLoading();
-                UserDialog.Alert("The Email address should be between 3 to 100 characters.", "", "Ok");
-                return false;
+                bool isValid2 = (Regex.IsMatch(EmailAddress, _emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+                if (!isValid2)
+                {
+                    UserDialog.HideLoading();
+                    UserDialog.Alert("Email Address is not valid");
+                    return false;
+                }
             }
-            bool isValid2 = (Regex.IsMatch(EmailAddress, _emailRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            if (!isValid2)
-            {
-                UserDialog.HideLoading();
-                UserDialog.Alert("Email Address is not valid");
-                return false;
-            }
+
             UserDialog.HideLoading();
             return true;
         }

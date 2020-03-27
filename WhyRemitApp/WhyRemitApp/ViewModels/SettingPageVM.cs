@@ -65,7 +65,7 @@ namespace WhyRemitApp.ViewModels
             }
         }
 
-        private bool _IsNotificationOn = true;
+        private bool _IsNotificationOn  = true;
         public bool IsNotificationOn
         {
             get { return _IsNotificationOn; }

@@ -131,7 +131,7 @@ namespace WhyRemitApp.Views.Settings
             await Share.RequestAsync(new ShareTextRequest
             {
                 Title = "My App Data",
-                Text = "Simple text message to share via WhyRemit App",
+                Text = "WhyRemit is the exchange rates app: https://whyremit.com",
             });
         }
         #endregion

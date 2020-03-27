@@ -212,6 +212,9 @@
     <PackageReference Include="Xamarin.Forms.InputKit">
       <Version>3.0.15</Version>
     </PackageReference>
+    <PackageReference Include="XamEffects">
+      <Version>1.6.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace WhyRemitApp.Views.Currencies
             {
                 //To Delete The Item...
                 await CurrencyVM.PerformActionOnMatches("R", item.matchnumber);
-                UserDialogs.Instance.Alert("Match rejected.", "Alert", "Ok");
+                //UserDialogs.Instance.Alert("Match rejected.", "Alert", "Ok");
                 await CurrencyVM.GetCurrencyDetailsList();
             }
         }
@@ -69,7 +70,7 @@ namespace WhyRemitApp.Views.Currencies
             {
                 //To Approve The Item...
                 await CurrencyVM.PerformActionOnMatches("A",item.matchnumber);
-                UserDialogs.Instance.Alert("Match accepted.", "Alert", "Ok");
+                //UserDialogs.Instance.Alert("Match accepted.", "Alert", "Ok");
                 await CurrencyVM.GetCurrencyDetailsList();
             }
         }
@@ -81,16 +82,33 @@ namespace WhyRemitApp.Views.Currencies
             };
 
             //Popup.SetBinding(PopupMenu.ItemsSourceProperty, "ContextMenu");
+            CurrencyVM.ContextMenu = new List<string>();
+            if(Currency.statuscode == "CLOSED")
+            {
+                CurrencyVM.ContextMenu.Add("Delete");
+                //CurrencyVM.ContextMenu.Add("Close");
+                CurrencyVM.ContextMenu.Add("Sort matches by Name");
+                CurrencyVM.ContextMenu.Add("Sort matches by Rate");
+            }
+            else
+            {
+                CurrencyVM.ContextMenu.Add("Delete");
+                CurrencyVM.ContextMenu.Add("Close");
+                CurrencyVM.ContextMenu.Add("Sort matches by Name");
+                CurrencyVM.ContextMenu.Add("Sort matches by Rate");
+            }
             Popup.ItemsSource = CurrencyVM.ContextMenu;
             Popup.ShowPopup(sender as Grid);
             Popup.OnItemSelected += popup_onitemselected;
         }
+
+        private async void ChangeRate_Tapped(object sender, EventArgs e)
+        {
+            await this.Navigation.PushModalAsync(new EditCurrencyPage(Currency));
+        }
+
         private async void popup_onitemselected(string item)
         {
-            if (item == "Edit")
-            {
-                await this.Navigation.PushModalAsync(new EditCurrencyPage(Currency));
-            }
             if (item == "Delete")
             {
                 var result = await UserDialogs.Instance.ConfirmAsync("Are you sure you want to delete the exchange?", null, "YES", "NO");
@@ -104,13 +122,37 @@ namespace WhyRemitApp.Views.Currencies
                 }
             }
             if (item == "Close")
-            { await CurrencyVM.PerformActionOnSearches("C"); }
+            {
+                var result = await UserDialogs.Instance.ConfirmAsync("Are you sure you want to close the exchange?", null, "YES", "NO");
+                var text = (result ? "YES" : "NO");
+                if (text == "NO")
+                { }
+                else
+                {
+                    await CurrencyVM.PerformActionOnSearches("C");
+                }
+            }
             if (item == "SortByName")
-            { }
+            {
+                var allMatchesListByName = CurrencyVM.CurrencyMatchesList.OrderBy(z => z.displayname).ToList();
+                CurrencyVM.CurrencyMatchesList = new ObservableCollection<MatchesModel>(allMatchesListByName); 
+            }
             if (item == "SortByRate")
-            { }
+            {
+                if(Currency.buyorsell == "B")
+                {
+                    var allMatchesListByRate = CurrencyVM.CurrencyMatchesList.OrderByDescending(z => z.rate).ToList();
+                    CurrencyVM.CurrencyMatchesList = new ObservableCollection<MatchesModel>(allMatchesListByRate);
+                }
+                else
+                {
+                    var allMatchesListByRate = CurrencyVM.CurrencyMatchesList.OrderBy(z => z.rate).ToList();
+                    CurrencyVM.CurrencyMatchesList = new ObservableCollection<MatchesModel>(allMatchesListByRate);
+                }
+            }
         }
-       
-        #endregion 
+
+        #endregion
+      
     }
 }

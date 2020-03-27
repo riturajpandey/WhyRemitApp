@@ -25,11 +25,11 @@ namespace WhyRemitApp.ViewModels.Currency
             ProfileCommand = new Command(OnProfileAsync);
             SettingCommand = new Command(OnSettingAsync);
             BackCommand = new Command(OnBackAsync);
-            ContextMenu.Add("Edit");
-            ContextMenu.Add("Delete");
-            ContextMenu.Add("Close");
-            ContextMenu.Add("SortByName");
-            ContextMenu.Add("SortByRate");
+
+            //ContextMenu.Add("Delete");
+            //ContextMenu.Add("Close");
+            //ContextMenu.Add("SortByName");
+            //ContextMenu.Add("SortByRate");
         }
 
         #endregion
@@ -70,7 +70,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        private string _CreatedOn = "12/12/2019 10:00 AM";
+        private string _CreatedOn ;
         public string CreatedOn
         {
             get { return _CreatedOn; }
@@ -149,7 +149,48 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        
+
+        private bool _IsMatchesAvailable;
+        public bool IsMatchesAvailable
+        {
+            get { return _IsMatchesAvailable; }
+            set
+            {
+                if (_IsMatchesAvailable != value)
+                {
+                    _IsMatchesAvailable = value;
+                    OnPropertyChanged("IsMatchesAvailable");
+                }
+            }
+        }
+
+        private bool _IsMatchesNotAvailable;
+        public bool IsMatchesNotAvailable
+        {
+            get { return _IsMatchesNotAvailable; }
+            set
+            {
+                if (_IsMatchesNotAvailable != value)
+                {
+                    _IsMatchesNotAvailable = value;
+                    OnPropertyChanged("IsMatchesNotAvailable");
+                }
+            }
+        }
+
+        private string _ChangeRate;
+        public string ChangeRate
+        {
+            get { return _ChangeRate; }
+            set
+            {
+                if (_ChangeRate != value)
+                {
+                    _ChangeRate = value;
+                    OnPropertyChanged("ChangeRate");
+                }
+            }
+        }
         #endregion
 
         #region Methods 
@@ -187,12 +228,19 @@ namespace WhyRemitApp.ViewModels.Currency
         public async Task GetCurrencyDetailsList()
         {
             if (Currency.buyorsell == "B")
+            {
                 RateHeader = "Minimum Buy Rate";
+                ChangeRate = "Change Minimum Rate";
+            }
             else
+            {
                 RateHeader = "Maximum Sell Rate";
+                ChangeRate = "Change Maximum Rate"; 
+            }
 
             CurrencyName = Currency.CurrencyName;
-            CreatedOn = "Expires in " + Currency.expiryminutes + " minutes";
+            CreatedOn = Currency.CurrencyExpire;
+            //CreatedOn = "Expires in " + Currency.expiryminutes + " minutes";
             string[] obj = Currency.bestrate.Split('.');
             BestRate = obj[0];
             string[] objj = Currency.rate.Split('.');
@@ -230,10 +278,16 @@ namespace WhyRemitApp.ViewModels.Currency
                                     {
                                         UserDialog.HideLoading();
                                         if (action == "C")
-                                            UserDialog.Alert("Search closed successfully.", "", "Ok");
+                                        {
+                                            //UserDialog.Alert("Search closed successfully.", "", "Ok");
+                                            await Navigation.PopModalAsync();
+                                        }
                                         else
-                                            UserDialog.Alert("Search deleted successfully.", "", "Ok");
-                                        await Navigation.PopModalAsync();
+                                        {
+                                            //UserDialog.Alert("Search deleted successfully.", "", "Ok");
+                                            await Navigation.PopModalAsync(); 
+                                        }
+                                           
                                     }
                                 });
                             }, (objj) =>
@@ -289,10 +343,18 @@ namespace WhyRemitApp.ViewModels.Currency
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     var requestList = (objs as MatchesResponseModel);
-                                    if (requestList != null)
+                                    if (requestList.searches.Count != 0)
                                     {
                                         UserDialog.HideLoading();
                                         CurrencyMatchesList = new ObservableCollection<MatchesModel>(requestList.searches);
+                                        IsMatchesAvailable = true;
+                                        IsMatchesNotAvailable = false;
+                                    }
+                                    else
+                                    {
+                                        UserDialog.HideLoading();
+                                        IsMatchesAvailable = false;
+                                        IsMatchesNotAvailable = true;
                                     }
                                 });
                             }, (objj) =>

@@ -51,7 +51,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Notification" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="15"/>
-                        <Switch Grid.Column="0" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0"
+                        <Switch Grid.Column="0" x:Name="SwtchNotification" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0,0,-15,0"
                            Toggled="NotificationSwitch_Toggled" IsToggled="{Binding IsNotificationOn}" ThumbColor="{StaticResource AppWhiteColor}" OnColor="{StaticResource AppLightBlueColor}" Scale="1.2"/>
                     </Grid>
                     <!--Seperator-->

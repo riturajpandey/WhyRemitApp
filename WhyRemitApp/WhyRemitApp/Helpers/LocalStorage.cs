@@ -75,6 +75,53 @@ namespace WhyRemitApp.Helpers
         }
         #endregion
 
+        #region Notification Settings
+        private const string IsNotification = "IsNotification";
+        private static readonly string IsNotificationDefault = string.Empty;
+
+        private const string IsSound = "IsSound";
+        private static readonly string IsSoundDefault = string.Empty;
+
+        private const string IsVibrate = "IsVibrate";
+        private static readonly string IsVibrateDefault = string.Empty;
+
+        public static string GeneralIsNotification
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsNotification, IsNotificationDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsNotification, value);
+            }
+        }
+
+        public static string GeneralIsSound
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsSound, IsSoundDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsSound, value);
+            }
+        }
+
+        public static string GeneralIsVibrate
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(IsVibrate, IsVibrateDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(IsVibrate, value);
+            }
+        }
+        #endregion
+
         #endregion
     }
 }
