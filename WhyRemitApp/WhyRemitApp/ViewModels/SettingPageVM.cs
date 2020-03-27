@@ -65,7 +65,7 @@ namespace WhyRemitApp.ViewModels
             }
         }
 
-        private bool _IsNotificationOn  = true;
+        private bool _IsNotificationOn ;
         public bool IsNotificationOn
         {
             get { return _IsNotificationOn; }
@@ -79,7 +79,7 @@ namespace WhyRemitApp.ViewModels
             }
         }
 
-        private bool _IsSoundOn = true;
+        private bool _IsSoundOn ;
         public bool IsSoundOn
         {
             get { return _IsSoundOn; }
@@ -93,7 +93,7 @@ namespace WhyRemitApp.ViewModels
             }
         }
 
-        private bool _IsVibrateOn = true;
+        private bool _IsVibrateOn ;
         public bool IsVibrateOn
         {
             get { return _IsVibrateOn; }

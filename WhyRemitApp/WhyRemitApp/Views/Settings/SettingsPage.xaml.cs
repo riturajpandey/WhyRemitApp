@@ -25,6 +25,21 @@ namespace WhyRemitApp.Views.Settings
 
             // iOS Platform
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+            var s = Helpers.LocalStorage.GeneralIsNotification;
+
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralIsNotification))
+            {
+                SwtchNotification.IsToggled = true;
+            }
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralIsSound))
+            {
+                SwtchSound.IsToggled = true;
+            }
+            if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralIsVibrate))
+            {
+                SwtchVibrate.IsToggled = true;
+            }
         }
 
         #region Event Handler
@@ -54,12 +69,14 @@ namespace WhyRemitApp.Views.Settings
                 SwtchVibrate.IsToggled = false;
                 SettingVM.IsSound = false;
                 SettingVM.IsVibrate = false;
+                Helpers.LocalStorage.GeneralIsNotification = string.Empty;
             }
             else
             {
                 SettingVM.IsNotification = true;
                 SwtchSound.IsEnabled = true;
                 SwtchVibrate.IsEnabled = true;
+                Helpers.LocalStorage.GeneralIsNotification = "true";
             }
         }
 
@@ -71,9 +88,15 @@ namespace WhyRemitApp.Views.Settings
         private void SoundSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             if (SettingVM.IsSound)
+            {
                 SettingVM.IsSound = false;
+                Helpers.LocalStorage.GeneralIsSound = string.Empty;
+            }
             else
+            {
                 SettingVM.IsSound = true;
+                Helpers.LocalStorage.GeneralIsSound = "true";
+            }
         }
 
         /// <summary>
@@ -84,9 +107,16 @@ namespace WhyRemitApp.Views.Settings
         private void VibrateSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             if (SettingVM.IsVibrate)
+            {
                 SettingVM.IsVibrate = false;
+                Helpers.LocalStorage.GeneralIsVibrate = string.Empty;
+            }
             else
+            {
                 SettingVM.IsVibrate = true;
+                Helpers.LocalStorage.GeneralIsVibrate = "true";
+
+            }
         }
 
         /// <summary>

@@ -98,6 +98,9 @@ namespace WhyRemitApp.ViewModels.Registration
                                         UserDialog.HideLoading();
                                         Helpers.LocalStorage.GeneralSecretkey = requestList.secretkey;
                                         Helpers.LocalStorage.GeneralProfileToken = Helpers.Constants.Token;
+                                        Helpers.LocalStorage.GeneralIsNotification = "true";
+                                        Helpers.LocalStorage.GeneralIsSound = "true";
+                                        Helpers.LocalStorage.GeneralIsVibrate = "true";
                                         //Navigate To Currency Page...
                                         App.Current.MainPage = new Views.Currencies.CurrencyPage(); 
                                     }
