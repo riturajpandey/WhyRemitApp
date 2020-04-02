@@ -73,7 +73,7 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="user_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
                             <local:CustomEntry Grid.Column="1" Text="{Binding DisplayName}" Placeholder="DisplayName" TextColor="Black" 
-                                   PlaceholderColor="{StaticResource AppDarkGrayColor}" FontSize="15"/>
+                                   PlaceholderColor="{StaticResource AppDarkGrayColor}" FontSize="15" MaxLength="50"/>
                         </Grid>
                         <!--Seperator-->
                         <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource AppGrayColor}"/>
@@ -85,7 +85,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="Email_blue.png" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="20" WidthRequest="20"/>
-                            <local:CustomEntry Grid.Column="1" Text="{Binding EmailAddress}" Placeholder="Email" TextColor="Black"
+                            <local:CustomEntry Grid.Column="1" Text="{Binding EmailAddress}" Placeholder="Email" TextColor="Black" MaxLength="100"
                                    PlaceholderColor="{StaticResource AppDarkGrayColor}" FontSize="15" HorizontalOptions="FillAndExpand"/>
                         </Grid>
 

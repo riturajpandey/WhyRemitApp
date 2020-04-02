@@ -228,11 +228,16 @@ namespace WhyRemitApp.ViewModels.Currency
                                         //Navigate To Currency Page...
                                         var alertConfig = new AlertConfig
                                         {
-                                            Title = "Alert",
+                                            Title = "",
                                             Message = "The search has updated. We will continue to update you of matches before the expiry time.",
                                             OkText = "OK",
                                             OnAction = async () =>
                                             {
+                                                Currency.buyorsell = buyORell;
+                                                Currency.duration = ExpireTime;
+                                                Currency.rate = rate;
+                                                Helpers.Constants.IsBack = true;
+                                                Helpers.Constants.UpdatedCurrency = Currency;
                                                 await Navigation.PopModalAsync();
                                             }
                                         };

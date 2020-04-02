@@ -14,6 +14,7 @@ namespace WhyRemitApp.BusinessCode
         Task<ProfileVerifyResponseModel> ProfileVerifyApi(ProfileVerifyRequestModel request, Action<object> success, Action<object> failed);
         Task<ProfileDetailsResponseModel> ProfileGetApi(ProfileRequestModel request, Action<object> success, Action<object> failed);
         Task<ResendTokenResponseModel> ProfileSaveApi(UpdateProfileRequestModel request, Action<object> success, Action<object> failed);
+        //Task<ResendTokenResponseModel> AccessPasswordResendCodeApi(string request, Action<object> success, Action<object> failed);
         #endregion
 
         #region Search Apis 

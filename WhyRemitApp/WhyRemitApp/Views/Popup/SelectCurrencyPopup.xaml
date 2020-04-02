@@ -13,7 +13,7 @@
                      Margin="40,0,40,0"
 			HorizontalOptions="Center" VerticalOptions="Center"            
 			Orientation="Vertical">
-            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="225" 
+            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" 
                    BackgroundColor="White" HasShadow="False" IsClippedToBounds="True" Padding="-10,0,-10,0" CornerRadius="12">
                 <Grid RowSpacing="1" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid.RowDefinitions>

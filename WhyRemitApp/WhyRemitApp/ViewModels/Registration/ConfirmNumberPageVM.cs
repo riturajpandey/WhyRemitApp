@@ -199,7 +199,7 @@ namespace WhyRemitApp.ViewModels.Registration
             if (string.IsNullOrEmpty(OTP))
             {
                 UserDialog.HideLoading();
-                UserDialog.Alert("Please enter the 6 digit code sent to your number.", "", "Ok");
+                UserDialog.Alert("Please enter the 6 digit code sent to your mobile number.", "", "Ok");
                 return false;
             }
             if (OTP.Length < 6)

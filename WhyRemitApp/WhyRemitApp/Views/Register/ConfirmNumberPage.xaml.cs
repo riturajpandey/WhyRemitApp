@@ -49,8 +49,7 @@ namespace WhyRemitApp.Views.Register
                     }
                     return IsRepeat;
                 });
-            });
-
+            }); 
         }
 
         #region Event Handler

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WhyRemitApp.Models;
 
 namespace WhyRemitApp.Helpers
 {
@@ -13,5 +14,7 @@ namespace WhyRemitApp.Helpers
         //To Save Images Path...
         public static string ImgFilePath = string.Empty;
         public static string UserProfilePic = string.Empty;
+        public static bool IsBack = false;
+        public static SearchModel UpdatedCurrency = new SearchModel();
     }
 }

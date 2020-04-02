@@ -59,4 +59,9 @@ namespace WhyRemitApp.Models
         public string profilepic { get; set; }
     }
 
+    public class ResendCodeRequestModel
+    {
+        public string emailaddress { get; set; }
+    }
+
 }

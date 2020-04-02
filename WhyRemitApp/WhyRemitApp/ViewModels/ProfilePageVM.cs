@@ -447,13 +447,13 @@ namespace WhyRemitApp.ViewModels
                 UserDialog.Alert("Please enter your display name.", "", "Ok");
                 return false;
             }
-            bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            if (!isValid1)
-            {
-                UserDialog.HideLoading();
-                UserDialog.Alert("Display name must have characters only.");
-                return false;
-            }
+            //bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+            //if (!isValid1)
+            //{
+            //    UserDialog.HideLoading();
+            //    UserDialog.Alert("Display name must have characters only.");
+            //    return false;
+            //}
             if (DisplayName.Length < 3 || DisplayName.Length > 50)
             {
                 UserDialog.HideLoading();

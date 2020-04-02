@@ -298,7 +298,7 @@ namespace WhyRemitApp.ViewModels.Currency
                                         //Navigate To Currency Page...
                                         var alertConfig = new AlertConfig
                                         {
-                                            Title = "Alert",
+                                            Title = "",
                                             Message = "The search has started. We will continue to update you of matches throughout the next 24 hours.", 
                                             OkText = "OK",
                                             OnAction = async() =>

@@ -21,6 +21,7 @@ namespace WhyRemitApp.Views.Currencies
         CurrenncyDetailVM CurrencyVM;
         PopupMenu Popup;
         SearchModel Currency;
+        int CurrenncyDetailPagexamlCount = 0;
         public CurrenncyDetailPagexaml(SearchModel currency)
         {
             InitializeComponent();
@@ -37,6 +38,13 @@ namespace WhyRemitApp.Views.Currencies
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            CurrenncyDetailPagexamlCount = 0;
+            if (Helpers.Constants.IsBack == true)
+            {
+                Helpers.Constants.IsBack = false;
+                Currency = Helpers.Constants.UpdatedCurrency;
+                CurrencyVM.Currency = Helpers.Constants.UpdatedCurrency;
+            }
             await CurrencyVM.GetMatchesList();
             await CurrencyVM.GetCurrencyDetailsList();
         }
@@ -104,7 +112,11 @@ namespace WhyRemitApp.Views.Currencies
 
         private async void ChangeRate_Tapped(object sender, EventArgs e)
         {
-            await this.Navigation.PushModalAsync(new EditCurrencyPage(Currency));
+            if (CurrenncyDetailPagexamlCount==0)
+            {
+                CurrenncyDetailPagexamlCount++;
+                await this.Navigation.PushModalAsync(new EditCurrencyPage(Currency)); 
+            }
         }
 
         private async void popup_onitemselected(string item)
