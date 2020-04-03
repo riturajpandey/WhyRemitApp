@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              x:Class="WhyRemitApp.Views.Currencies.AddNewCurrencyPage"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls">
     <ContentPage.Content>
@@ -112,7 +113,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding NeedCurrency}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" FontSize="13" 
                                        TextColor="Gray" HorizontalTextAlignment="Center" WidthRequest="60"/>
-                                <Image Grid.Column="1" Source="dropdown_arrow.png" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,3"/>
+                                <ImageButton Clicked="NeedCurrency_Tapped" Grid.Column="1" Source="dropdown_arrow.png" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,0,3"
+                                             BackgroundColor="White"/>
                                 <local:CustomPicker x:Name="PckCurrencyNeed" SelectedIndexChanged="PckCurrencyNeed_SelectedIndexChanged" IsVisible="False">
                                     <Picker.Items>
                                         <x:String>GBP</x:String>

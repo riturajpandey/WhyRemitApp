@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
              mc:Ignorable="d"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              xmlns:suave="clr-namespace:SuaveControls.DynamicStackLayout;assembly=SuaveControls.DynamicStackLayout"
              x:Class="WhyRemitApp.Views.Introduction.IntroductionPage"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls" 
@@ -19,7 +20,7 @@
             </Grid.RowDefinitions>
 
             <!--Intro List-->
-            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"  Padding="50,0,50,0">
+            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Transparent"  Padding="10,0,10,0">
                 <controls:CarouselViewControl x:Name="MainCarouselView" BackgroundColor="Transparent" Orientation="Horizontal"
                                               ItemsSource="{Binding IntroductionList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                               PositionSelected="Carousel_PositionSelected" ShowIndicators="False">

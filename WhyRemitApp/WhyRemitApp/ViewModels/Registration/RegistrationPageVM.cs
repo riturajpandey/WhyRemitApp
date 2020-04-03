@@ -13,6 +13,7 @@ using WhyRemitApp.Models;
 using WhyRemitApp.Views;
 using Xamarin.Forms;
 using App.User.LocationInfo.Services;
+using System.Linq;
 
 namespace WhyRemitApp.ViewModels.Registration
 {
@@ -21,6 +22,7 @@ namespace WhyRemitApp.ViewModels.Registration
         //TODO : To Declare Local Class Level Variables..
         private const string _Name = @"^[a-zA-Z]+$";
         private const string _Phone = @"^[0-9]*$";
+        private const string _name3 = @"^[0-9#?!@$%^&*-+_]+$";
         public CountryPickerPopup CountryPickerPopupVM;
 
         #region CONSTRUCTOR
@@ -166,7 +168,7 @@ namespace WhyRemitApp.ViewModels.Registration
 
         public async Task GetCountriesList()
         {
-            TempCountryPickerListItem = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CountryPickerData());
+            TempCountryPickerListItem = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CountryPickerData().ToList().OrderBy(z => z.Currency).ToList());
         }
 
         /// <summary>
@@ -175,70 +177,79 @@ namespace WhyRemitApp.ViewModels.Registration
         /// <param name="obj"></param>
         private async void SignUpAsync(object obj)
         {
-            IsPageEnabled = false;
-            //Apply Validations..
-            if (!await Validate())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                IsPageEnabled = true;
-                return;
-            } 
-            Helpers.Constants.MobileNumber = CountryISDCode + Mobileno; 
-            try
-            {
-                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
-                if (CrossConnectivity.Current.IsConnected)
+                IsPageEnabled = false;
+                //Apply Validations..
+                if (!await Validate())
                 {
-                    await Task.Run(async () =>
+                    IsPageEnabled = true;
+                    return;
+                }
+                Helpers.Constants.MobileNumber = CountryISDCode + Mobileno;
+                try
+                {
+                    UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                    if (CrossConnectivity.Current.IsConnected)
                     {
-                        if (_businessCode != null)
+                        await Task.Run(async () =>
                         {
-                            await _businessCode.ProfileRegisterApi(new RegisterProfileRequestModel()
+                            if (_businessCode != null)
                             {
-                                countrycode = CountryIS03Code,
-                                displayname = DisplayName,
-                                mobilenumber = Mobileno
-                            }, async (objs) =>
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                await _businessCode.ProfileRegisterApi(new RegisterProfileRequestModel()
                                 {
-                                    var requestList = (objs as RegisterProfileResponseModel);
-                                    if (requestList != null)
+                                    countrycode = CountryIS03Code,
+                                    displayname = DisplayName,
+                                    mobilenumber = Mobileno
+                                }, async (objs) =>
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        UserDialog.HideLoading();
-                                        Helpers.Constants.Token = requestList.profiletoken;
+                                        var requestList = (objs as RegisterProfileResponseModel);
+                                        if (requestList != null)
+                                        {
+                                            UserDialog.HideLoading();
+                                            Helpers.Constants.Token = requestList.profiletoken;
 
                                         //Navigate To Confirm Phone Number Page...
                                         await Navigation.PushModalAsync(new Views.Register.ConfirmNumberPage());
-                                    }
-                                });
-                            }, (objj) =>
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                        }
+                                    });
+                                }, (objj) =>
                                 {
-                                    var requestList = (objj as RegisterProfileResponseModel);
-                                    if (requestList != null)
+                                    Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        IsPageEnabled = true;
-                                        UserDialog.HideLoading();
-                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
-                                    }
+                                        var requestList = (objj as RegisterProfileResponseModel);
+                                        if (requestList != null)
+                                        {
+                                            IsPageEnabled = true;
+                                            UserDialog.HideLoading();
+                                            UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                        }
+                                    });
                                 });
-                            });
-                        }
-                    }).ConfigureAwait(false);
+                            }
+                        }).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        IsPageEnabled = true;
+                        UserDialogs.Instance.Loading().Hide();
+                        await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
                     IsPageEnabled = true;
-                    UserDialogs.Instance.Loading().Hide();
-                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    UserDialog.HideLoading();
                 }
             }
-            catch (Exception ex)
+            else
             {
                 IsPageEnabled = true;
-                UserDialog.HideLoading();
-            }
+                UserDialogs.Instance.Loading().Hide();
+                await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+            } 
         }
 
         /// <summary>
@@ -258,12 +269,13 @@ namespace WhyRemitApp.ViewModels.Registration
         private async Task<bool> Validate()
         {
             UserDialog.ShowLoading("Please Wait…", MaskType.Clear);
+            DisplayName = DisplayName.Trim();
             if (string.IsNullOrEmpty(DisplayName))
             {
                 UserDialog.HideLoading();
                 UserDialog.Alert("Please enter your display name.", "", "Ok");
                 return false;
-            }
+            } 
             //bool isValid1 = (Regex.IsMatch(DisplayName, _Name, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
             //if (!isValid1)
             //{

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.Models;
+using WhyRemitApp.Views.Currencies;
 using Xamarin.Forms;
 
 namespace WhyRemitApp.ViewModels.Currency
@@ -15,6 +16,7 @@ namespace WhyRemitApp.ViewModels.Currency
     public class CurrencyPageVM : BaseViewModel
     {
         public List<string> ContextMenu = new List<string>();
+        public SearchModel Currency;
         public ObservableCollection<SearchModel> AllCurrencyList = new ObservableCollection<SearchModel>();
 
         #region CONSTRUCTOR
@@ -27,13 +29,9 @@ namespace WhyRemitApp.ViewModels.Currency
         {
             Navigation = nav;
             ProfileCommand = new Command(OnProfileAsync);
-            SettingCommand = new Command(OnSettingAsync);
-
-            //ContextMenu.Add("Show Closed"); 
-            //ContextMenu.Add("Order By Most Recent");
-            //ContextMenu.Add("Order By Currency I Have");
-            //ContextMenu.Add("Order By Currency I Need");
-
+            SettingCommand = new Command(OnSettingAsync); 
+            //MoreCommand = new Command(OnMoreAsync);
+             
             int minutes = 1438;
             var time = TimeSpan.FromMinutes(minutes);
             string hour = string.Format("{0:00}", (int)time.TotalHours);
@@ -44,13 +42,14 @@ namespace WhyRemitApp.ViewModels.Currency
 
             double days = minutes / 60 / 24;
             double hours = (minutes - days * 24 * 60) / 60;
-        } 
+        }
 
         #endregion
 
         #region DELEGATECOMMAND 
         public Command ProfileCommand { get; set; }
         public Command SettingCommand { get; set; }
+        //public DelegateCommand MoreCommand { get; set; }
         #endregion
 
         #region PROPERTIES 
@@ -83,7 +82,7 @@ namespace WhyRemitApp.ViewModels.Currency
             }
         }
 
-        private bool _IsCurrencyAvailable ;
+        private bool _IsCurrencyAvailable = false;
         public bool IsCurrencyAvailable
         {
             get { return _IsCurrencyAvailable; }
@@ -97,7 +96,7 @@ namespace WhyRemitApp.ViewModels.Currency
             }
         }
 
-        private bool _IsCurrencyNotAvailable ;
+        private bool _IsCurrencyNotAvailable = true;
         public bool IsCurrencyNotAvailable
         {
             get { return _IsCurrencyNotAvailable; }
@@ -113,6 +112,7 @@ namespace WhyRemitApp.ViewModels.Currency
         #endregion
 
         #region Methods 
+
 
         /// <summary>
         /// TODO : To navigate To Profile Page...
@@ -150,8 +150,24 @@ namespace WhyRemitApp.ViewModels.Currency
                 var searchDetail = JsonConvert.DeserializeObject<SearchResponseModel>(a);
                 if (searchDetail.searches != null)
                 {
-                    var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList();
-                    CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches); 
+                    //var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList();
+                    //CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches);
+                    if (searchDetail.searches.Count != 0)
+                    {
+                        UserDialog.HideLoading();
+                        AllCurrencyList = new ObservableCollection<SearchModel>(searchDetail.searches);
+                        var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList();
+                        CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches);
+
+                        IsCurrencyAvailable = true;
+                        IsCurrencyNotAvailable = false;
+                    }
+                    else
+                    {
+                        UserDialog.HideLoading();
+                        IsCurrencyAvailable = false;
+                        IsCurrencyNotAvailable = true;
+                    }
                 }
             }
             try
@@ -176,9 +192,9 @@ namespace WhyRemitApp.ViewModels.Currency
                                     if (requestList.searches.Count != 0)
                                     {
                                         UserDialog.HideLoading();
-                                        AllCurrencyList = new ObservableCollection<SearchModel>(requestList.searches); 
-                                        var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList(); 
-                                        CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches);   
+                                        AllCurrencyList = new ObservableCollection<SearchModel>(requestList.searches);
+                                        var activeSearches = AllCurrencyList.Where(c => c.statuscode != "CLOSED").ToList();
+                                        CurrencyModelList = new ObservableCollection<SearchModel>(activeSearches);
 
                                         IsCurrencyAvailable = true;
                                         IsCurrencyNotAvailable = false;
@@ -198,7 +214,7 @@ namespace WhyRemitApp.ViewModels.Currency
                                     if (requestList != null)
                                     {
                                         UserDialog.HideLoading();
-                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok"); 
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
                                     }
                                 });
                             });
@@ -207,8 +223,8 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
                 else
                 {
-                    UserDialogs.Instance.Loading().Hide();
-                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    //UserDialogs.Instance.Loading().Hide();
+                    //await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
                 }
             }
             catch (Exception ex)
@@ -224,6 +240,8 @@ namespace WhyRemitApp.ViewModels.Currency
         {
             try
             {
+                if (!string.IsNullOrEmpty(Helpers.LocalStorage.GeneralSearches))
+                { }
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     await Task.Run(async () =>
@@ -258,8 +276,8 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
                 else
                 {
-                    UserDialogs.Instance.Loading().Hide();
-                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    //UserDialogs.Instance.Loading().Hide();
+                    //await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
                 }
             }
             catch (Exception ex)

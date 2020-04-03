@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.Models;
+using WhyRemitApp.Views.Currencies;
 using Xamarin.Forms;
 
 namespace WhyRemitApp.ViewModels.Currency
@@ -15,6 +16,7 @@ namespace WhyRemitApp.ViewModels.Currency
         #region CONSTRUCTOR
         public List<string> ContextMenu = new List<string>();
         public SearchModel Currency;
+        public int TapCount = 0;
         /// <summary>
         /// Initializes a new instance of the <see cref="CurrenncyDetailVM"/> class.
         /// </summary>
@@ -25,16 +27,13 @@ namespace WhyRemitApp.ViewModels.Currency
             ProfileCommand = new Command(OnProfileAsync);
             SettingCommand = new Command(OnSettingAsync);
             BackCommand = new Command(OnBackAsync);
-
-            //ContextMenu.Add("Delete");
-            //ContextMenu.Add("Close");
-            //ContextMenu.Add("SortByName");
-            //ContextMenu.Add("SortByRate");
+            ChangeRateCommand = new Command(OnChangeRateAsync);
         }
 
         #endregion
 
         #region DELEGATECOMMAND 
+        public Command ChangeRateCommand { get; set; }
         public Command BackCommand { get; set; }
         public Command ProfileCommand { get; set; }
         public Command SettingCommand { get; set; }
@@ -70,7 +69,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        private string _CreatedOn ;
+        private string _CreatedOn;
         public string CreatedOn
         {
             get { return _CreatedOn; }
@@ -97,7 +96,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        private string _MatchesCount = "4 Matches";
+        private string _MatchesCount = "0 Matches";
         public string MatchesCount
         {
             get { return _MatchesCount; }
@@ -136,7 +135,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 }
             }
         }
-        private string _RateHeader ;
+        private string _RateHeader;
         public string RateHeader
         {
             get { return _RateHeader; }
@@ -196,6 +195,18 @@ namespace WhyRemitApp.ViewModels.Currency
         #region Methods 
 
         /// <summary>
+        /// TODO : To navigate To Edit Exchage Page...
+        /// </summary>
+        /// <param name="obj"></param>
+        private async void OnChangeRateAsync(object obj)
+        {
+            if (TapCount == 0)
+            {
+                TapCount++;
+                await this.Navigation.PushModalAsync(new EditCurrencyPage(Currency));
+            }
+        }
+        /// <summary>
         /// TODO : To navigate Back...
         /// </summary>
         /// <param name="obj"></param>
@@ -235,7 +246,7 @@ namespace WhyRemitApp.ViewModels.Currency
             else
             {
                 RateHeader = "Maximum Sell Rate";
-                ChangeRate = "Change Maximum Rate"; 
+                ChangeRate = "Change Maximum Rate";
             }
 
             CurrencyName = Currency.CurrencyName;
@@ -244,8 +255,8 @@ namespace WhyRemitApp.ViewModels.Currency
             string[] obj = Currency.bestrate.Split('.');
             BestRate = obj[0];
             string[] objj = Currency.rate.Split('.');
-            MinRate = objj[0]; 
-            MatchesCount = CurrencyMatchesList.Count.ToString() + " Matches";
+            MinRate = objj[0];
+            //MatchesCount = CurrencyMatchesList.Count.ToString() + " Matches";
         }
 
         /// <summary>
@@ -285,9 +296,9 @@ namespace WhyRemitApp.ViewModels.Currency
                                         else
                                         {
                                             //UserDialog.Alert("Search deleted successfully.", "", "Ok");
-                                            await Navigation.PopModalAsync(); 
+                                            await Navigation.PopModalAsync();
                                         }
-                                           
+
                                     }
                                 });
                             }, (objj) =>
@@ -326,7 +337,10 @@ namespace WhyRemitApp.ViewModels.Currency
         {
             try
             {
-                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                }
                 if (CrossConnectivity.Current.IsConnected)
                 {
                     await Task.Run(async () =>
@@ -343,19 +357,21 @@ namespace WhyRemitApp.ViewModels.Currency
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     var requestList = (objs as MatchesResponseModel);
-                                    if (requestList.searches.Count != 0)
+                                    if (requestList.matches != null)
                                     {
-                                        UserDialog.HideLoading();
-                                        CurrencyMatchesList = new ObservableCollection<MatchesModel>(requestList.searches);
-                                        IsMatchesAvailable = true;
-                                        IsMatchesNotAvailable = false;
+                                        if (requestList.matches.Count != 0)
+                                        { 
+                                            CurrencyMatchesList = new ObservableCollection<MatchesModel>(requestList.matches);
+                                            IsMatchesAvailable = true;
+                                            IsMatchesNotAvailable = false;
+                                        }
+                                        else
+                                        { 
+                                            IsMatchesAvailable = false;
+                                            IsMatchesNotAvailable = true;
+                                        }
                                     }
-                                    else
-                                    {
-                                        UserDialog.HideLoading();
-                                        IsMatchesAvailable = false;
-                                        IsMatchesNotAvailable = true;
-                                    }
+                                    UserDialog.HideLoading();
                                 });
                             }, (objj) =>
                             {
@@ -375,7 +391,7 @@ namespace WhyRemitApp.ViewModels.Currency
                 else
                 {
                     UserDialogs.Instance.Loading().Hide();
-                    await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                    //await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
                 }
             }
             catch (Exception ex)
@@ -414,7 +430,7 @@ namespace WhyRemitApp.ViewModels.Currency
                                     var requestList = (objs as ResendTokenResponseModel);
                                     if (requestList != null)
                                     {
-                                        UserDialog.HideLoading(); 
+                                        UserDialog.HideLoading();
                                     }
                                 });
                             }, (objj) =>

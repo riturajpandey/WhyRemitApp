@@ -34,49 +34,54 @@ namespace WhyRemitApp.Models
             {
                 string name = string.Empty;
                 if (statuscode != "ACTIVE")
-                { 
-                    name = "Closed"; 
+                {
+                    name = "Closed";
                 }
                 else
                 {
                     //name = "Expires in " + duration;
                     int minutes = Convert.ToInt32(expiryminutes);
-                    if(minutes == 0)
+                    if (minutes == 0)
                     {
                         name = "Expired";
                     }
-                    else if(minutes == 60)
+                    else if (minutes == 60)
                     {
                         name = "Expires in " + "1 hour";
                     }
-                    else if(minutes < 60)
+                    else if (minutes < 60)
                     {
                         name = "Expires in " + minutes.ToString() + " mins";
                     }
-                    else if(minutes > 60)
+                    else if (minutes > 60)
                     {
                         var time = TimeSpan.FromMinutes(minutes);
-                        string hour = string.Format("{0:00}", (int)time.TotalHours); 
+                        string hour = string.Format("{0:00}", (int)time.TotalHours);
                         string min = string.Format("{0:00}", (int)time.Minutes);
 
                         int totalHours = Convert.ToInt32(hour);
                         int totalMinutes = Convert.ToInt32(min);
 
                         double days = minutes / 60 / 24;
-                        double hours = (minutes - days * 24 * 60) / 60; 
+                        double hours = (minutes - days * 24 * 60) / 60;
 
+                        if (hour == "0" && min == "0" && days == 0)
+                        {
+                            name = "Expired";
+                        } 
                         if (totalHours > 23) // 1500
                         {
-                            name = "Expires in " + days.ToString() + " day(s)";  
+                            name = "Expires in " + days.ToString() + " day(s)";
                         }
-                        else if(totalHours <= 24 && totalMinutes < 60) // 790
-                        {
-                            name = "Expires in " + hour + " hour(s) " + min + " minute(s)"; 
-                        }
-                        else if(totalHours <= 24 && totalMinutes > 60)
+                        else if (totalHours <= 24)
                         {
                             name = "Expires in " + hour + " hour(s)";
                         }
+                        else if (totalHours <= 1) // 790
+                        {
+                            name = "Expires in " + min + " minute(s)"; //hour + " hour(s) "; 
+                        }
+                      
                     }
                 }
                 return name;

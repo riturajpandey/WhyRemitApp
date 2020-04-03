@@ -3,6 +3,7 @@ using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WhyRemitApp.Model;
@@ -24,7 +25,9 @@ namespace WhyRemitApp.ViewModels.Currency
             Navigation = nav;
             BackCommand = new Command(OnBackAsync);
             SearchCommand = new Command(OnSearchAsync);
-            CurrencyList = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CountryPickerData());
+            var ASCOrderedCurrencyList = new ObservableCollection<CountryPickerModel>(CountryPickerModel.CurrencyPickerData().ToList().OrderBy(z => z.Currency).ToList());
+
+            CurrencyList = ASCOrderedCurrencyList;
         }
 
         #endregion

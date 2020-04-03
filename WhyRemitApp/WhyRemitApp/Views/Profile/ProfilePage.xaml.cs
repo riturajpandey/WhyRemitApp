@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WhyRemitApp.ViewModels;
 using Xamarin.Forms;
@@ -15,7 +16,8 @@ namespace WhyRemitApp.Views.Profile
     {
         //TODO : To Define class Level Variables...
         ProfilePageVM ProfileVM;
-         
+        private const string _name3 = @"^[0-9#?!@$%^&*-+_]+$";
+
         public ProfilePage()
         {
             InitializeComponent();
@@ -81,7 +83,20 @@ namespace WhyRemitApp.Views.Profile
         private void MediaPicker_Tapped(object sender, EventArgs e)
         {
             ProfileVM.OnMediaAsync();
-        } 
+        }
+
+        private void TxtDisplayName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtDisplayName.Text))
+            {
+                var a = TxtDisplayName.Text[TxtDisplayName.Text.Length - 1].ToString();
+                bool isValid2 = (Regex.IsMatch(TxtDisplayName.Text[TxtDisplayName.Text.Length - 1].ToString(), _name3, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+                if (isValid2)
+                {
+                    TxtDisplayName.Text = TxtDisplayName.Text.Remove(TxtDisplayName.Text.Length - 1);
+                }
+            }
+        }
         #endregion
     }
 }

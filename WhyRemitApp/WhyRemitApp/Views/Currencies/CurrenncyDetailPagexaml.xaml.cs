@@ -45,6 +45,7 @@ namespace WhyRemitApp.Views.Currencies
                 Currency = Helpers.Constants.UpdatedCurrency;
                 CurrencyVM.Currency = Helpers.Constants.UpdatedCurrency;
             }
+            CurrencyVM.TapCount =0;
             await CurrencyVM.GetMatchesList();
             await CurrencyVM.GetCurrencyDetailsList();
         }
@@ -106,7 +107,7 @@ namespace WhyRemitApp.Views.Currencies
                 CurrencyVM.ContextMenu.Add("Sort matches by Rate");
             }
             Popup.ItemsSource = CurrencyVM.ContextMenu;
-            Popup.ShowPopup(sender as Grid);
+            Popup.ShowPopup(sender as ImageButton);
             Popup.OnItemSelected += popup_onitemselected;
         }
 

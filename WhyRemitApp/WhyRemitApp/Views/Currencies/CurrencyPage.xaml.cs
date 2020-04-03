@@ -28,7 +28,7 @@ namespace WhyRemitApp.Views.Currencies
             this.BindingContext = CurrencyVM;
 
             // iOS Platform
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true); 
         }
 
         #region EVENTHANDLER
@@ -47,14 +47,18 @@ namespace WhyRemitApp.Views.Currencies
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        //private void Currency_Tapped(object sender, EventArgs e)
-        //{
-        //    BtnNewCurrency.IsEnabled = false;
-        //    CurrencyVM.IsPageEnabled = false;
-        //    var item = (sender as Grid).BindingContext as SearchModel;
-        //    if (item != null)
-        //        this.Navigation.PushModalAsync(new Views.Currencies.CurrenncyDetailPagexaml(item));
-        //}
+        private void Currency_Tapped(object sender, EventArgs e)
+        {
+            if (click == 0)
+            {
+                click++;
+                BtnNewCurrency.IsEnabled = false;
+                CurrencyVM.IsPageEnabled = false;
+                var item = (sender as Grid).BindingContext as SearchModel;
+                if (item != null)
+                    this.Navigation.PushModalAsync(new Views.Currencies.CurrenncyDetailPagexaml(item));
+            }
+        }
 
         /// <summary>
         /// TODO : To Go To Add New Currency Page...
@@ -74,10 +78,9 @@ namespace WhyRemitApp.Views.Currencies
             {
                 BindingContext = CurrencyVM.ContextMenu,
             };
-
-            //Popup.SetBinding(PopupMenu.ItemsSourceProperty, "ContextMenu");
+             
             Popup.ItemsSource = CurrencyVM.ContextMenu;
-            Popup.ShowPopup(sender as Grid);
+            Popup.ShowPopup(sender as ImageButton);
             Popup.OnItemSelected += popup_onitemselected;
         }
         private async void popup_onitemselected(string item)

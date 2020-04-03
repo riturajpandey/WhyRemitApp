@@ -1,8 +1,10 @@
 ﻿using App.User.LocationInfo.Services;
+using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WhyRemitApp.ViewModels.Registration;
 using Xamarin.Forms;
@@ -15,6 +17,7 @@ namespace WhyRemitApp.Views.Register
     public partial class RegistrationPage : ContentPage
     {
         //TODO : To Define class Level Variables...
+        private const string _name3 = @"^[0-9#?!@$%^&*-+_]+$";
         RegistrationPageVM RegistrationVM;
         public RegistrationPage()
         {
@@ -35,13 +38,16 @@ namespace WhyRemitApp.Views.Register
         {
             base.OnAppearing();
             await RegistrationVM.GetCountriesList();
-            var basic_userlocationInfo = await TrackingService.GetBasicLocatioInfoAsync();
-            var countrydetails = RegistrationVM.TempCountryPickerListItem.Where(a => a.CountryISDCode == basic_userlocationInfo.CountryCallingCode).FirstOrDefault();
-            RegistrationVM.CountryFlag = countrydetails.CountryFlag;
-            RegistrationVM.CountryISDCode = countrydetails.CountryISDCode;
-            RegistrationVM.CountryId = countrydetails.Id;
-            RegistrationVM.CountryOfResidency = countrydetails.CountryName;
-            RegistrationVM.CountryIS03Code = countrydetails.CountryIS03Code;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                var basic_userlocationInfo = await TrackingService.GetBasicLocatioInfoAsync();
+                var countrydetails = RegistrationVM.TempCountryPickerListItem.Where(a => a.CountryISDCode == basic_userlocationInfo.CountryCallingCode).FirstOrDefault();
+                RegistrationVM.CountryFlag = countrydetails.CountryFlag;
+                RegistrationVM.CountryISDCode = countrydetails.CountryISDCode;
+                RegistrationVM.CountryId = countrydetails.Id;
+                RegistrationVM.CountryOfResidency = countrydetails.CountryName;
+                RegistrationVM.CountryIS03Code = countrydetails.CountryIS03Code;
+            }
         }
 
         /// <summary>
@@ -76,6 +82,19 @@ namespace WhyRemitApp.Views.Register
         private void Privacy_Tapped(object sender, EventArgs e)
         {
             Device.OpenUri(new Uri("https://whyremit.com/privacy"));
+        }
+
+        private void TxtDisplayName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtDisplayName.Text))
+            {
+                var a = TxtDisplayName.Text[TxtDisplayName.Text.Length - 1].ToString();
+                bool isValid2 = (Regex.IsMatch(TxtDisplayName.Text[TxtDisplayName.Text.Length - 1].ToString(), _name3, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+                if (isValid2)
+                {
+                    TxtDisplayName.Text = TxtDisplayName.Text.Remove(TxtDisplayName.Text.Length - 1);
+                }
+            }
         }
         #endregion 
     }

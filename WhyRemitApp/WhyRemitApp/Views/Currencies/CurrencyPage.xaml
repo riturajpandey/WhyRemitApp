@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              x:Class="WhyRemitApp.Views.Currencies.CurrencyPage"
              xmlns:controls="clr-namespace:WhyRemitApp.CustomControls"
              Title="Currency">
@@ -18,13 +19,9 @@
             <!--Header-->
             <Grid Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,0,0,0" BackgroundColor="{StaticResource AppBlueColor}">
                 <Label Text="Exchange" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold"
-                       TextColor="{StaticResource AppWhiteColor}"/>
-                <Grid HorizontalOptions="End" VerticalOptions="CenterAndExpand" WidthRequest="30" HeightRequest="50">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="More_Tapped"/>
-                    </Grid.GestureRecognizers>
-                    <Image Source="more.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="22"/>
-                </Grid>
+                       TextColor="{StaticResource AppWhiteColor}"/> 
+                <ImageButton Source="more.png" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" HeightRequest="22" WidthRequest="22" BackgroundColor="{StaticResource AppBlueColor}"
+                             Clicked="More_Tapped"/> 
             </Grid>
             <!--If Listview Not Contain Any Item-->
             <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsCurrencyNotAvailable}">
@@ -35,7 +32,7 @@
                 </StackLayout>
             </Grid>
             <!--If Listview  Contain More Than 0 Item-->
-            <Grid Grid.Row="1" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True" IsVisible="{Binding IsCurrencyAvailable}">
+            <Grid Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True" IsVisible="{Binding IsCurrencyAvailable}">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -110,7 +107,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
+                    <Grid Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2"
+                          xe:TouchEffect.Color="{StaticResource AppLightBlueColor}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
@@ -119,11 +117,9 @@
                         <Label Grid.Row="1" Text="Exchange" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            TextColor="{StaticResource AppBlueColor}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
-                    <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
-                        </Grid.GestureRecognizers>
-                        <Grid.RowDefinitions>
+                    <Grid Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2"
+                          xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding ProfileCommand}">
+                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
@@ -131,11 +127,9 @@
                         <Label Grid.Row="1" Text="Profile" FontSize="12" FontAttributes="Bold" HorizontalTextAlignment="Center"
                            TextColor="Gray" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                     </Grid>
-                    <Grid Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2">
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SettingCommand}"/>
-                        </Grid.GestureRecognizers>
-                        <Grid.RowDefinitions>
+                    <Grid Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" RowSpacing="2"
+                          xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding SettingCommand}">
+                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>

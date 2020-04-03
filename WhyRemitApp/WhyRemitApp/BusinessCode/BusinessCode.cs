@@ -381,10 +381,11 @@ namespace WhyRemitApp.BusinessCode
 
                 var result = await _apiProvider.Post<MatchesResponseModel, MatchesRequestModel>(url, request, dic);
                 var response = result.RawResult;
-                resmodel = JsonConvert.DeserializeObject<MatchesResponseModel>(response);
+                resmodel = JsonConvert.DeserializeObject<MatchesResponseModel>(result.RawResult);
 
                 if (result.IsSuccessful == true)
                 {
+                   var res = JsonConvert.DeserializeObject<MatchesResponseModel>(result.RawResult);
                     if (resmodel.responsecode == 100)
                         success.Invoke(resmodel);
                     else

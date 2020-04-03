@@ -1162,4 +1162,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\settinggray%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\feedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aruba.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bermuda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cayman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\euro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\falklandislands.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\guernsey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\isleofman.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\jersey.png" />
+  </ItemGroup>
 </Project>

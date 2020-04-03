@@ -8,7 +8,7 @@ namespace WhyRemitApp.Models
     {
         public int responsecode { get; set; }
         public string responsemessage { get; set; }
-        public List<MatchesModel> searches { get; set; }
+        public List<MatchesModel> matches { get; set; }
     }
     public class MatchesModel
     {

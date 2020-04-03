@@ -173,7 +173,7 @@ namespace WhyRemitApp.ViewModels
             {
                 try
                 {
-                    UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                    //UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
                     if (CrossConnectivity.Current.IsConnected)
                     {
                         await Task.Run(async () =>
@@ -215,8 +215,8 @@ namespace WhyRemitApp.ViewModels
                     }
                     else
                     {
-                        UserDialogs.Instance.Loading().Hide();
-                        await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                        //UserDialogs.Instance.Loading().Hide();
+                        //await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
                     }
                 }
                 catch (Exception ex)
@@ -260,6 +260,7 @@ namespace WhyRemitApp.ViewModels
                                     {
                                         UserDialog.HideLoading();
                                         UserDialog.Alert("Profile saved successfully.", "", "Ok");
+                                        await GetNewProfileData();
                                     }
                                 });
                             }, (objj) =>
@@ -490,6 +491,61 @@ namespace WhyRemitApp.ViewModels
             return true;
         }
 
+        public async Task GetNewProfileData()
+        { 
+            try
+            {
+                UserDialogs.Instance.ShowLoading("Please Wait…", MaskType.Clear);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    await Task.Run(async () =>
+                    {
+                        if (_businessCode != null)
+                        {
+                            await _businessCode.ProfileGetApi(new ProfileRequestModel()
+                            {
+                                profiletoken = Helpers.LocalStorage.GeneralProfileToken
+                            }, async (objs) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objs as ProfileDetailsResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        DisplayName = requestList.displayname;
+                                        Mobileno = requestList.mobilenumber;
+                                        EmailAddress = requestList.emailaddress == null ? string.Empty : requestList.emailaddress;
+                                        UserProfileBase64 = requestList.profilepic;
+                                        MessagingCenter.Send<string>("", "LoadApiImage");
+                                    }
+                                });
+                            }, (objj) =>
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    var requestList = (objj as RegisterProfileResponseModel);
+                                    if (requestList != null)
+                                    {
+                                        UserDialog.HideLoading();
+                                        UserDialogs.Instance.Alert(requestList.responsemessage, "", "ok");
+                                    }
+                                });
+                            });
+                        }
+                    }).ConfigureAwait(false);
+                }
+                else
+                {
+                    //UserDialogs.Instance.Loading().Hide();
+                    //await UserDialogs.Instance.AlertAsync("No Network Connection found, Please try again!", "", "Okay");
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialog.HideLoading();
+            } 
+        } 
         #endregion 
     }
 }

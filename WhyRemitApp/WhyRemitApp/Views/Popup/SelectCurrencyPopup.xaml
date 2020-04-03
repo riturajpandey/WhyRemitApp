@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
              x:Class="WhyRemitApp.Views.Popup.SelectCurrencyPopup" >

@@ -51,6 +51,9 @@ namespace WhyRemitApp.Views.Settings
         {
             base.OnAppearing();
             await SettingVM.GetSettings();
+            VersionTracking.Track();
+            var currentVersion = VersionTracking.CurrentVersion;
+            LblVersion.Text = "Version " + currentVersion.ToString();
         }
 
         /// <summary>

@@ -31,17 +31,18 @@ namespace WhyRemitApp.Droid.Renders
         #endregion
 
         #region Overrides Methods
-         
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+           
+        protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Entry> e)
         {
-            base.OnElementPropertyChanged(sender, e);
+            base.OnElementChanged(e);
+            this.Control.SetSelectAllOnFocus(true); 
             string Styleid = Element.StyleId;
             if (Control != null)
             { 
-                GradientDrawable gd = new GradientDrawable();
-                gd.SetColor(global::Android.Graphics.Color.Transparent);
-                this.Control.SetBackgroundDrawable(gd);
-                this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                var entry = (EditText)Control;
+                entry.Background = null;
+                Control.SetBackgroundColor(global::Android.Graphics.Color.Transparent);
+                Element.BackgroundColor = Color.Transparent;
 
                 if (string.IsNullOrEmpty(Helpers.LocalStorage.GeneralProfileToken))
                 {
@@ -53,7 +54,7 @@ namespace WhyRemitApp.Droid.Renders
                     JNIEnv.GetFieldID(IntPtrtextViewClass, "mCursorDrawableRes", "I");
                     JNIEnv.SetField(Control.Handle, mCursorDrawableResProperty, 0);
                 }
-                if(Styleid == "CenterAllign")
+                if (Styleid == "CenterAllign")
                 {
                     Control.Gravity = GravityFlags.CenterHorizontal;
                 }

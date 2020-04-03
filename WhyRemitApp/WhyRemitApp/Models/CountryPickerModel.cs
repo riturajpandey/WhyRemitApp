@@ -177,7 +177,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+375",
             CountryCode = "BY",
             CountryIS03Code = "BLR",
-            Currency = "BYN"
+            Currency = "BYR"
           },
          new CountryPickerModel ()
           {
@@ -548,7 +548,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+503",
             CountryCode = "SV",
             CountryIS03Code = "SLV",
-            Currency = "USD"
+            Currency = "SVC"
           },
         new CountryPickerModel ()
           {
@@ -578,7 +578,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+372",
             CountryCode = "EE",
             CountryIS03Code = "EST",
-            Currency = "EUR"
+            Currency = "EEK"
           },
         new CountryPickerModel ()
           {
@@ -678,7 +678,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+233",
             CountryCode = "GH",
             CountryIS03Code = "GHA",
-            Currency = "GHS"
+            Currency = "GHC"
           },
             new CountryPickerModel ()
           {
@@ -1008,7 +1008,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+371",
             CountryCode = "LV",
             CountryIS03Code = "LVA",
-            Currency = "EUR"
+            Currency = "LVL"
           },
             new CountryPickerModel ()
           {
@@ -1058,7 +1058,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+370",
             CountryCode = "LT",
             CountryIS03Code = "LTU",
-            Currency = "EUR"
+            Currency = "LTL"
           },
            new CountryPickerModel ()
           {
@@ -1317,7 +1317,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+31",
             CountryCode = "NL",
             CountryIS03Code = "NLD",
-            Currency = "EUR"
+            Currency = "ANG"
           },
             new CountryPickerModel ()
           {
@@ -1437,7 +1437,7 @@ namespace WhyRemitApp.Model
             CountryISDCode = "+507",
             CountryCode = "PA",
             CountryIS03Code = "PAN",
-            Currency = "USD"
+            Currency = "PAB"
           },
             new CountryPickerModel ()
           {
@@ -2079,6 +2079,36 @@ namespace WhyRemitApp.Model
             CountryIS03Code = "ZWE",
             Currency = "USD"
           },
+           new CountryPickerModel ()
+          {
+            Id=207,
+            CountryFlag="aruba.png",
+            CountryName = "Aruba",
+            CountryISDCode = "+297",
+            CountryCode = "ABW",
+            CountryIS03Code = "ABW",
+            Currency = "AWG"
+          },
+           new CountryPickerModel ()
+          {
+            Id=208,
+            CountryFlag="bermuda.png",
+            CountryName = "Bermuda",
+            CountryISDCode = "+1441",
+            CountryCode = "BM",
+            CountryIS03Code = "BMU",
+            Currency = "BMD"
+          },
+            new CountryPickerModel ()
+          {
+            Id=209,
+            CountryFlag="cayman.png",
+            CountryName = "Cayman",
+            CountryISDCode = "+1345",
+            CountryCode = "CYM",
+            CountryIS03Code = "CYM",
+            Currency = "KYD"
+          },
        };
         }
         public static List<CountryPickerModel> CurrencyPickerData()
@@ -2087,17 +2117,736 @@ namespace WhyRemitApp.Model
         {
           new CountryPickerModel ()
           {
-             Id=194,
-            CountryFlag="gb.png",
-            CountryName = "United Kingdom",
-            CountryISDCode = "+44",
-            CountryCode = "GB",
-            CountryIS03Code = "GBR",
-            Currency = "GBP"
+            Id=4,
+            CountryFlag="al.png",
+            CountryName = "Albania",
+            CountryISDCode = "+355",
+            CountryCode = "AL",
+            CountryIS03Code = "ALB",
+            Currency = "ALL"
+          },
+          new CountryPickerModel ()
+          {
+            Id=3,
+            CountryFlag="af.png",
+            CountryName = "Afghanistan",
+            CountryISDCode = "+93",
+            CountryCode = "AF",
+            CountryIS03Code = "AFG",
+            Currency = "AFN"
+          },
+        new CountryPickerModel ()
+          {
+            Id=9,
+            CountryFlag="ar.png",
+            CountryName = "Argentina",
+            CountryISDCode = "+54",
+            CountryCode = "AR",
+            CountryIS03Code = "ARG",
+            Currency = "ARS"
           },
          new CountryPickerModel ()
           {
-             Id=136,
+            Id=207,
+            CountryFlag="aruba.png",
+            CountryName = "Aruba",
+            CountryISDCode = "+297",
+            CountryCode = "ABW",
+            CountryIS03Code = "ABW",
+            Currency = "AWG"
+          },
+         new CountryPickerModel ()
+          {
+            Id=190,
+            CountryFlag="tv.png",
+            CountryName = "Australia",
+            CountryISDCode = "+688",
+            CountryCode = "TV",
+            CountryIS03Code = "TUV",
+            Currency = "AUD"
+          },
+         new CountryPickerModel ()
+          {
+            Id=13,
+            CountryFlag="az.png",
+            CountryName = "Azerbaijan",
+            CountryISDCode = "+994",
+            CountryCode = "AZ",
+            CountryIS03Code = "AZE",
+            Currency = "AZN"
+          },
+         new CountryPickerModel ()
+          {
+            Id=14,
+            CountryFlag="bs.png",
+            CountryName = "Bahamas",
+            CountryISDCode = "+1-242",
+            CountryCode = "BS",
+            CountryIS03Code = "BSD",
+            Currency = "BSD"
+          },
+         new CountryPickerModel ()
+          {
+            Id=17,
+            CountryFlag="bb.png",
+            CountryName = "Barbados",
+            CountryISDCode = "+1-246",
+            CountryCode = "BB",
+            CountryIS03Code = "BRB",
+            Currency = "BBD"
+          },
+         new CountryPickerModel ()
+          {
+            Id=18,
+            CountryFlag="by.png",
+            CountryName = "Belarus",
+            CountryISDCode = "+375",
+            CountryCode = "BY",
+            CountryIS03Code = "BLR",
+            Currency = "BYR"
+          },
+         new CountryPickerModel ()
+          {
+            Id=20,
+            CountryFlag="bz.png",
+            CountryName = "Belize",
+            CountryISDCode = "+501",
+            CountryCode = "BZ",
+            CountryIS03Code = "BLZ",
+             Currency = "BZD"
+          },
+          new CountryPickerModel ()
+          {
+            Id=208,
+            CountryFlag="bermuda.png",
+            CountryName = "Bermuda",
+            CountryISDCode = "+1441",
+            CountryCode = "BMU",
+            CountryIS03Code = "BMU",
+            Currency = "BMD"
+          },
+           new CountryPickerModel ()
+          {
+            Id=23,
+            CountryFlag="bo.png",
+            CountryName = "Bolivia",
+            CountryISDCode = "+591",
+            CountryCode = "BO",
+            CountryIS03Code = "BOL",
+            Currency = "BOB"
+          },
+           new CountryPickerModel ()
+          {
+            Id=24,
+            CountryFlag="ba.png",
+            CountryName = "Bosnia and Herz.",
+            CountryISDCode = "+387",
+            CountryCode = "BA",
+            CountryIS03Code = "BIH",
+            Currency = "BAM"
+          },
+           new CountryPickerModel ()
+          {
+            Id=25,
+            CountryFlag="bw.png",
+            CountryName = "Botswana",
+            CountryISDCode = "+267",
+            CountryCode = "BW",
+            CountryIS03Code = "BWA",
+            Currency = "BWP"
+         },
+           new CountryPickerModel ()
+          {
+            Id=28,
+            CountryFlag="bg_flag.png",
+            CountryName = "Bulgaria",
+            CountryISDCode = "+359",
+            CountryCode = "BG",
+            CountryIS03Code = "BGR",
+            Currency = "BGN"
+          },
+            new CountryPickerModel ()
+          {
+            Id=26,
+            CountryFlag="br.png",
+            CountryName = "Brazil",
+            CountryISDCode = "+55",
+            CountryCode = "BR",
+            CountryIS03Code = "BRA",
+            Currency = "BRL"
+          },
+            new CountryPickerModel ()
+          {
+            Id=27,
+            CountryFlag="bn.png",
+            CountryName = "Brunei",
+            CountryISDCode = "+673",
+            CountryCode = "BN",
+            CountryIS03Code = "BRN",
+             Currency = "BND"
+          },
+            new CountryPickerModel ()
+          {
+            Id=31,
+            CountryFlag="kh.png",
+            CountryName = "Cambodia",
+            CountryISDCode = "+855",
+            CountryCode = "KH",
+            CountryIS03Code = "KHM",
+            Currency = "KHR"
+          },
+             new CountryPickerModel ()
+          {
+            Id=33,
+            CountryFlag="ca.png",
+            CountryName = "Canada",
+            CountryISDCode = "+1",
+            CountryCode = "CA",
+            CountryIS03Code = "CAN",
+            Currency = "CAD"
+          },
+              new CountryPickerModel ()
+          {
+            Id=209,
+            CountryFlag="cayman.png",
+            CountryName = "Cayman",
+            CountryISDCode = "+1345",
+            CountryCode = "CYM",
+            CountryIS03Code = "CYM",
+            Currency = "KYD"
+          },
+              new CountryPickerModel ()
+          {
+            Id=37,
+            CountryFlag="cl.png",
+            CountryName = "Chile",
+            CountryISDCode = "+56",
+            CountryCode = "CL",
+            CountryIS03Code = "CHL",
+            Currency = "CLP"
+          },
+          new CountryPickerModel ()
+          {
+            Id=38,
+            CountryFlag="cn.png",
+            CountryName = "China",
+            CountryISDCode = "+86",
+            CountryCode = "CN",
+            CountryIS03Code = "CHN",
+            Currency = "CNY"
+          },
+          new CountryPickerModel ()
+          {
+            Id=39,
+            CountryFlag="co.png",
+            CountryName = " Colombia",
+            CountryISDCode = "+57",
+            CountryCode = "CO",
+            CountryIS03Code = "COL",
+            Currency = "COP"
+          },
+          new CountryPickerModel ()
+        {
+            Id=42,
+            CountryFlag="cr.png",
+            CountryName = "Costa Rica",
+            CountryISDCode = "+506",
+            CountryCode = "CR",
+            CountryIS03Code = "CRI",
+            Currency = "CRC"
+          },
+          new CountryPickerModel ()
+        {
+            Id=44,
+            CountryFlag="hr.png",
+            CountryName = "Croatia",
+            CountryISDCode = "+385",
+            CountryCode = "HR",
+            CountryIS03Code = "HRV",
+            Currency = "HRK"
+          },
+          new CountryPickerModel ()
+        {
+            Id=45,
+            CountryFlag="cu.png",
+            CountryName = "Cuba",
+            CountryISDCode = "+53",
+            CountryCode = "CU",
+            CountryIS03Code = "CUB",
+            Currency = "CUP"
+          },
+          new CountryPickerModel ()
+        {
+            Id=47,
+            CountryFlag="cz_flag.png",
+            CountryName = "Czech Republic",
+            CountryISDCode = "+420",
+            CountryCode = "CZ",
+            CountryIS03Code = "CZE",
+            Currency = "CZK"
+          },
+           new CountryPickerModel ()
+          {
+            Id=71,
+            CountryFlag="gl.jpg",
+            CountryName = "Greenland",
+            CountryISDCode = "+299",
+            CountryCode = "GL",
+            CountryIS03Code = "GRL",
+            Currency = "DKK"
+          },
+           new CountryPickerModel ()
+         {
+            Id=51,
+            CountryFlag="do_flag.png",
+            CountryName = "Dominican Republic",
+            CountryISDCode = "+1-809",
+            CountryCode = "DO",
+            CountryIS03Code = "DOM",
+            Currency = "DOP"
+          },
+            new CountryPickerModel ()
+          {
+            Id=54,
+            CountryFlag="eg.png",
+            CountryName = "Egypt",
+            CountryISDCode = "+20",
+            CountryCode = "EG",
+            CountryIS03Code = "EGY",
+            Currency = "EGP"
+          },
+            new CountryPickerModel ()
+          {
+            Id=55,
+            CountryFlag="sv.png",
+            CountryName = "El Salvador",
+            CountryISDCode = "+503",
+            CountryCode = "SV",
+            CountryIS03Code = "SLV",
+            Currency = "SVC"
+          },
+            new CountryPickerModel ()
+          {
+            Id=58,
+            CountryFlag="ee.png",
+            CountryName = "Estonia",
+            CountryISDCode = "+372",
+            CountryCode = "EE",
+            CountryIS03Code = "EST",
+            Currency = "EEK"
+          },
+             new CountryPickerModel ()
+          {
+            Id=198,
+            CountryFlag="euro.png",
+            CountryName = "Euro Member",
+            CountryISDCode = "+379",
+            CountryCode = "EUR",
+            CountryIS03Code = "EUR",
+            Currency = "EUR"
+          },
+             new CountryPickerModel ()
+          {
+            Id=198,
+            CountryFlag="falklandislands.png",
+            CountryName = "Falkland Islands	",
+            CountryISDCode = "+379",
+            CountryCode = "FKP",
+            CountryIS03Code = "FKP",
+            Currency = "FKP"
+          },
+              new CountryPickerModel ()
+          {
+            Id=60,
+            CountryFlag="fj.png",
+            CountryName = "Fiji",
+            CountryISDCode = "+679",
+            CountryCode = "FJ",
+            CountryIS03Code = "ETH",
+            Currency = "FJD"
+          },
+               new CountryPickerModel ()
+          {
+            Id=66,
+            CountryFlag="ge.png",
+            CountryName = "Georgia",
+            CountryISDCode = "+995",
+            CountryCode = "GE",
+            CountryIS03Code = "SGS",
+            Currency = "GEL"
+          },
+                new CountryPickerModel ()
+          {
+            Id=68,
+            CountryFlag="gh.png",
+            CountryName = "Ghana",
+            CountryISDCode = "+233",
+            CountryCode = "GH",
+            CountryIS03Code = "GHA",
+            Currency = "GHC"
+          },
+                new CountryPickerModel ()
+          {
+            Id=69,
+            CountryFlag="gi.png",
+            CountryName = "Gibraltar",
+            CountryISDCode = "+350",
+            CountryCode = "GI",
+            CountryIS03Code = "GIB",
+            Currency = "GIP"
+          },
+            new CountryPickerModel ()
+          {
+            Id=74,
+            CountryFlag="gt.png",
+            CountryName = "Guatemala",
+            CountryISDCode = "+502",
+            CountryCode = "GT",
+            CountryIS03Code = "GTM",
+            Currency = "GTQ"
+          }, 
+            new CountryPickerModel ()
+          {
+            Id=74,
+            CountryFlag="guernsey.png",
+            CountryName = "Guernsey",
+            CountryISDCode = "+502",
+            CountryCode = "GGP",
+            CountryIS03Code = "GGP",
+            Currency = "GGP"
+          },
+            new CountryPickerModel ()
+          {
+            Id=77,
+            CountryFlag="gy.png",
+            CountryName = "Guyana",
+            CountryISDCode = "+592",
+            CountryCode = "GY",
+            CountryIS03Code = "GUY",
+            Currency = "GYD"
+          },
+             new CountryPickerModel ()
+          {
+            Id=79,
+            CountryFlag="hn.png",
+            CountryName = "Honduras",
+            CountryISDCode = "+504",
+            CountryCode = "HN",
+            CountryIS03Code = "HND",
+            Currency = "HNL"
+          },
+             new CountryPickerModel ()
+          {
+            Id=80,
+            CountryFlag="hk.png",
+            CountryName = "Hong Kong",
+            CountryISDCode = "+852",
+            CountryCode = "HK",
+            CountryIS03Code = "HKG",
+            Currency = "HKD"
+          },
+              new CountryPickerModel ()
+          {
+            Id=81,
+            CountryFlag="hu.png",
+            CountryName = "Hungary",
+            CountryISDCode = "+36",
+            CountryCode = "HU",
+            CountryIS03Code = "HUN",
+            Currency = "HUF"
+          },
+               new CountryPickerModel ()
+          {
+            Id=82,
+            CountryFlag="is.png",
+            CountryName = "Iceland",
+            CountryISDCode = "+354",
+            CountryCode = "IS",
+            CountryIS03Code = "ISL",
+            Currency = "ISK"
+          },
+                new CountryPickerModel ()
+          {
+            Id=1,
+            CountryFlag="in.png",
+            CountryName = "India",
+            CountryISDCode = "+91",
+            CountryCode = "IN",
+            CountryIS03Code = "IND",
+            Currency = "INR"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=83,
+            CountryFlag="id.png",
+            CountryName = "Indonesia",
+            CountryISDCode = "+62",
+            CountryCode = "ID",
+            CountryIS03Code = "IDN",
+            Currency = "IDR"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=84,
+            CountryFlag="ir.png",
+            CountryName = "Iran",
+            CountryISDCode = "+98",
+            CountryCode = "IR",
+            CountryIS03Code = "IRN",
+            Currency = "IRR"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=84,
+            CountryFlag="isleofman.png",
+            CountryName = "Isle of Man",
+            CountryISDCode = "+902",
+            CountryCode = "IR",
+            CountryIS03Code = "IRN",
+            Currency = "IMP"
+          },
+           new CountryPickerModel ()
+          {
+            Id=87,
+            CountryFlag="il.png",
+            CountryName = "Israel",
+            CountryISDCode = "+972",
+            CountryCode = "IL",
+            CountryIS03Code = "ISR",
+            Currency = "ILS"
+          },
+            new CountryPickerModel ()
+          {
+            Id=89,
+            CountryFlag="jm.png",
+            CountryName = "Jamaica",
+            CountryISDCode = "+1-876",
+            CountryCode = "JM",
+            CountryIS03Code = "JAM",
+            Currency = "JMD"
+          },
+             new CountryPickerModel ()
+          {
+            Id=90,
+            CountryFlag="jp.png",
+            CountryName = "Japan",
+            CountryISDCode = "+81",
+            CountryCode = "JP",
+            CountryIS03Code = "JPN",
+            Currency = "JPY"
+          },
+             new CountryPickerModel ()
+          {
+            Id=302,
+            CountryFlag="jersey.png",
+            CountryName = "Jersey",
+            CountryISDCode = "+81",
+            CountryCode = "JEP",
+            CountryIS03Code = "JEP",
+            Currency = "JEP"
+          },
+              new CountryPickerModel ()
+          {
+            Id=92,
+            CountryFlag="kz.png",
+            CountryName = "Kazakhstan",
+            CountryISDCode = "+7",
+            CountryCode = "KZ",
+            CountryIS03Code = "KAZ",
+            Currency = "KZT"
+          },
+                new CountryPickerModel ()
+          {
+            Id=95,
+            CountryFlag="kp.png",
+            CountryName = "Korea, North",
+            CountryISDCode = "+850",
+            CountryCode = "KP",
+            CountryIS03Code = "PRK",
+            Currency = "KPW"
+          },
+             new CountryPickerModel ()
+          {
+            Id=96,
+            CountryFlag="kr.png",
+            CountryName = "Korea, South",
+            CountryISDCode = "+82",
+            CountryCode = "KR",
+            CountryIS03Code = "PRK",
+            Currency = "KRW"
+          },
+               new CountryPickerModel ()
+          {
+            Id=98,
+            CountryFlag="kg.png",
+            CountryName = "Kyrgyzstan",
+            CountryISDCode = "+996",
+            CountryCode = "KG",
+            CountryIS03Code = "KGZ",
+            Currency = "KGS"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=99,
+            CountryFlag="la.png",
+            CountryName = "Laos",
+            CountryISDCode = "+856",
+            CountryCode = "LA",
+            CountryIS03Code = "LAO",
+            Currency = "LAK"
+          },
+          new CountryPickerModel ()
+          {
+            Id=100,
+            CountryFlag="lv.png",
+            CountryName = "Latvia",
+            CountryISDCode = "+371",
+            CountryCode = "LV",
+            CountryIS03Code = "LVA",
+            Currency = "LVL"
+          },
+          new CountryPickerModel ()
+          {
+            Id=101,
+            CountryFlag="lb.png",
+            CountryName = "Lebanon",
+            CountryISDCode = "+961",
+            CountryCode = "LB",
+            CountryIS03Code = "LBN",
+            Currency = "LBP"
+          },
+          new CountryPickerModel ()
+          {
+            Id=102,
+            CountryFlag="lr.png",
+            CountryName = "Liberia",
+            CountryISDCode = "+231",
+            CountryCode = "LR",
+            CountryIS03Code = "LBR",
+            Currency = "LRD"
+          },
+           new CountryPickerModel ()
+          {
+            Id=105,
+            CountryFlag="lt.png",
+            CountryName = "Lithuania",
+            CountryISDCode = "+370",
+            CountryCode = "LT",
+            CountryIS03Code = "LTU",
+            Currency = "LTL"
+          },
+            new CountryPickerModel ()
+          {
+            Id=108,
+            CountryFlag="mk.png",
+            CountryName = "Macedonia",
+            CountryISDCode = "+389",
+            CountryCode = "MK",
+            CountryIS03Code = "MKD",
+            Currency = "MKD"
+          },
+            new CountryPickerModel ()
+          {
+            Id=111,
+            CountryFlag="my.png",
+            CountryName = "Malaysia",
+            CountryISDCode = "+60",
+            CountryIS03Code = "MYS",
+            Currency = "MYR"
+          },
+             new CountryPickerModel ()
+          {
+            Id=118,
+            CountryFlag="mu.png",
+            CountryName = "Mauritius",
+            CountryISDCode = "+230",
+            CountryCode = "MU",
+            CountryIS03Code = "MUS",
+            Currency = "MUR"
+          },
+               new CountryPickerModel ()
+          {
+            Id=119,
+            CountryFlag="mx.png",
+            CountryName = "Mexico",
+            CountryISDCode = "+52",
+            CountryCode = "MX",
+            CountryIS03Code = "MEX",
+            Currency = "MXN"
+          },
+                new CountryPickerModel ()
+          {
+            Id=123,
+            CountryFlag="mn.png",
+            CountryName = "Mongolia",
+            CountryISDCode = "+976",
+            CountryCode = "MN",
+            CountryIS03Code = "MNG",
+            Currency = "MNT"
+            },
+                new CountryPickerModel ()
+          {
+            Id=126,
+            CountryFlag="mz.png",
+            CountryName = "Mozambique",
+            CountryISDCode = "+258",
+            CountryCode = "MZ",
+            CountryIS03Code = "MOZ",
+            Currency = "MZN"
+          },
+                  new CountryPickerModel ()
+          {
+            Id=128,
+            CountryFlag="na.png",
+            CountryName = "Namibia",
+            CountryISDCode = "+264",
+            CountryCode = "NA",
+            CountryIS03Code = "NAM",
+            Currency = "NAD"
+          },
+                   new CountryPickerModel ()
+          {
+            Id=130,
+            CountryFlag="np.png",
+            CountryName = "Nepal",
+            CountryISDCode = "+977",
+            CountryCode = "NP",
+            CountryIS03Code = "NPL",
+            Currency = "NPR"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=131,
+            CountryFlag="nl.png",
+            CountryName = "Netherlands",
+            CountryISDCode = "+31",
+            CountryCode = "NL",
+            CountryIS03Code = "NLD",
+            Currency = "ANG"
+          },
+                 new CountryPickerModel ()
+          {
+            Id=133,
+            CountryFlag="nz.png",
+            CountryName = "New Zealand",
+            CountryISDCode = "+64",
+            CountryCode = "NZ",
+            CountryIS03Code = "NCL",
+            Currency = "NZD"
+          },
+                  new CountryPickerModel ()
+          {
+            Id=134,
+            CountryFlag="ni.png",
+            CountryName = "Nicaragua",
+            CountryISDCode = "+505",
+            CountryCode = "NZ",
+            CountryIS03Code = "NIC",
+            Currency = "NIO"
+          },
+                    new CountryPickerModel ()
+          {
+            Id=136,
             CountryFlag="ng.png",
             CountryName = "Nigeria",
             CountryISDCode = "+234",
@@ -2105,15 +2854,385 @@ namespace WhyRemitApp.Model
             CountryIS03Code = "NGA",
             Currency = "NGN"
           },
-         new CountryPickerModel ()
+                     new CountryPickerModel ()
+          {
+            Id=138,
+            CountryFlag="no.png",
+            CountryName = "Norway",
+            CountryISDCode = "+47",
+            CountryCode = "NO",
+            CountryIS03Code = "NOR",
+            Currency = "NOK"
+          },
+                       new CountryPickerModel ()
+          {
+            Id=139,
+            CountryFlag="om.png",
+            CountryName = "Oman",
+            CountryISDCode = "+968",
+            CountryCode = "OM",
+            CountryIS03Code = "OMN",
+            Currency = "OMR"
+          },
+                        new CountryPickerModel ()
+          {
+            Id=140,
+            CountryFlag="pk.png",
+            CountryName = "Pakistan",
+            CountryISDCode = "+92",
+            CountryCode = "PK",
+            CountryIS03Code = "PAK",
+            Currency = "PKR"
+          },
+                         new CountryPickerModel ()
+          {
+            Id=143,
+            CountryFlag="pa.png",
+            CountryName = "Panama",
+            CountryISDCode = "+507",
+            CountryCode = "PA",
+            CountryIS03Code = "PAN",
+            Currency = "PAB"
+          },
+           new CountryPickerModel ()
+          {
+            Id=145,
+            CountryFlag="py.png",
+            CountryName = "Paraguay",
+            CountryISDCode = "+595",
+            CountryCode = "PY",
+            CountryIS03Code = "PRY",
+            Currency = "PYG"
+          },
+           new CountryPickerModel ()
+          {
+            Id=146,
+            CountryFlag="pe.png",
+            CountryName = "Peru",
+            CountryISDCode = "+51",
+            CountryCode = "PE",
+            CountryIS03Code = "PER",
+            Currency = "PEN"
+          },
+           new CountryPickerModel ()
+          {
+            Id=147,
+            CountryFlag="ph.png",
+            CountryName = "Philippines",
+            CountryISDCode = "+63",
+            CountryCode = "PH",
+            CountryIS03Code = "PHL",
+            Currency = "PHP"
+          },
+           new CountryPickerModel ()
+          {
+            Id=148,
+            CountryFlag="pl.png",
+            CountryName = "Poland",
+            CountryISDCode = "+48",
+            CountryCode = "PL",
+            CountryIS03Code = "POL",
+            Currency = "PLN"
+          },
+           new CountryPickerModel ()
+          {
+            Id=151,
+            CountryFlag="qa.png",
+            CountryName = "Qatar",
+            CountryISDCode = "+974",
+            CountryCode = "QA",
+            CountryIS03Code = "QAT",
+            Currency = "QAR"
+          },
+           new CountryPickerModel ()
+          {
+            Id=153,
+            CountryFlag="ro.png",
+            CountryName = "Romania",
+            CountryISDCode = "+40",
+            CountryCode = "RO",
+            CountryIS03Code = "ROU",
+            Currency = "RON"
+          },
+           new CountryPickerModel ()
+          {
+            Id=154,
+            CountryFlag="ru.png",
+            CountryName = "Russian Federation",
+            CountryISDCode = "+7-73",
+            CountryCode = "RU",
+            CountryIS03Code = "RUS",
+            Currency = "RUB"
+          },
+          new CountryPickerModel ()
+          {
+            Id=454,
+            CountryFlag="falklandislands.png",
+            CountryName = "Saint Helena",
+            CountryISDCode = "+7-73",
+            CountryCode = "RU",
+            CountryIS03Code = "RUS",
+            Currency = "SHP"
+          },
+          new CountryPickerModel ()
+          {
+            Id=161,
+            CountryFlag="sa.png",
+            CountryName = "Saudi Arabia",
+            CountryISDCode = "+966",
+            CountryCode = "SA",
+            CountryIS03Code = "SAU",
+            Currency = "SAR"
+          },
+           new CountryPickerModel ()
+          {
+            Id=163,
+            CountryFlag="rs.png",
+            CountryName = "Serbia",
+            CountryISDCode = "+381",
+            CountryCode = "RS",
+            CountryIS03Code = "SRB",
+            Currency = "RSD"
+          },
+            new CountryPickerModel ()
+          {
+            Id=164,
+            CountryFlag="sc.png",
+            CountryName = "Seychelles",
+            CountryISDCode = "+248",
+            CountryCode = "SC",
+            CountryIS03Code = "SYC",
+            Currency = "SCR"
+          },
+            new CountryPickerModel ()
+          {
+            Id=166,
+            CountryFlag="sg.png",
+            CountryName = "Singapore",
+            CountryISDCode = "+65",
+            CountryCode = "SG",
+            CountryIS03Code = "SGP",
+            Currency = "SGD"
+          },
+             new CountryPickerModel ()
+          {
+            Id=168,
+            CountryFlag="sb.png",
+            CountryName = "Solomon Islands",
+            CountryISDCode = "+677",
+            CountryCode = "SB",
+            CountryIS03Code = "SLB",
+            Currency = "SBD"
+          },
+             new CountryPickerModel ()
+          {
+            Id=169,
+            CountryFlag="so.png",
+            CountryName = "Somalia",
+            CountryISDCode = "+252",
+            CountryCode = "SO",
+            CountryIS03Code = "SOM",
+            Currency = "SOS"
+          },
+              new CountryPickerModel ()
+          {
+            Id=170,
+            CountryFlag="za.png",
+            CountryName = "South Africa",
+            CountryISDCode = "+27",
+            CountryCode = "ZA",
+            CountryIS03Code = "ZAF",
+            Currency = "ZAR"
+          },
+              new CountryPickerModel ()
+          {
+            Id=172,
+            CountryFlag="lk.png",
+            CountryName = "Sri Lanka",
+            CountryISDCode = "+94",
+            CountryCode = "LK",
+            CountryIS03Code = "LKA",
+            Currency = "LKR"
+          },
+               new CountryPickerModel ()
+          {
+            Id=177,
+            CountryFlag="se.png",
+            CountryName = "Sweden",
+            CountryISDCode = "+46",
+            CountryCode = "SE",
+            CountryIS03Code = "SWE",
+            Currency = "SEK"
+          },
+               new CountryPickerModel ()
+          {
+            Id=178,
+            CountryFlag="ch.png",
+            CountryName = "Switzerland",
+            CountryISDCode = "+41",
+            CountryCode = "CH",
+            CountryIS03Code = "CHE",
+            Currency = "CHF"
+          },
+                new CountryPickerModel ()
+          {
+            Id=175,
+            CountryFlag="sr.png",
+            CountryName = "Suriname",
+            CountryISDCode = "+597",
+            CountryCode = "SR",
+            CountryIS03Code = "SUR",
+            Currency = "SRD"
+          },
+                new CountryPickerModel ()
+          {
+            Id=179,
+            CountryFlag="sy.png",
+            CountryName = "Syria",
+            CountryISDCode = "+963",
+            CountryCode = "SY",
+            CountryIS03Code = "SYR",
+            Currency = "SYP"
+          },
+          new CountryPickerModel ()
+          {
+            Id=180,
+            CountryFlag="tw.png",
+            CountryName = "Taiwan",
+            CountryISDCode = "+886",
+            CountryCode = "TW",
+            CountryIS03Code = "TWN",
+            Currency = "TWD"
+          },
+          new CountryPickerModel ()
+          {
+            Id=183,
+            CountryFlag="th.png",
+            CountryName = "Thailand",
+            CountryISDCode = "+66",
+            CountryCode = "TH",
+            CountryIS03Code = "THA",
+            Currency = "THB"
+          },
+          new CountryPickerModel ()
+          {
+            Id=186,
+            CountryFlag="tt.png",
+            CountryName = "Trinidad and Tobago",
+            CountryISDCode = "+1-868",
+            CountryCode = "TT",
+            CountryIS03Code = "TTO",
+            Currency = "TTD"
+          },
+          new CountryPickerModel ()
+          {
+            Id=188,
+            CountryFlag="tr.png",
+            CountryName = "Turkey",
+            CountryISDCode = "+90",
+            CountryCode = "TR",
+            CountryIS03Code = "TUR",
+            Currency = "TRY"
+          },
+          new CountryPickerModel ()
+          {
+            Id=190,
+            CountryFlag="tv.png",
+            CountryName = "Tuvalu",
+            CountryISDCode = "+688",
+            CountryCode = "TV",
+            CountryIS03Code = "TUV",
+            Currency = "TVD"
+          },
+           new CountryPickerModel ()
+          {
+            Id=192,
+            CountryFlag="ua.png",
+            CountryName = "Ukraine",
+            CountryISDCode = "+380",
+            CountryCode = "UA",
+            CountryIS03Code = "UKR",
+            Currency = "UAH"
+          },
+           new CountryPickerModel ()
+          {
+            Id=194,
+            CountryFlag="gb.png",
+            CountryName = "United Kingdom",
+            CountryISDCode = "+44",
+            CountryCode = "GB",
+            CountryIS03Code = "GBR",
+            Currency = "GBP"
+          },
+           new CountryPickerModel ()
           {
             Id=2,
             CountryFlag="us.png",
             CountryName = "United States",
             CountryISDCode = "+1",
             CountryCode = "US",
-            CountryIS03Code = "USD",
+            CountryIS03Code = "UMI",
             Currency = "USD"
+          },
+           new CountryPickerModel ()
+          {
+            Id=195,
+            CountryFlag="uy.png",
+            CountryName = "Uruguay",
+            CountryISDCode = "+598",
+            CountryCode = "UY",
+            CountryIS03Code = "URY",
+            Currency = "UYU"
+          },
+           new CountryPickerModel ()
+          {
+            Id=196,
+            CountryFlag="uz.png",
+            CountryName = "Uzbekistan",
+            CountryISDCode = "+998",
+            CountryCode = "UZ",
+            CountryIS03Code = "UZB",
+            Currency = "UZS"
+          },
+            new CountryPickerModel ()
+          {
+            Id=199,
+            CountryFlag="ve.png",
+            CountryName = "Venezuela",
+            CountryISDCode = "+58",
+            CountryCode = "VE",
+            CountryIS03Code = "VEN",
+            Currency = "VEF"
+          },
+            new CountryPickerModel ()
+          {
+            Id=200,
+            CountryFlag="vn.png",
+            CountryName = "Vietnam",
+            CountryISDCode = "+84",
+            CountryCode = "VN",
+            CountryIS03Code = "VNM",
+            Currency = "VND"
+          },
+             new CountryPickerModel ()
+          {
+            Id=204,
+            CountryFlag="ye.png",
+            CountryName = "Yemen",
+            CountryISDCode = "+967",
+            CountryCode = "YE",
+            CountryIS03Code = "YEM",
+            Currency = "YER"
+          },
+              new CountryPickerModel ()
+          {
+            Id=206,
+            CountryFlag="zw.png",
+            CountryName = "Zimbabwe",
+            CountryISDCode = "+263",
+            CountryCode = "ZW",
+            CountryIS03Code = "ZWE",
+            Currency = "ZWD"
           },
          };
         }

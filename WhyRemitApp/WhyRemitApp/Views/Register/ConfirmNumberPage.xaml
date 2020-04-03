@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="WhyRemitApp.Views.Register.ConfirmNumberPage"
              xmlns:local="clr-namespace:WhyRemitApp.CustomControls"
+             xmlns:xe="clr-namespace:XamEffects;assembly=XamEffects"
              xmlns:inputKit="clr-namespace:Plugin.InputKit.Shared;assembly=Plugin.InputKit">
     <ContentPage.Content>
         <!--Main Grid-->
@@ -41,10 +42,11 @@
 
                 <BoxView Grid.Row="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" Opacity="0.8"/>
 
-                <Grid x:Name="GrdResendLink" Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0" IsVisible="False">
-                    <Grid.GestureRecognizers>
+                <Grid x:Name="GrdResendLink" Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="50,0,50,0" IsVisible="False"
+                      xe:TouchEffect.Color="{StaticResource AppLightBlueColor}" xe:Commands.Tap="{Binding ResendCodeCommand}">
+                    <!--<Grid.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ResendCodeCommand}"/>
-                    </Grid.GestureRecognizers>
+                    </Grid.GestureRecognizers>-->
                     <Label Text="Resend Code" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                                TextColor="{StaticResource AppDarkGrayColor}" FontSize="15" />
                 </Grid>
